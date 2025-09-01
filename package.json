@@ -1,32 +1,32 @@
 {
-    "name": "tuna",
-    "type": "module",
-    "version": "0.0.1",
-    "scripts": {
-        "dev": "astro dev",
-        "build": "astro build",
-        "preview": "astro preview"
-    },
-    "dependencies": {
-        "@astrojs/mdx": "^4.3.4",
-        "@astrojs/partytown": "^2.1.4",
-        "@astrojs/rss": "^4.0.12",
-        "@astrojs/sitemap": "^3.5.1",
-        "@tailwindcss/vite": "^4.1.12",
-        "astro": "^5.13.3",
-        "astro-expressive-code": "^0.41.3",
-        "astro-icon": "^1.1.5",
-        "inquirer": "^12.9.4",
-        "rehype-external-links": "^3.0.0",
-        "tailwindcss": "^4.1.12"
-    },
-    "devDependencies": {
-        "@iconify-json/material-symbols": "^1.2.33",
-        "@iconify-json/simple-icons": "^1.2.49",
-        "@tailwindcss/typography": "^0.5.16",
-        "prettier": "^3.6.2",
-        "prettier-plugin-astro": "^0.14.1",
-        "prettier-plugin-tailwindcss": "^0.6.14",
-        "tailwind-scrollbar": "^4.0.2"
-    }
+  "name": "tuna",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.4",
+    "@astrojs/partytown": "^2.1.4",
+    "@astrojs/rss": "^4.0.12",
+    "@astrojs/sitemap": "^3.5.1",
+    "@tailwindcss/vite": "^4.1.12",
+    "astro": "^5.13.3",
+    "astro-expressive-code": "^0.41.3",
+    "astro-icon": "^1.1.5",
+    "inquirer": "^12.9.4",
+    "rehype-external-links": "^3.0.0",
+    "tailwindcss": "^4.1.12"
+  },
+  "devDependencies": {
+    "@iconify-json/material-symbols": "^1.2.33",
+    "@iconify-json/simple-icons": "^1.2.49",
+    "@tailwindcss/typography": "^0.5.16",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "tailwind-scrollbar": "^4.0.2"
+  }
 }
