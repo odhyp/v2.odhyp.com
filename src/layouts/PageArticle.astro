@@ -4,6 +4,7 @@ import BaseLayout from "./BaseLayout.astro";
 
 // component imports
 import Giscus from "../components/page/Giscus.astro";
+import TableOfContents from "../components/page/TableOfContents.astro";
 
 // utils
 import { formatDate } from "../utils/formatDate";
@@ -15,10 +16,19 @@ const { title, description, pubDate, updatedDate, cover, tags, toc } =
 ---
 
 <BaseLayout title={title} description={description} image={cover}>
-    <section>
-        <article class="prose mx-auto">
-            <slot />
+    <section class="container-grid">
+        <section class="container-side"></section>
+
+        <section class="container-main">
+            <article>
+                <h1 class="leading-normal">{title}</h1>
+
+                <slot />
+            </article>
+
             <Giscus />
-        </article>
+        </section>
+
+        <section class="container-side"></section>
     </section>
 </BaseLayout>
