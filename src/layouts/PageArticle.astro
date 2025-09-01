@@ -1,0 +1,19 @@
+---
+// layout imports
+import BaseLayout from "./BaseLayout.astro";
+
+// component imports
+
+// utils
+
+const { frontmatter, headings } = Astro.props;
+
+const { draft, title, description, pubDate, updatedDate, cover, tags, toc } =
+    frontmatter;
+---
+
+<BaseLayout title={title} description={description} image={cover}>
+    <section>
+        <span>{title}</span>
+    </section>
+</BaseLayout>
