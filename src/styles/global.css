@@ -20,3 +20,87 @@
     }
   }
 }
+
+@layer base {
+  html {
+    @apply scroll-pt-8 scroll-smooth;
+  }
+
+  body {
+    @apply font-inter bg-neutral-50 text-neutral-800 selection:bg-green-200 selection:text-green-950;
+  }
+
+  article {
+    @apply prose prose-a:text-red-800 w-full max-w-none marker:text-red-800 [&>*:first-child]:mt-0!;
+  }
+
+  /* Inline Code */
+  code:not(pre > *) {
+    @apply rounded-sm bg-neutral-200 px-1.5 py-1 select-all;
+  }
+
+  code::before,
+  code::after {
+    @apply hidden;
+  }
+}
+
+@layer components {
+}
+
+@layer utilities {
+  /* Outer Container */
+  .container-full {
+    @apply w-full max-w-full px-4 md:px-8;
+  }
+
+  .container-grid {
+    @apply grid grid-cols-1 px-4 xl:grid-cols-[1fr_600px_1fr] xl:gap-x-8;
+  }
+
+  /* Inner Container */
+  .container-main {
+    @apply mx-auto w-full max-w-[600px];
+  }
+
+  .container-side {
+    @apply hidden xl:block xl:w-full xl:max-w-full;
+  }
+
+  /* Astro Breadcrumbs */
+  nav.c-breadcrumbs {
+    @apply overflow-hidden font-medium;
+  }
+
+  nav.c-breadcrumbs ol {
+    @apply flex items-center;
+  }
+
+  nav.c-breadcrumbs li {
+    @apply inline-flex items-center;
+  }
+
+  nav.c-breadcrumbs a {
+    @apply py-2 whitespace-nowrap hover:text-red-800 hover:underline hover:underline-offset-4;
+  }
+
+  nav.c-breadcrumbs li:last-child {
+    @apply min-w-0 flex-1;
+  }
+  nav.c-breadcrumbs li:last-child a {
+    @apply block truncate;
+  }
+
+  .c-breadcrumbs__separator {
+    @apply mx-2;
+  }
+}
+
+/* TODO: dev-only, remove this later */
+.dev-child {
+  @apply [&>*]:border [&>*]:border-red-800;
+}
+
+.dev-parent {
+  @apply border border-purple-800;
+}
