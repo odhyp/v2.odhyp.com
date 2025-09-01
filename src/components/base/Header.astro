@@ -1,7 +1,38 @@
 ---
-
+import { Breadcrumbs } from "astro-breadcrumbs";
+import { Icon } from "astro-icon/components";
 ---
 
-<header>
-    <span>This is header</span>
+<header
+    id="header"
+    class="container-grid sticky top-0 z-50 bg-neutral-50 font-medium transition-shadow duration-200 ease-in-out"
+>
+    <section class="container-side"></section>
+
+    <section class="container-main py-4">
+        <Breadcrumbs indexText="Odhy Pradhana" linkTextFormat="capitalized">
+            <Icon
+                slot="separator"
+                name="material-symbols:chevron-right-rounded"
+                size="16"
+                class:list={"inline-flex"}
+            />
+        </Breadcrumbs>
+    </section>
+
+    <section class="container-side"></section>
 </header>
+
+<script is:inline data-astro-rerun>
+    document.addEventListener("astro:page-load", () => {
+        const header = document.getElementById("header");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 80) {
+                header.classList.add("shadow-sm");
+            } else {
+                header.classList.remove("shadow-sm");
+            }
+        });
+    });
+</script>
