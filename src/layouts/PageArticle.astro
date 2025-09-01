@@ -3,8 +3,10 @@
 import BaseLayout from "./BaseLayout.astro";
 
 // component imports
+import Giscus from "../components/page/Giscus.astro";
 
 // utils
+import { formatDate } from "../utils/formatDate";
 
 const { frontmatter, headings } = Astro.props;
 
@@ -16,6 +18,7 @@ const { title, description, pubDate, updatedDate, cover, tags, toc } =
     <section>
         <article class="prose mx-auto">
             <slot />
+            <Giscus />
         </article>
     </section>
 </BaseLayout>
