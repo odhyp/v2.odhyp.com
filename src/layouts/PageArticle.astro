@@ -8,12 +8,14 @@ import BaseLayout from "./BaseLayout.astro";
 
 const { frontmatter, headings } = Astro.props;
 
-const { draft, title, description, pubDate, updatedDate, cover, tags, toc } =
+const { title, description, pubDate, updatedDate, cover, tags, toc } =
     frontmatter;
 ---
 
 <BaseLayout title={title} description={description} image={cover}>
     <section>
-        <span>{title}</span>
+        <article class="prose mx-auto">
+            <slot />
+        </article>
     </section>
 </BaseLayout>
