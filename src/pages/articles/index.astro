@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+import { getCollection } from "astro:content";
+
+let articles = await getCollection("articles", ({ data }) => {
+    if (import.meta.env.DEV) {
+        return true;
+    }
+    return data.draft !== true;
+});
+
+articles = articles.sort(
+    (a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf()
+);
+
+const { title = "Articles", description = "" } = Astro.props; // TODO: update desc
+---
+
+<BaseLayout title={title} description={description}>
+    <section>
+        {
+            articles.map((article) => (
+                <a href={`/articles/${article.id}`}>{article.data.title}</a>
+            ))
+        }
+    </section>
+</BaseLayout>
