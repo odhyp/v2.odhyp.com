@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin 'tailwind-scrollbar';
+
+@theme {
+  /* Fonts */
+  --font-inter: "Inter", sans-serif;
+
+  /* Animation */
+  --animate-opacity: opacity 0.3s ease-in-out;
+
+  @keyframes opacity {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
