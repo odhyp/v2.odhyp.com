@@ -27,7 +27,7 @@
   }
 
   body {
-    @apply font-inter bg-neutral-50 text-neutral-800 selection:bg-green-200 selection:text-green-950;
+    @apply font-inter bg-neutral-50 text-neutral-800 selection:bg-red-200 selection:text-red-950;
   }
 
   article {
