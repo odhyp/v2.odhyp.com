@@ -81,7 +81,7 @@
   }
 
   nav.c-breadcrumbs a {
-    @apply py-2 whitespace-nowrap hover:text-red-800 hover:underline hover:underline-offset-4;
+    @apply py-1 whitespace-nowrap hover:text-red-800 hover:underline hover:underline-offset-4;
   }
 
   nav.c-breadcrumbs li:last-child {
