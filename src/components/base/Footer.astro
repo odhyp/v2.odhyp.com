@@ -1,7 +1,85 @@
 ---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
+const year = new Date().getFullYear().toString();
 ---
 
-<footer>
-    <span>This is footer</span>
+<footer class="container-grid font-medium">
+    <section class="container-side"></section>
+
+    <section class="container-main @container py-8">
+        <div
+            class="flex flex-col-reverse items-start justify-center gap-y-4 @lg:flex-row @lg:items-center @lg:justify-between @lg:gap-x-8"
+        >
+            <!-- COPYRIGHT START -->
+            <span>
+                <a
+                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                    target="_blank"
+                    class="inline-block text-red-800 underline underline-offset-2"
+                >
+                    CC BY-NC-SA 4.0
+                </a>
+                <span>{year} &copy; Odhy Pradhana</span>
+            </span>
+            <!-- COPYRIGHT END -->
+
+            <!-- FOOTER ICON START -->
+            <!-- TODO: update webring link, RSS Feed link  -->
+            <div class="flex items-center gap-x-2">
+                <a
+                    title="XXIIVV Webring"
+                    aria-label="XXIIVV Webring"
+                    href="https://webring.xxiivv.com/#xxiivv"
+                    target="_blank"
+                    rel="noopener"
+                    class="px-0.5 py-1"
+                >
+                    <Image
+                        src="https://webring.xxiivv.com/icon.black.svg"
+                        alt="XXIIVV Webring"
+                        width="26"
+                        height="26"
+                        loading="lazy"
+                    />
+
+                    <a
+                        title="GitHub"
+                        aria-label="GitHub"
+                        href="https://github.com/odhyp/"
+                        target="_blank"
+                        class="p-1"
+                    >
+                        <Icon name="simple-icons:github" size="20" />
+                    </a>
+
+                    <a
+                        title="Support Me"
+                        aria-label="Support Me"
+                        href="https://buymeacoffee.com/odhyp"
+                        target="_blank"
+                        class="p-1"
+                    >
+                        <Icon name="simple-icons:buymeacoffee" size="20" />
+                    </a>
+
+                    <a
+                        title="RSS Feed"
+                        aria-label="RSS Feed"
+                        href=""
+                        class="p-1"
+                    >
+                        <Icon
+                            name="material-symbols:rss-feed-rounded"
+                            size="20"
+                        />
+                    </a>
+                </a>
+                <!-- FOOTER ICON END -->
+            </div>
+        </div>
+
+        <section class="container-side"></section>
+    </section>
 </footer>
