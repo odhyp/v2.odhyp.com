@@ -10,11 +10,15 @@ import { Icon } from "astro-icon/components";
     <section class="container-side"></section>
 
     <section class="container-main py-4">
-        <Breadcrumbs indexText="Odhy Pradhana" linkTextFormat="capitalized">
+        <Breadcrumbs
+            indexText="Odhy Pradhana"
+            linkTextFormat="capitalized"
+            separatorAriaHidden={true}
+        >
             <Icon
                 slot="separator"
                 name="material-symbols:chevron-right-rounded"
-                size="16"
+                size="20"
                 class:list={"inline-flex"}
             />
         </Breadcrumbs>
