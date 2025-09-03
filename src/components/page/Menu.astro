@@ -1,0 +1,33 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    href: URL;
+    icon: string;
+    title: string;
+    description: string;
+}
+
+const { href, icon, title, description } = Astro.props;
+---
+
+<a
+    href={`/${href}`}
+    class="not-prose group my-0.5 flex items-baseline gap-x-2 py-1"
+>
+    <Icon
+        name={`${icon}`}
+        size="20"
+        class="mr-1 block shrink-0 translate-y-1 text-neutral-500 transition-colors duration-100 ease-in-out group-hover:text-neutral-600"
+    />
+    <span
+        class="font-semibold transition-all duration-100 ease-in-out group-hover:text-red-800 group-hover:underline group-hover:underline-offset-2"
+        >{title}</span
+    >
+    <Icon
+        name="material-symbols:chevron-right-rounded"
+        size="16"
+        class="block shrink-0 translate-y-0.5 text-neutral-500"
+    />
+    <span class="text-neutral-600">{description}</span>
+</a>
