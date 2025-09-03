@@ -1,0 +1,31 @@
+---
+// layout imports
+import BaseLayout from "./BaseLayout.astro";
+
+// utils imports
+import { formatDate } from "../utils/formatDate";
+
+const { frontmatter } = Astro.props;
+const { title, description } = frontmatter;
+---
+
+<BaseLayout title={title} description={description}>
+    <section class="container-grid">
+        <section class="container-side"></section>
+
+        <section class="container-main">
+            <article>
+                <h1>
+                    {title}<span class="text-red-800">.</span>
+                </h1>
+                <span class="font-medium text-neutral-500 italic"
+                    >{description}</span
+                >
+                <hr />
+                <slot />
+            </article>
+        </section>
+
+        <section class="container-side"></section>
+    </section>
+</BaseLayout>
