@@ -1,0 +1,42 @@
+---
+// layout import
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// component import
+import Menu from "../components/page/Menu.astro";
+
+const {
+    title = "404 - Page Not Found!",
+    description = "This page is missing.",
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+    <section class="container-grid">
+        <section class="container-side"></section>
+
+        <section class="container-main">
+            <article>
+                <h1>
+                    Whoops<span class="text-red-800">.</span>
+                </h1>
+                <p>Everything in its right place, except this page!</p>
+
+                <Menu
+                    href="/"
+                    icon="material-symbols:home-rounded"
+                    title="Home"
+                    description="Go back and be safe..."
+                />
+                <Menu
+                    href="feedback"
+                    icon="material-symbols:feedback-rounded"
+                    title="Feedback"
+                    description="Tell me about this broken link!"
+                />
+            </article>
+        </section>
+
+        <section class="container-side"></section>
+    </section>
+</BaseLayout>
