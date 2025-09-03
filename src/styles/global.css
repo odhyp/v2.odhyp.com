@@ -94,7 +94,7 @@
   }
 
   .c-breadcrumbs__separator {
-    @apply mx-2;
+    @apply mr-1 ml-2;
   }
 }
 
