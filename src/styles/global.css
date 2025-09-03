@@ -23,7 +23,9 @@
 
 @layer base {
   html {
-    @apply scroll-pt-8 scroll-smooth;
+    scrollbar-gutter: stable;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
   }
 
   body {
