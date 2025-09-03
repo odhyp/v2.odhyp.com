@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 
 interface Props {
-    href: URL;
+    href: string;
     icon: string;
     title: string;
     description: string;
@@ -12,7 +12,7 @@ const { href, icon, title, description } = Astro.props;
 ---
 
 <a
-    href={`/${href}`}
+    href={`${href}`}
     class="not-prose group my-0.5 flex items-baseline gap-x-2 py-1"
 >
     <Icon
