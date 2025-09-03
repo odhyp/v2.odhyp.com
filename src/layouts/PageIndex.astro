@@ -2,9 +2,6 @@
 // layout import
 import BaseLayout from "./BaseLayout.astro";
 
-// utils import
-import { formatDate } from "../utils/formatDate";
-
 const { frontmatter } = Astro.props;
 const { title, description } = frontmatter;
 ---
@@ -18,10 +15,9 @@ const { title, description } = frontmatter;
                 <h1>
                     {title}<span class="text-red-800">.</span>
                 </h1>
-                <span class="font-medium text-neutral-500 italic"
-                    >{description}</span
-                >
-                <hr />
+                <span class="font-medium text-neutral-500 italic">
+                    {description}
+                </span>
                 <slot />
             </article>
         </section>
