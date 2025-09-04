@@ -68,34 +68,6 @@
   .container-side {
     @apply hidden xl:block xl:w-full xl:max-w-full;
   }
-
-  /* Astro Breadcrumbs */
-  nav.c-breadcrumbs {
-    @apply overflow-hidden font-medium;
-  }
-
-  nav.c-breadcrumbs ol {
-    @apply flex items-center;
-  }
-
-  nav.c-breadcrumbs li {
-    @apply inline-flex items-center px-0.5 py-1;
-  }
-
-  nav.c-breadcrumbs a {
-    @apply px-0.5 py-1 whitespace-nowrap hover:text-red-800 hover:underline hover:underline-offset-4;
-  }
-
-  nav.c-breadcrumbs li:last-child {
-    @apply min-w-0 flex-1;
-  }
-  nav.c-breadcrumbs li:last-child a {
-    @apply block truncate;
-  }
-
-  .c-breadcrumbs__separator {
-    @apply mr-1 ml-2;
-  }
 }
 
 /* TODO: dev-only, remove this later */
