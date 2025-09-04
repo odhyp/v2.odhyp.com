@@ -1,0 +1,31 @@
+---
+// utils import
+import { formatDate } from "../../utils/formatDate";
+
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+    post: CollectionEntry<"articles">;
+};
+
+const { post } = Astro.props;
+const { title, updatedDate } = post.data;
+---
+
+<a
+    href={`/articles/${post.id}`}
+    class="group flex flex-col gap-y-1 py-1 @lg:flex-row @lg:items-baseline @lg:justify-between @lg:gap-x-2"
+>
+    <span
+        class="shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:text-red-800"
+        >{title}</span
+    >
+    <div
+        class="hidden w-full border-b border-dashed text-neutral-300 transition-colors duration-200 ease-in-out group-hover:text-neutral-500 @lg:block"
+    >
+    </div>
+    <span
+        class="shrink-0 text-sm text-neutral-500 transition-colors duration-200 ease-in-out group-hover:text-neutral-700"
+        >{formatDate(updatedDate, "relative")}</span
+    >
+</a>
