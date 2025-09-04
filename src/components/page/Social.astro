@@ -1,0 +1,31 @@
+---
+import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+    href: string;
+    icon: string;
+    title: string;
+}
+
+const { href, icon, title, ...rest } = Astro.props;
+---
+
+<a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="not-prose group flex size-24 items-center justify-center rounded-md border border-neutral-200 pt-1 transition-all duration-200 ease-in-out hover:border-neutral-300"
+    {...rest}
+>
+    <div
+        class="flex flex-col items-center gap-y-1 text-neutral-500 group-hover:text-neutral-700"
+    >
+        <Icon
+            name={icon}
+            size={32}
+            class="transition-all duration-200 ease-in-out"
+        />
+        <span class="text-sm font-semibold">{title}</span>
+    </div>
+</a>
