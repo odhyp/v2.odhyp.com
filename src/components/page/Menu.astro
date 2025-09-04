@@ -8,15 +8,16 @@ interface Props {
     description: string;
 }
 
-const { href, icon, title, description } = Astro.props;
+const { href, icon, title, description, ...rest } = Astro.props;
 ---
 
 <a
-    href={`${href}`}
+    href={href}
     class="not-prose group my-0.5 flex items-baseline gap-x-2 py-1"
+    {...rest}
 >
     <Icon
-        name={`${icon}`}
+        name={icon}
         size="20"
         class="mr-1 block shrink-0 translate-y-1 text-neutral-500 transition-colors duration-100 ease-in-out group-hover:text-neutral-600"
     />
