@@ -1,0 +1,26 @@
+---
+// layout import
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// content import
+import Content, { frontmatter } from "../content/about.mdx";
+
+const { title, description } = frontmatter;
+---
+
+<BaseLayout title={title} description={description}>
+    <section class="container-grid">
+        <section class="container-side"></section>
+
+        <section class="container-main">
+            <article>
+                <h1>
+                    {title}<span class="text-red-800">.</span>
+                </h1>
+                <Content />
+            </article>
+        </section>
+
+        <section class="container-side"></section>
+    </section>
+</BaseLayout>
