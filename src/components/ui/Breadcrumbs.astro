@@ -1,0 +1,52 @@
+---
+// component import
+import { Icon } from "astro-icon/components";
+
+const { pathname } = Astro.url;
+const { title } = Astro.props;
+
+const segments = pathname.split("/").filter(Boolean);
+const paths = segments.map((_, i) => "/" + segments.slice(0, i + 1).join("/"));
+---
+
+<nav aria-label="Breadcrumbs" class="flex items-center gap-x-2">
+    <a
+        href="/"
+        class="px-0.5 py-1 hover:text-red-800 hover:underline hover:underline-offset-2"
+    >
+        Home
+    </a>
+
+    {
+        segments.map((seg, i) => {
+            const href = paths[i];
+            const isLast = i === segments.length - 1;
+
+            return (
+                <>
+                    <Icon
+                        name="material-symbols:chevron-right-rounded"
+                        size="20"
+                        class="shrink-0"
+                    />
+                    {isLast ? (
+                        <span
+                            aria-current="page"
+                            title={title ?? seg}
+                            class="truncate px-0.5 py-1 text-red-800 capitalize underline underline-offset-2"
+                        >
+                            {title ?? seg}
+                        </span>
+                    ) : (
+                        <a
+                            href={href}
+                            class="px-0.5 py-1 capitalize hover:text-red-800 hover:underline hover:underline-offset-2"
+                        >
+                            {seg}
+                        </a>
+                    )}
+                </>
+            );
+        })
+    }
+</nav>
