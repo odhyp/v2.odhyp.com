@@ -2,18 +2,25 @@
 // utils import
 import { formatDate } from "../../utils/formatDate";
 
-import type { CollectionEntry } from "astro:content";
-
-type Props = {
-    post: CollectionEntry<"articles">;
+type BasePost = {
+    id: string;
+    data: {
+        title: string;
+        updatedDate: string | Date;
+    };
 };
 
-const { post } = Astro.props;
+type Props = {
+    post: BasePost;
+    collection: string;
+};
+
+const { post, collection } = Astro.props;
 const { title, updatedDate } = post.data;
 ---
 
 <a
-    href={`/articles/${post.id}`}
+    href={`/${collection}/${post.id}`}
     class="group flex flex-col gap-y-1 py-1 @lg:flex-row @lg:items-baseline @lg:justify-between @lg:gap-x-2"
 >
     <span
