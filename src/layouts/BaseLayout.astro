@@ -17,7 +17,7 @@ const pathname = Astro.url.pathname;
     <!-- TODO: add google tag -->
 
     <body class="flex min-h-dvh flex-col sm:min-h-screen">
-        <Header />
+        <Header title={title} />
 
         <main class="animate-fade-in-up my-16 grow">
             <slot />
