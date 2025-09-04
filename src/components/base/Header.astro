@@ -1,6 +1,9 @@
 ---
-import { Breadcrumbs } from "astro-breadcrumbs";
+// component import
+import Breadcrumbs from "../ui/Breadcrumbs.astro";
 import { Icon } from "astro-icon/components";
+
+const { title } = Astro.props;
 ---
 
 <header
@@ -10,14 +13,7 @@ import { Icon } from "astro-icon/components";
     <section class="container-side"></section>
 
     <section class="container-main py-4">
-        <Breadcrumbs linkTextFormat="capitalized" separatorAriaHidden={true}>
-            <Icon
-                slot="separator"
-                name="material-symbols:chevron-right-rounded"
-                size="20"
-                class:list={"inline-flex"}
-            />
-        </Breadcrumbs>
+        <Breadcrumbs title={title} />
     </section>
 
     <section class="container-side"></section>
