@@ -57,7 +57,7 @@
   }
 
   .container-grid {
-    @apply grid grid-cols-1 px-4 xl:grid-cols-[1fr_600px_1fr] xl:gap-x-8;
+    @apply grid grid-cols-1 px-4 xl:grid-cols-[1fr_600px_1fr] xl:gap-x-16;
   }
 
   /* Inner Container */
