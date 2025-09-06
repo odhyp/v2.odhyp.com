@@ -1,5 +1,9 @@
 ---
+// layout import
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// component import
+import CardPost from "../../components/ui/CardPost.astro";
 
 import { getCollection } from "astro:content";
 
@@ -18,11 +22,31 @@ const { title = "Articles", description = "" } = Astro.props; // TODO: update de
 ---
 
 <BaseLayout title={title} description={description}>
-    <section>
-        {
-            articles.map((article) => (
-                <a href={`/articles/${article.id}`}>{article.data.title}</a>
-            ))
-        }
+    <section class="container-grid">
+        <section class="container-side"></section>
+
+        <section class="container-main">
+            <article>
+                <h1>
+                    {title}<span class="text-red-800">.</span>
+                </h1>
+                <p class="">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Laudantium unde aut id. Enim recusandae, molestias odio
+                    obcaecati aspernatur ut itaque fuga reiciendis commodi,
+                    consequatur sequi ullam ipsum! Odit, modi qui.
+                </p>
+            </article>
+
+            <div class="@container flex flex-col gap-y-4">
+                {
+                    articles.map((article) => (
+                        <CardPost post={article} collection="articles" />
+                    ))
+                }
+            </div>
+        </section>
+
+        <section class="container-side"></section>
     </section>
 </BaseLayout>
