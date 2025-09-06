@@ -17,18 +17,40 @@ const { title, description, pubDate, updatedDate, cover, tags, toc } =
 
 <BaseLayout title={title} description={description} image={cover}>
     <section class="container-grid">
+        <!-- Page Meta Start -->
         <section class="container-side"></section>
 
         <section class="container-main">
             <article>
                 <h1 class="leading-normal">{title}</h1>
+            </article>
+        </section>
 
+        <section class="container-side"></section>
+        <!-- Page Meta End -->
+
+        <!-- Main Content Start -->
+        <section class="container-side pl-4">
+            {toc && <TableOfContents headings={headings} />}
+        </section>
+
+        <section class="container-main">
+            <article>
                 <slot />
             </article>
+        </section>
 
+        <section class="container-side"></section>
+        <!-- Main Content End -->
+
+        <!-- Comment Start -->
+        <section class="container-side"></section>
+
+        <section class="container-main">
             <Giscus />
         </section>
 
         <section class="container-side"></section>
+        <!-- Comment End -->
     </section>
 </BaseLayout>
