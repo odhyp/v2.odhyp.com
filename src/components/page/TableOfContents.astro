@@ -11,18 +11,19 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
 ---
 
 <nav
+    id="toc"
     title="Table Of Contents"
     aria-label="Table Of Contents"
-    class="w-full max-w-64 text-sm text-neutral-500"
+    class="sticky top-32 w-full max-w-64 text-sm text-neutral-500"
 >
-    <span class="font-semibold">Table Of Contents</span>
+    <span class="font-medium">Table Of Contents</span>
     <ul class="mt-4 flex flex-col gap-y-2">
         {
             filteredHeadings.map((heading) => (
                 <li>
                     <a
                         href={`#${heading.slug}`}
-                        class="py-1 hover:text-neutral-700"
+                        class="py-1 transition-colors duration-150 ease-in-out hover:text-neutral-700"
                     >
                         {heading.text}
                     </a>
@@ -31,3 +32,44 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
         }
     </ul>
 </nav>
+
+<script is:inline>
+    function initTOCScrollspy() {
+        const toc = document.getElementById("toc");
+        if (!toc) return;
+
+        const tocLinks = toc.querySelectorAll("a");
+        const headingTargets = Array.from(tocLinks).map((link) => {
+            const id = link.getAttribute("href").slice(1);
+            return document.getElementById(id);
+        });
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const index = headingTargets.indexOf(entry.target);
+                    if (index !== -1) {
+                        const link = tocLinks[index];
+                        if (entry.isIntersecting) {
+                            tocLinks.forEach((l) =>
+                                l.classList.remove("text-red-800")
+                            );
+                            link.classList.add("text-red-800");
+                        }
+                    }
+                });
+            },
+            { rootMargin: "0px 0px -70% 0px", threshold: 0 }
+        );
+
+        headingTargets.forEach((el) => {
+            if (el) observer.observe(el);
+        });
+    }
+
+    // Run on first load
+    document.addEventListener("astro:page-load", initTOCScrollspy);
+
+    // Run again after every view transition
+    document.addEventListener("astro:after-swap", initTOCScrollspy);
+</script>
