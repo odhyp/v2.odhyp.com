@@ -1,12 +1,12 @@
 ---
-draft: true
-title: "Upgrading a Hugo Website from Tailwind CSS v3 to v4"
+draft: false
+title: "Upgrading Your Hugo Site to Tailwind CSS v4"
 description: "A step-by-step guide to upgrading your Hugo site from Tailwind CSS v3 to v4"
 pubDate: 2025-02-13
-updatedDate: 2025-07-28
+updatedDate: 2025-09-07T01:30:00+07:00
 cover: "https://placehold.co/1200x675"
 tags: ["Hugo", "Tailwind CSS"]
-toc: false
+toc: true
 ---
 
 I recently upgraded my site to use TailwindCSS v4. In this post, I'll guide you through the upgrade process, just as I did for my own website.
@@ -52,25 +52,22 @@ Error: Loading PostCSS Plugin failed: Cannot find module '@tailwindcss/oxide-lin
 
 Since `tailwind.config.js` is no longer used, migrate your custom styles to `styles.css` and add `@import "tailwindcss"`. Here's what it looks like now:
 
-```js title="styles.css" ins={"New TailwindCSS import method":1-2}
-.
-@import "tailwindcss";
-
-@plugin "@tailwindcss/typography"; // Import plugins
+```js title="styles.css" ins={1}
+@import "tailwindcss"; // New import method
+@plugin "@tailwindcss/typography";
 
 @theme {
-  --color-custom-100: oklch(0.98 0.04 113.22); // Custom class
+  --color-custom-100: oklch(0.98 0.04 113.22);
   --color-custom-200: oklch(0.94 0.11 115.03);
   ...
 }
-
 ```
 
 ## Step 3: Small adjustments (optional)
 
 I renamed my `postcss.config.js` to `postcss.config.mjs` (this may not be necessary) to match the TailwindCSS docs, so we need to update the `css.html` with the new file name:
 
-```js title="postcss.config.mjs"
+```js title="postcss.config.mjs" "postcss.config.mjs"
 {{- $styles := resources.Get "css/styles.css" | postCSS (dict "config"
 "./assets/css/postcss.config.mjs") -}}
 ```
