@@ -1,0 +1,47 @@
+---
+// layout import
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// component import
+import CardShort from "../../components/ui/CardShort.astro";
+
+import { getCollection } from "astro:content";
+
+let logs = await getCollection("logs", ({ data }) => {
+    if (import.meta.env.DEV) {
+        return true;
+    }
+    return data.draft !== true;
+});
+
+logs = logs.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const {
+    title = "Logs",
+    description = "Progress updates and experiments recorded in a simple, ongoing way",
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+    <section class="container-grid">
+        <section class="container-side"></section>
+
+        <section class="container-main">
+            <article>
+                <h1>
+                    {title}<span class="text-red-800">.</span>
+                </h1>
+                <p>
+                    Progress updates and experiments recorded in a simple,
+                    ongoing way.
+                </p>
+            </article>
+
+            <div class="@container flex flex-col gap-y-2">
+                {logs.map((log) => <CardShort post={log} collection="logs" />)}
+            </div>
+        </section>
+
+        <section class="container-side"></section>
+    </section>
+</BaseLayout>
