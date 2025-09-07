@@ -32,10 +32,10 @@ const paths = segments.map((_, i) => "/" + segments.slice(0, i + 1).join("/"));
                     {isLast ? (
                         <span
                             aria-current="page"
-                            title={title ?? seg}
-                            class="truncate px-0.5 py-1 text-red-800 capitalize underline underline-offset-2"
+                            title={title}
+                            class="truncate px-0.5 py-1 text-red-800 underline underline-offset-2"
                         >
-                            {title ?? seg}
+                            {title}
                         </span>
                     ) : (
                         <a
