@@ -1,0 +1,46 @@
+---
+// layout import
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// component import
+import CardJournal from "../../components/ui/CardJournal.astro";
+
+import { getCollection } from "astro:content";
+
+let journals = await getCollection("journals", ({ data }) => {
+    if (import.meta.env.DEV) {
+        return true;
+    }
+    return data.draft !== true;
+});
+
+journals = journals.sort(
+    (a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf()
+);
+
+const {
+    title = "Journals",
+    description = "Personal reflections and frustrations on life",
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+    <section class="container-grid">
+        <section class="container-side"></section>
+
+        <section class="container-main">
+            <article>
+                <h1>
+                    {title}<span class="text-red-800">.</span>
+                </h1>
+                <p>Personal reflections and frustrations on life.</p>
+            </article>
+
+            <div class="@container flex flex-col gap-y-2">
+                {journals.map((journal) => <CardJournal journal={journal} />)}
+            </div>
+        </section>
+
+        <section class="container-side"></section>
+    </section>
+</BaseLayout>
