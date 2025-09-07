@@ -1,0 +1,55 @@
+---
+// layout import
+import BaseLayout from "./BaseLayout.astro";
+
+// component import
+import Giscus from "../components/page/Giscus.astro";
+import TableOfContents from "../components/page/TableOfContents.astro";
+
+// utils
+import { formatDate } from "../utils/formatDate";
+
+const { frontmatter, headings } = Astro.props;
+
+const { title, description, pubDate, updatedDate, tags, toc } = frontmatter;
+---
+
+<BaseLayout title={title} description={description}>
+    <section class="container-grid">
+        <!-- Page Meta Start -->
+        <section class="container-side"></section>
+
+        <section class="container-main">
+            <article>
+                <h1 class="leading-normal">{title}</h1>
+            </article>
+        </section>
+
+        <section class="container-side"></section>
+        <!-- Page Meta End -->
+
+        <!-- Main Content Start -->
+        <section class="container-side pl-4">
+            {toc && <TableOfContents headings={headings} />}
+        </section>
+
+        <section class="container-main">
+            <article>
+                <slot />
+            </article>
+        </section>
+
+        <section class="container-side"></section>
+        <!-- Main Content End -->
+
+        <!-- Comment Start -->
+        <section class="container-side"></section>
+
+        <section class="container-main">
+            <Giscus />
+        </section>
+
+        <section class="container-side"></section>
+        <!-- Comment End -->
+    </section>
+</BaseLayout>
