@@ -3,7 +3,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 // component import
-import CardPost from "../../components/ui/CardPost.astro";
+import CardLong from "../../components/ui/CardLong.astro";
 
 import { getCollection } from "astro:content";
 
@@ -42,7 +42,7 @@ const {
             <div class="@container flex flex-col gap-y-4">
                 {
                     articles.map((article) => (
-                        <CardPost post={article} collection="articles" />
+                        <CardLong post={article} collection="articles" />
                     ))
                 }
             </div>
