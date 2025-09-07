@@ -77,9 +77,9 @@
 
 /* TODO: dev-only, remove this later */
 .dev-child {
-  @apply [&>*]:border [&>*]:border-red-800;
+  @apply [&>*]:bg-red-200/50;
 }
 
 .dev-parent {
-  @apply border border-purple-800;
+  @apply bg-amber-200/50;
 }
