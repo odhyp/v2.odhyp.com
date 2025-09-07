@@ -1,0 +1,54 @@
+---
+// layout import
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// component import
+import CardPost from "../../components/ui/CardPost.astro";
+
+import { getCollection } from "astro:content";
+
+let notes = await getCollection("notes", ({ data }) => {
+    if (import.meta.env.DEV) {
+        return true;
+    }
+    return data.draft !== true;
+});
+
+notes = notes.sort(
+    (a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf()
+);
+
+const {
+    title = "Notes",
+    description = "Snippets and references worth keeping",
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+    <section class="container-grid">
+        <section class="container-side"></section>
+
+        <section class="container-main">
+            <article>
+                <h1>
+                    {title}<span class="text-red-800">.</span>
+                </h1>
+                <p class="">
+                    Notes are short pieces I want to keep. They can be snippets,
+                    references, or quick ideas that do not need a full article.
+                    It serve as a lightweight archive of things I find useful.
+                </p>
+            </article>
+
+            <div class="@container flex flex-col gap-y-4">
+                {
+                    notes.map((note) => (
+                        <CardPost post={note} collection="notes" />
+                    ))
+                }
+            </div>
+        </section>
+
+        <section class="container-side"></section>
+    </section>
+</BaseLayout>
