@@ -15,7 +15,7 @@ let journals = await getCollection("journals", ({ data }) => {
 });
 
 journals = journals.sort(
-    (a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf()
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
 const {
