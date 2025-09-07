@@ -39,7 +39,7 @@
 
   /* Inline Code */
   code:not(pre > *) {
-    @apply rounded-sm bg-neutral-200 px-1.5 py-1 select-all;
+    @apply font-geist rounded-sm bg-neutral-200 px-1.5 py-1 select-all;
   }
 
   code::before,
