@@ -18,7 +18,10 @@ articles = articles.sort(
     (a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf()
 );
 
-const { title = "Articles", description = "" } = Astro.props; // TODO: update desc
+const {
+    title = "Articles",
+    description = "Long-form pieces that bring together guides, stories, and ideas explored in depth",
+} = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -30,11 +33,9 @@ const { title = "Articles", description = "" } = Astro.props; // TODO: update de
                 <h1>
                     {title}<span class="text-red-800">.</span>
                 </h1>
-                <p class="">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Laudantium unde aut id. Enim recusandae, molestias odio
-                    obcaecati aspernatur ut itaque fuga reiciendis commodi,
-                    consequatur sequi ullam ipsum! Odit, modi qui.
+                <p>
+                    Long-form pieces that bring together guides, stories, and
+                    ideas explored in depth.
                 </p>
             </article>
 
