@@ -1,0 +1,34 @@
+---
+import PageNote from "../../layouts/PageNote.astro";
+
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import type { MarkdownHeading } from "astro";
+
+export async function getStaticPaths() {
+    const notes = await getCollection("notes");
+
+    const headings = await Promise.all(
+        notes.map(async (note) => {
+            const data = await render(note);
+            return data.headings;
+        })
+    );
+
+    return notes.map((note, index) => ({
+        params: { id: note.id },
+        props: { note, headings: headings[index] },
+    }));
+}
+
+type Props = {
+    note: CollectionEntry<"notes">;
+    headings: MarkdownHeading[];
+};
+
+const { note, headings } = Astro.props;
+const { Content } = await render(note);
+---
+
+<PageNote frontmatter={note.data} headings={headings}>
+    <Content />
+</PageNote>
