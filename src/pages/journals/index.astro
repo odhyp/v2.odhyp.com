@@ -3,7 +3,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 // component import
-import CardJournal from "../../components/ui/CardJournal.astro";
+import CardShort from "../../components/ui/CardShort.astro";
 
 import { getCollection } from "astro:content";
 
@@ -37,7 +37,11 @@ const {
             </article>
 
             <div class="@container flex flex-col gap-y-2">
-                {journals.map((journal) => <CardJournal journal={journal} />)}
+                {
+                    journals.map((journal) => (
+                        <CardShort post={journal} collection="journals" />
+                    ))
+                }
             </div>
         </section>
 
