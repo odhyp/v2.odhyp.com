@@ -18,7 +18,10 @@ projects = projects.sort(
     (a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf()
 );
 
-const { title = "Projects", description = "" } = Astro.props;
+const {
+    title = "Projects",
+    description = "Work and experiments I have built or contributed to, collected in one place",
+} = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -31,11 +34,9 @@ const { title = "Projects", description = "" } = Astro.props;
                     {title}<span class="text-red-800">.</span>
                 </h1>
                 <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Reprehenderit earum voluptas cumque voluptatum delectus hic
-                    distinctio blanditiis minus labore at pariatur asperiores,
-                    corporis temporibus tempora error tenetur eveniet dolorem
-                    odio!
+                    A place to keep track of what I am building and exploring.
+                    Some projects are finished, others are still taking shape,
+                    and all of them are open to change as I continue to learn.
                 </p>
             </article>
 
