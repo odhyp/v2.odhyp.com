@@ -16,7 +16,7 @@ import astroExpressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://odhy.netlify.app/", // TODO: update site URL
+  site: "https://odhyp.com",
   integrations: [
     astroExpressiveCode({
       themes: "material-theme-darker",
