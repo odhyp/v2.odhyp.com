@@ -1,0 +1,37 @@
+---
+draft: false
+title: "Astro Path Alias"
+description: "Using path alias in Astro for cleaner import"
+pubDate: 2025-09-08T13:34:43+07:00
+updatedDate: 2025-09-08T13:34:43+07:00
+tags: ["Astro"]
+toc: false
+---
+
+I grabbed this from [Starwind UI Docs](https://starwind.dev/docs/getting-started/installation/), to replace relative import with a cleaner one. Add the following to your `tsconfig.json` file:
+
+```json title="tsconfig.json" ins={3-8}
+{
+  // ...
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
+```
+
+That `@/` is a path alias, it means that instead of writing long relative imports like:
+
+```js frame="none"
+import Button from "../../../components/ui/Button";
+```
+
+you can just write:
+
+```js frame="none"
+import Button from "@/components/ui/Button";
+```
+
+In this case, `@/` maps directly to the `src/` folder, making imports easier to maintain.
