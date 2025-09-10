@@ -3,6 +3,7 @@
 import Head from "../components/base/Head.astro";
 import Header from "../components/base/Header.astro";
 import Footer from "../components/base/Footer.astro";
+import GoogleAnalytics from "../components/scripts/GoogleAnalytics.astro";
 
 const { title, description, image } = Astro.props;
 const pathname = Astro.url.pathname;
@@ -14,7 +15,7 @@ const pathname = Astro.url.pathname;
         <Head title={title} description={description} image={image} />
     </head>
 
-    <!-- TODO: add google tag -->
+    <GoogleAnalytics />
 
     <body class="flex min-h-dvh flex-col sm:min-h-screen">
         <Header title={title} />
