@@ -14,9 +14,9 @@ const { title, description, image } = Astro.props;
         <Head title={title} description={description} image={image} />
     </head>
 
-    <GoogleAnalytics />
-
     <body class="flex min-h-dvh flex-col sm:min-h-screen">
+        <GoogleAnalytics />
+
         <Header title={title} />
 
         <main class="animate-fade-in-up my-16 grow">
