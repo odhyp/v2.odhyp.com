@@ -33,15 +33,12 @@ const {
                 <h1>
                     {title}<span class="text-red-800">.</span>
                 </h1>
-                <p>
-                    I enjoy building small tools, experiments, and side
-                    projects. I'm also diving deeper into data science, focusing
-                    on visualization and data storytelling. This space is both a
-                    portfolio and a playground.
-                </p>
+                <span class="font-medium text-neutral-500 italic">
+                    {description}
+                </span>
             </article>
 
-            <div class="@container flex flex-col gap-y-4">
+            <div class="@container mt-8 flex flex-col gap-y-4">
                 {
                     projects.map((article) => (
                         <CardProject post={article} collection="projects" />

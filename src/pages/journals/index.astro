@@ -33,10 +33,12 @@ const {
                 <h1>
                     {title}<span class="text-red-800">.</span>
                 </h1>
-                <p>Personal reflections and frustrations on life.</p>
+                <span class="font-medium text-neutral-500 italic">
+                    {description}
+                </span>
             </article>
 
-            <div class="@container flex flex-col gap-y-2">
+            <div class="@container mt-8 flex flex-col gap-y-2">
                 {
                     journals.map((journal) => (
                         <CardShort post={journal} collection="journals" />

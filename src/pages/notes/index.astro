@@ -33,13 +33,12 @@ const {
                 <h1>
                     {title}<span class="text-red-800">.</span>
                 </h1>
-                <p>
-                    Short snippets, references, and quick ideas that serve as a
-                    lightweight archive.
-                </p>
+                <span class="font-medium text-neutral-500 italic">
+                    {description}
+                </span>
             </article>
 
-            <div class="@container flex flex-col gap-y-2">
+            <div class="@container mt-8 flex flex-col gap-y-2">
                 {
                     notes.map((note) => (
                         <CardLong post={note} collection="notes" />

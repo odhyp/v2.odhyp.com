@@ -31,13 +31,12 @@ const {
                 <h1>
                     {title}<span class="text-red-800">.</span>
                 </h1>
-                <p>
-                    Progress updates and experiments recorded in a simple,
-                    ongoing way.
-                </p>
+                <span class="font-medium text-neutral-500 italic">
+                    {description}
+                </span>
             </article>
 
-            <div class="@container flex flex-col gap-y-2">
+            <div class="@container mt-8 flex flex-col gap-y-2">
                 {logs.map((log) => <CardShort post={log} collection="logs" />)}
             </div>
         </section>

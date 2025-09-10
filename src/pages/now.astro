@@ -20,7 +20,9 @@ const { title, description, updatedDate } = frontmatter;
                 <h1>
                     {title}<span class="text-red-800">.</span>
                 </h1>
-                <p>{description}</p>
+                <p class="font-medium text-neutral-500 italic">
+                    {description}
+                </p>
                 <p class="text-sm text-neutral-600">
                     <span data-time={updatedDate} class="font-medium"
                         >Updated:</span
