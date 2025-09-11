@@ -54,7 +54,7 @@
 @layer utilities {
   /* Outer Container */
   .container-full {
-    @apply w-full max-w-full px-4 md:px-8;
+    @apply mx-auto w-full max-w-[96rem] px-4 md:px-8;
   }
 
   .container-grid {
