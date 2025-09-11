@@ -71,4 +71,22 @@ const projects = defineCollection({
     }),
 });
 
-export const collections = { articles, notes, journals, logs, projects };
+// Photos
+const photos = defineCollection({
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/photos" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    url: z.string(),
+    pubDate: z.coerce.date(),
+  }),
+});
+
+export const collections = {
+  articles,
+  notes,
+  journals,
+  logs,
+  projects,
+  photos,
+};
