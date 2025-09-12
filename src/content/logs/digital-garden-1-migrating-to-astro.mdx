@@ -6,6 +6,9 @@ pubDate: 2025-09-01T19:33:31+07:00
 updatedDate: 2025-09-01T19:33:31+07:00
 ---
 
+import Wrapper from "../../components/page/Wrapper.astro";
+import { Image } from "astro:assets";
+
 After working with Hugo for my personal website since April 2024, I've decided to let it go. Over the past few days, I started learning Astro and ended up migrating everything. Both are static site generators, so why switch? The truth is I have always despised JavaScript, but in web development you almost can't avoid it. So, I chose to embrace it.
 
 I was actually looking for a new framework to build my business website. My first pick was Next.js, mostly because there are plenty of tutorials available and a friend recommended it. Before I got very far, I came across Astro in [an article by CloudCannon about static site generators](https://cloudcannon.com/blog/the-top-five-static-site-generators-for-2025-and-when-to-use-them/). The feature that caught my attention was partial hydration, also known as the island architecture. It avoids shipping a large JavaScript bundle while still letting you use JavaScript components, so your site can remain static and lightweight.
@@ -13,3 +16,23 @@ I was actually looking for a new framework to build my business website. My firs
 Astro also allows integration with frameworks like React, Vue, and Svelte. I don't plan to use them all, but having JavaScript available when building dynamic content is important.
 
 After experimenting with Astro on a few projects, I asked myself: why not rebuild my personal website with it? So here we are.
+
+I want the site to be as minimal as possible, leaning towards an essentialist style. Something with fewer distraction, a digital-garden-like labyrinth of navigation, and a wall of text. I'll keep the same color palette from my previous website using TailwindCSS, mostly shades of neutral and some hint of red for the anchor tags, hover effects, and other small details.
+
+import pic1 from "../../assets/images/v1-website.png";
+
+<Wrapper class="bleed text-center text-sm">
+  <Image
+    src={pic1}
+    alt="My old website landing page"
+    format="avif"
+    class="border border-neutral-200 shadow-lg"
+  />
+
+My old site, still alive at [v1.odhyp.com](https://v1.odhyp.com/)
+
+</Wrapper>
+
+I'm discarding the old home page style for something simpler and more text-driven. Partly inspired by [Joel Hooks's website](https://joelhooks.com/). I've grown tired of the tagline approach and want the content itself to be more descriptive
+
+I also prefer website with narrower layout, like this [Portfolio Starter Kit](https://portfolio-blog-starter.vercel.app/) from Vercel and I've found that 600px feels like the sweet spot.
