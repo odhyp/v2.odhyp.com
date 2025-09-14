@@ -8,6 +8,7 @@ type BasePost = {
         title: string;
         description: string;
         updatedDate: string | Date;
+        version: string;
     };
 };
 
@@ -17,14 +18,23 @@ type Props = {
 };
 
 const { post, collection } = Astro.props;
-const { title, description, updatedDate } = post.data;
+const { title, description, updatedDate, version } = post.data;
 ---
 
 <a href={`/${collection}/${post.id}`} class="group flex flex-col gap-y-1 py-1">
-    <span
-        class="shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:text-red-800 group-hover:underline group-hover:underline-offset-2"
-        >{title}</span
-    >
+    <span class="flex flex-wrap items-center gap-4">
+        <span
+            class="shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:text-red-800 group-hover:underline group-hover:underline-offset-2"
+            >{title}</span
+        >
+        {
+            version && (
+                <span class="rounded-full border border-neutral-300 bg-neutral-100 px-2 py-0.5 text-xs font-semibold">
+                    v{version}
+                </span>
+            )
+        }
+    </span>
     <span
         class="shrink-0 text-neutral-500 transition-colors duration-200 ease-in-out group-hover:text-neutral-700"
         >{description}</span
