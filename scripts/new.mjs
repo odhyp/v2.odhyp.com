@@ -83,8 +83,14 @@ updatedDate: ${now}
 toc: false
 `;
   }
+
   if (["articles", "projects"].includes(collection)) {
     frontmatter += `cover: "https://placehold.co/1200x675"
+`;
+  }
+
+  if (["projects"].includes(collection)) {
+    frontmatter += `version: "0.1.0"
 `;
   }
 
