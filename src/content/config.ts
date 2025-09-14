@@ -68,6 +68,7 @@ const projects = defineCollection({
       cover: image().optional(),
       tags: z.array(z.string()).optional(),
       toc: z.boolean().optional(),
+      version: z.string().optional(),
     }),
 });
 
