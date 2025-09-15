@@ -1,0 +1,73 @@
+---
+let canvasId = "line-chart";
+---
+
+<canvas id={canvasId} aria-label="Sample Chart" role="img" class="bleed">
+    <p>Your browser does not support the canvas element :(</p>
+</canvas>
+
+<script>
+    import Chart from "chart.js/auto";
+
+    function generateMonths(count) {
+        const months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+        ];
+        return months.slice(0, count);
+    }
+
+    function initChart() {
+        const ctx = document.getElementById("line-chart");
+
+        const data = {
+            labels: generateMonths(7),
+            datasets: [
+                {
+                    label: "Dataset 1",
+                    data: [10, 20, 30, 25, 40, 35, 50],
+                },
+                {
+                    label: "Dataset 2",
+                    data: [5, 15, 10, 30, 20, 45, 40],
+                },
+                {
+                    label: "Dataset 3",
+                    data: [5, 50, 50, 25, 20, 0, 40],
+                },
+            ],
+        };
+
+        const config = {
+            type: "line",
+            data: data,
+            options: {
+                interaction: {
+                    mode: "nearest",
+                },
+                responsive: true,
+                plugins: {
+                    legend: { position: "bottom" },
+                    title: {
+                        display: true,
+                        text: "Example Line Chart",
+                    },
+                },
+            },
+        };
+
+        new Chart(ctx, config);
+    }
+
+    document.addEventListener("astro:page-load", initChart);
+</script>
