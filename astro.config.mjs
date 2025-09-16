@@ -17,6 +17,9 @@ import astroExpressiveCode from "astro-expressive-code";
 // https://astro.build/config
 export default defineConfig({
   site: "https://odhyp.com",
+  devToolbar: {
+    enabled: false,
+  },
   integrations: [
     astroExpressiveCode({
       themes: "material-theme-darker",
