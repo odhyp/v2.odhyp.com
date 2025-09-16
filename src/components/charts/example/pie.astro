@@ -1,0 +1,87 @@
+---
+let canvasId = "pie-chart-example";
+---
+
+<div class="">
+    <canvas id={canvasId} aria-label="Sample Chart" role="img" class="w-full">
+        <p>Your browser does not support the canvas element!</p>
+    </canvas>
+</div>
+
+<script>
+    import Chart from "chart.js/auto";
+
+    function generateMonths(count) {
+        const months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+        ];
+        return months.slice(0, count);
+    }
+
+    function initChart() {
+        const ctx = document.getElementById("pie-chart-example");
+
+        const data = {
+            labels: generateMonths(5),
+            datasets: [
+                {
+                    label: "Dataset 1",
+                    data: [10, 20, 30, 25, 40, 35, 48],
+                },
+            ],
+        };
+
+        const config = {
+            type: "pie",
+            data: data,
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: "index",
+                    intersect: false,
+                },
+                stacked: false,
+                plugins: {
+                    legend: { position: "top" },
+                    title: {
+                        display: true,
+                        text: "Example Line Chart",
+                    },
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Months",
+                        },
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: "Values",
+                        },
+                        max: 60,
+                        ticks: {
+                            stepSize: 20,
+                        },
+                    },
+                },
+            },
+        };
+
+        new Chart(ctx, config);
+    }
+
+    document.addEventListener("astro:page-load", initChart);
+</script>

@@ -1,10 +1,23 @@
 ---
-let canvasId = "line-chart";
+let canvasId = "line-chart-example";
 ---
 
-<canvas id={canvasId} aria-label="Sample Chart" role="img" class="bleed">
-    <p>Your browser does not support the canvas element!</p>
-</canvas>
+<div class="bleed relative">
+    <canvas id={canvasId} aria-label="Sample Chart" role="img" class="w-full">
+        <p>Your browser does not support the canvas element!</p>
+    </canvas>
+
+    <div class="absolute top-1/2 -right-64 hidden -translate-y-1/2 xl:block">
+        <div
+            class="not-prose w-52 rounded-md border border-neutral-200 p-4 text-sm shadow-sm"
+        >
+            <p>
+                <span class="font-semibold">Note:</span>
+                <p>You can click the legend to show/hide a dataset!</p>
+            </p>
+        </div>
+    </div>
+</div>
 
 <script>
     import Chart from "chart.js/auto";
@@ -28,10 +41,10 @@ let canvasId = "line-chart";
     }
 
     function initChart() {
-        const ctx = document.getElementById("line-chart");
+        const ctx = document.getElementById("line-chart-example");
 
         const data = {
-            labels: generateMonths(7),
+            labels: generateMonths(5),
             datasets: [
                 {
                     label: "Dataset 1",
