@@ -17,20 +17,24 @@ const { title = "404", description = "This page is missing." } = Astro.props;
                 <h1>
                     Whoops<span class="text-red-800">.</span>
                 </h1>
-                <p>Everything in its right place, except this page!</p>
+                <span class="font-medium text-neutral-500 italic">
+                    Everything in its right place, except this page!
+                </span>
 
-                <Menu
-                    href="/"
-                    icon="material-symbols:home-rounded"
-                    title="Home"
-                    description="Go back and be safe..."
-                />
-                <Menu
-                    href="feedback"
-                    icon="material-symbols:feedback-rounded"
-                    title="Feedback"
-                    description="Tell me about this broken link!"
-                />
+                <div class="mt-8 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                    <Menu
+                        href="/"
+                        icon="material-symbols:home-rounded"
+                        title="Home"
+                        description="Go back and be safe..."
+                    />
+                    <Menu
+                        href="feedback"
+                        icon="material-symbols:feedback-rounded"
+                        title="Feedback"
+                        description="Tell me about this broken link!"
+                    />
+                </div>
             </article>
         </section>
 
