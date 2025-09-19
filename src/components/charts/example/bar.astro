@@ -11,7 +11,7 @@ let canvasId = "bar-chart-example";
 <script>
     import Chart from "chart.js/auto";
 
-    function generateMonths(count) {
+    function generateMonths(count: number) {
         const months = [
             "January",
             "February",
@@ -58,7 +58,7 @@ let canvasId = "bar-chart-example";
                     legend: { position: "bottom" },
                     title: {
                         display: true,
-                        text: "Example Bar Chart",
+                        text: "Bar Chart Example",
                     },
                 },
                 scales: {

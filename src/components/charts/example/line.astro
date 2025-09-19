@@ -22,7 +22,7 @@ let canvasId = "line-chart-example";
 <script>
     import Chart from "chart.js/auto";
 
-    function generateMonths(count) {
+    function generateMonths(count: number) {
         const months = [
             "January",
             "February",
@@ -65,7 +65,7 @@ let canvasId = "line-chart-example";
             type: "line",
             data: data,
             options: {
-                responsive: true,
+                maintainAspectRatio: true,
                 interaction: {
                     mode: "index",
                     intersect: false,
@@ -75,7 +75,7 @@ let canvasId = "line-chart-example";
                     legend: { position: "top" },
                     title: {
                         display: true,
-                        text: "Example Line Chart",
+                        text: "Line Chart Example",
                     },
                 },
                 scales: {
