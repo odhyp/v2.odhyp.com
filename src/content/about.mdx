@@ -1,33 +1,22 @@
 ---
 title: "About Me"
-description: "Hello, I'm Odhy Pradhana. I'm an accountant, developer, artist, and digital gardener"
+description: "Hello, I'm Odhy Pradhana. I'm an accountant, software developer, artist, and digital gardener"
 updatedDate: 2025-09-01
 ---
 
+import Wrapper from "../components/page/Wrapper.astro";
 import Menu from "../components/page/Menu.astro";
 
 Hello, I'm Odhy Pradhana.
 
-This site is where I document my work, projects, and interests in accounting, programming, music, and writing. It serves as a portfolio, a digital garden, and a journal of what I continue to learn and create.
-
-### Accountant
-
-I studied accounting at [Polytechnic of State Finance STAN](https://pknstan.ac.id/), where I earned an Associate Degree. I currently work as an accountant in Indonesia's Regional Government while pursuing a Bachelor Degree at [Universitas Terbuka](https://www.ut.ac.id/).
-
-### Developer
+I like creating simple and useful apps, build websites for fun, and [telling stories with charts]().
 
 My interest in computers started when I was a kid, after my parents bought a Windows XP PC. I spent time playing Pokémon on a GameBoy Advance emulator and experimenting with Excel spreadsheets to calculate stats and builds. Later, I learned C in high school as part of Informatics Olympiad training. During 2020, I picked up Python and web development through online tutorials and built my first website with [Jekyll](https://jekyllrb.com/), a static site generator written in Ruby. I still enjoy exploring programming, especially Python and the web.
 
-### Artist
-
-In college, [a friend](https://www.instagram.com/amirul_wafa/) introduced me to the guitar. That led me to experiment with audio production in [FL Studio](https://www.image-line.com/) and later teach myself keyboard. Music has been a creative outlet that I continue to explore at my own pace, especially experimenting with ambient textures.
-
-### Digital Gardener
-
-I first encountered the term _digital garden_ in [A Brief History & Ethos of the Digital Garden](https://maggieappleton.com/garden-history) by Maggie Appleton. I have always enjoyed writing down ideas and notes for my projects and life, but most of them ended up scattered across notepads, Word files, and apps like Notion or Google Keep. This site is my way to organize and share them, piece by piece, in a space that can grow over time.
-
-### Elsewhere
+I also enjoy doing [audio experiments](), especially acoustic music and ambient noises. I play guitar and piano, while trying my best to sing.
 
 {/* prettier-ignore */}
-<Menu href="/now" icon="material-symbols:calendar-clock-rounded" title="Now" description="What I'm doing recently" />
-<Menu href="/social" icon="material-symbols:group-rounded" title="Social" description="Where to find me" />
+<Wrapper class="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-8">
+<Menu href="/social" icon="material-symbols:groups" title="Social" description="Where to find me" />
+<Menu href="/colophon" icon="material-symbols:construction" title="Colophon" description="How this site was built" />
+</Wrapper>
