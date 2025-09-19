@@ -6,18 +6,20 @@ description: "Personal site of Odhy Pradhana, where I share thoughts on building
 import Wrapper from "../components/page/Wrapper.astro";
 import Menu from "../components/page/Menu.astro";
 
-Hello and welcome to my personal website 👋
+Welcome to my digital garden 👋
 
 Here I share my thoughts on building useful apps, visualizing data, _nerding_ about games, experimenting with audio, and exploring my fascination with technology.
 
-If you come across something useful or interesting, feel free to share it. I'd love to hear your feedback.
+If you come across something useful or interesting, feel free to share it and let me know. I'd love your feedback.
+
+Thanks for stopping by! Check back now and then for updates.
 
 {/* prettier-ignore */}
-<Wrapper class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-<Menu href="/writings" icon="material-symbols:book-2" title="Writings" description="Articles, notes, journals, and logs" />
+<Wrapper class="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-8">
+<Menu href="/writings" icon="material-symbols:book-2" title="Writings" description="A collection of my writing" />
 <Menu href="/projects" icon="material-symbols:terminal" title="Projects" description="Things I've built and shared" />
 <Menu href="/now" icon="material-symbols:calendar-clock" title="Now" description="What I'm doing at the moment" />
-<Menu href="/about" icon="material-symbols:person" title="About" description="More about me" />
+<Menu href="/about" icon="material-symbols:person" title="About" description="A bit about me" />
 </Wrapper>
 
 ## Personal Favorites
@@ -30,14 +32,12 @@ A couple of posts I often come back to, or that others found useful:
 
 ## Elsewhere
 
-Here are a few extra corners of this site:
+A few extra corners of this site:
 
 {/* prettier-ignore */}
-<Wrapper class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-<Menu href="/guestbook" icon="material-symbols:signature" title="Guestbook" description="Leave a message or say hello!" />
+<Wrapper class="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-8">
+<Menu href="/guestbook" icon="material-symbols:signature" title="Guestbook" description="Leave a message or say hello" />
 <Menu href="/feedback" icon="material-symbols:feedback" title="Feedback" description="Help me improve this site" />
 <Menu href="/colophon" icon="material-symbols:construction" title="Colophon" description="How this site was built" />
 <Menu href="/privacy" icon="material-symbols:lock-outline" title="Privacy" description="What data this site keeps" />
 </Wrapper>
-
-Thanks for visiting! This site is always evolving, so check back once in a while...
