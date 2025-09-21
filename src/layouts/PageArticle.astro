@@ -5,13 +5,14 @@ import BaseLayout from "./BaseLayout.astro";
 // component import
 import Giscus from "../components/page/Giscus.astro";
 import TableOfContents from "../components/page/TableOfContents.astro";
+import { Icon } from "astro-icon/components";
 
 // utils
 import { formatDate } from "../utils/formatDate";
 
 const { frontmatter, headings } = Astro.props;
 
-const { title, description, pubDate, updatedDate, cover, tags, toc } =
+const { type, title, description, pubDate, updatedDate, cover, tags, toc } =
     frontmatter;
 ---
 
@@ -22,7 +23,37 @@ const { title, description, pubDate, updatedDate, cover, tags, toc } =
 
         <section class="container-main">
             <article>
-                <h1 class="leading-normal">{title}</h1>
+                <div class="flex flex-wrap items-center gap-x-4">
+                    <p class="flex items-center gap-x-2 text-sm">
+                        {
+                            type === "article" && (
+                                <Icon
+                                    name="material-symbols:book-2"
+                                    size="16"
+                                />
+                            )
+                        }
+                        {
+                            type === "log" && (
+                                <Icon
+                                    name="material-symbols:archive"
+                                    size="16"
+                                />
+                            )
+                        }
+                        <span class="font-medium capitalize">{type}</span>
+                    </p>
+                    <div class="size-1 rounded-full bg-neutral-400"></div>
+                    <p class="text-sm">
+                        <span class="font-medium">Updated:</span>
+                        <span data-time={formatDate(updatedDate, "iso")}
+                            >{formatDate(updatedDate, "relative")}</span
+                        >
+                    </p>
+                </div>
+                <h1 class="leading-normal">
+                    {title}<span class="text-red-800">.</span>
+                </h1>
             </article>
         </section>
 
