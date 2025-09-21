@@ -1,0 +1,34 @@
+---
+import PageArticle from "../../layouts/PageArticle.astro";
+
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import type { MarkdownHeading } from "astro";
+
+export async function getStaticPaths() {
+    const writings = await getCollection("writings");
+
+    const headings = await Promise.all(
+        writings.map(async (writing) => {
+            const data = await render(writing);
+            return data.headings;
+        })
+    );
+
+    return writings.map((writing, index) => ({
+        params: { id: writing.id },
+        props: { writing, headings: headings[index] },
+    }));
+}
+
+type Props = {
+    writing: CollectionEntry<"writings">;
+    headings: MarkdownHeading[];
+};
+
+const { writing, headings } = Astro.props;
+const { Content } = await render(writing);
+---
+
+<PageArticle frontmatter={writing.data} headings={headings}>
+    <Content />
+</PageArticle>

@@ -7,20 +7,20 @@ import CardLong from "../../components/ui/CardLong.astro";
 
 import { getCollection } from "astro:content";
 
-let notes = await getCollection("notes", ({ data }) => {
+let writings = await getCollection("writings", ({ data }) => {
     if (import.meta.env.DEV) {
         return true;
     }
     return data.draft !== true;
 });
 
-notes = notes.sort(
+writings = writings.sort(
     (a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf()
 );
 
 const {
-    title = "Notes",
-    description = "Short snippets, references, and quick ideas that serve as a lightweight archive",
+    title = "Writings",
+    description = "", // TODO: update desc
 } = Astro.props;
 ---
 
@@ -38,10 +38,10 @@ const {
                 </span>
             </article>
 
-            <div class="@container mt-8 flex flex-col gap-y-2">
+            <div class="@container mt-8 flex flex-col gap-y-4">
                 {
-                    notes.map((note) => (
-                        <CardLong post={note} collection="notes" />
+                    writings.map((writing) => (
+                        <CardLong post={writing} collection="writings" />
                     ))
                 }
             </div>
