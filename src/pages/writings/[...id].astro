@@ -1,5 +1,5 @@
 ---
-import PageArticle from "../../layouts/PageArticle.astro";
+import PageWriting from "../../layouts/PageWriting.astro";
 
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import type { MarkdownHeading } from "astro";
@@ -29,6 +29,6 @@ const { writing, headings } = Astro.props;
 const { Content } = await render(writing);
 ---
 
-<PageArticle frontmatter={writing.data} headings={headings}>
+<PageWriting frontmatter={writing.data} headings={headings}>
     <Content />
-</PageArticle>
+</PageWriting>
