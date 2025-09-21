@@ -1,22 +1,44 @@
 ---
 title: "About Me"
 description: "Hello, I'm Odhy Pradhana. I'm an accountant, software developer, artist, and digital gardener"
-updatedDate: 2025-09-01
+updatedDate: 2025-09-21T11:37:44+07:00
 ---
 
 import Wrapper from "../components/page/Wrapper.astro";
-import Menu from "../components/page/Menu.astro";
+import Social from "../components/page/Social.astro";
+import { Image } from "astro:assets";
 
-Hello, I'm Odhy Pradhana.
+Hello, I'm **Odhy Pradhana**. I like creating simple, useful apps, building websites for fun, and telling stories with charts.
 
-I like creating simple and useful apps, build websites for fun, and [telling stories with charts]().
+I write to share what I've learned and what I'm building, like working on a project with the garage door open. It helps me trace where I've been and how I got here. It's part reference, part reflection.
 
-My interest in computers started when I was a kid, after my parents bought a Windows XP PC. I spent time playing Pokémon on a GameBoy Advance emulator and experimenting with Excel spreadsheets to calculate stats and builds. Later, I learned C in high school as part of Informatics Olympiad training. During 2020, I picked up Python and web development through online tutorials and built my first website with [Jekyll](https://jekyllrb.com/), a static site generator written in Ruby. I still enjoy exploring programming, especially Python and the web.
+I also enjoy audio experiments, especially acoustic music and ambient noises. I play guitar and piano, while trying my best not to sing.
 
-I also enjoy doing [audio experiments](), especially acoustic music and ambient noises. I play guitar and piano, while trying my best to sing.
+import pic1 from "../assets/images/beach-watunene.jpg";
+
+<Wrapper class="bleed">
+  <Image
+    src={pic1}
+    alt="Watunene Beach, Yogyakarta"
+    title="Watunene Beach, Yogyakarta"
+    loading="eager"
+    format="webp"
+    quality="low"
+    class="max-h-40 rounded-lg object-cover object-bottom shadow-lg sm:max-h-52 md:max-h-64 lg:max-h-72"
+  />
+</Wrapper>
+
+Outside of that, I love quiet walks in nature, visiting beaches, and spending time with my wife and our two cats.
+
+This site is my corner of the web, but I'd love for it to be a conversation. If you want to share an idea, talk about something I've written, or just say hello, you can reach me at [hello@odhyp.com](mailto:hello@odhyp.com).
+
+## Elsewhere
+
+<Wrapper class="flex flex-wrap gap-4">
 
 {/* prettier-ignore */}
-<Wrapper class="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-8">
-<Menu href="/social" icon="material-symbols:groups" title="Social" description="Where to find me" />
-<Menu href="/colophon" icon="material-symbols:construction" title="Colophon" description="How this site was built" />
+<Social href="https://github.com/odhyp/" icon="simple-icons:github" title="GitHub" />
+<Social href="https://www.threads.com/@odhypradhana" icon="simple-icons:threads" title="Threads" />
+<Social href="https://www.linkedin.com/in/odhy/" icon="simple-icons:linkedin" title="LinkedIn" />
+
 </Wrapper>
