@@ -6,13 +6,13 @@ const writings = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/writings" }),
   schema: z.object({
     draft: z.boolean(),
-    type: z.enum(["article", "log"]),
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date(),
     tags: z.array(z.string()).optional(),
     toc: z.boolean().optional(),
+    type: z.enum(["article", "log"]),
   }),
 });
 
