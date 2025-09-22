@@ -1,10 +1,10 @@
 ---
 draft: false
 type: "log"
-title: "Digital Garden #2 - Navigation"
-description: "Experimenting with navigation"
+title: "Digital Garden #2 - Exploring Navigation"
+description: "Exploring navigation patterns as part of my ongoing digital garden experiments"
 pubDate: 2025-09-11T08:32:05+07:00
-updatedDate: 2025-09-11T08:32:05+07:00
+updatedDate: 2025-09-18T08:32:05+07:00
 tags: ["Digital Garden"]
 toc: false
 ---
@@ -31,7 +31,7 @@ import pic1 from "../../assets/images/v1-website.png";
 
 This is the most common, bread-and-butter header/navbar. Since the site is only 600px wide, I want another approach for the navigation. Beside that, I'm also a bit bored with this basic navigation style.
 
-## Trying out the most "Essentialist" style
+## "Essentialist" style
 
 import pic2 from "../../assets/images/digital-garden-2-maxime.png";
 
@@ -60,8 +60,8 @@ import pic4 from "../../assets/images/digital-garden-2-manuel-navigation.jpeg";
 <Wrapper class="space-y-0 text-center text-sm">
   <Image
     src={pic3}
-    alt=""
-    title=""
+    alt="Blog page"
+    title="Blog page"
     format="webp"
     quality="mid"
     class="border border-neutral-200 shadow-lg"
@@ -72,8 +72,8 @@ import pic4 from "../../assets/images/digital-garden-2-manuel-navigation.jpeg";
 <Wrapper class="space-y-0 text-center text-sm">
   <Image
     src={pic4}
-    alt=""
-    title=""
+    alt="Navigation, after page content"
+    title="Navigation, after page content"
     format="webp"
     quality="mid"
     class="border border-neutral-200 shadow-lg"
@@ -83,29 +83,67 @@ import pic4 from "../../assets/images/digital-garden-2-manuel-navigation.jpeg";
 
 </Wrapper>
 
-[Manu's](https://manuelmoreale.com/) website is unique, it's _headerless_. Once you visit the home page, you will be greeted by his latest blog post content. After reading the post, voila! There's a navigation links underneath it, right under "**What should you do next?**". It's wrapped in a paragraph, descriptive style, which is a cool approach.
+This website is unique, it's _headerless_. Once you visit [Manu's](https://manuelmoreale.com/) home page, you will be greeted by his latest blog post content. After reading the post, behold! There are navigation links underneath it, right after "**What should you do next?**". It's wrapped in a paragraph, descriptive style, which is a cool approach.
 
 ## Card component
 
-Manu's navigation style reminds me when I'm working with Table Of Contents in Microsoft Word. You have a heading title with a page number in the right-most side, with dots in the middle that connect and guide the viewers eye.
+[Manu's](https://manuelmoreale.com/) navigation style reminds me when I'm working with Table Of Contents in Microsoft Word. You have a heading title with a page number in the right-most side, with dots in the middle that connect and guide the viewers eye.
 
 With that in mind, I created a `<Card>` component:
 
-<Wrapper class="@container rounded-md border border-neutral-200 px-4 py-2 md:px-8">
-  <div class="group flex flex-row items-baseline justify-between gap-x-2 gap-y-1 py-1">
+{/* Desktop View */}
+
+<Wrapper class="not-prose @container relative my-8 flex flex-col gap-y-2 rounded-md border border-neutral-200 px-4 py-8 sm:px-8">
+  <span class="absolute -top-3 right-1/2 translate-x-1/2 rounded-md border border-neutral-200 bg-neutral-50 px-2 py-1 text-xs *:my-0">
+    Desktop view
+  </span>
+
+<div class="group flex cursor-pointer flex-row items-baseline justify-between gap-x-2 gap-y-1 py-1">
+  <span class="shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:text-red-800 group-hover:underline group-hover:underline-offset-2">
+    Such a pretty house
+  </span>
+  <div class="w-full border-b border-dashed text-neutral-300 transition-colors duration-200 ease-in-out group-hover:text-neutral-500"></div>
+  <span class="shrink-0 text-sm text-neutral-500 transition-colors duration-200 ease-in-out group-hover:text-neutral-700">
+    A week ago
+  </span>
+</div>
+
+  <div class="group flex flex-row items-baseline justify-between gap-x-2 gap-y-1 py-1 cursor-pointer">
     <span class="shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:text-red-800 group-hover:underline group-hover:underline-offset-2">
-      Example Title
+      Such a pretty garden
     </span>
     <div class="w-full border-b border-dashed text-neutral-300 transition-colors duration-200 ease-in-out group-hover:text-neutral-500"></div>
     <span class="shrink-0 text-sm text-neutral-500 transition-colors duration-200 ease-in-out group-hover:text-neutral-700">
-      A week ago
+      2 weeks ago
     </span>
   </div>
 </Wrapper>
 
-In mobile, I use a column layout using `flex-col` for my current writings and projects card.
+{/* Mobile View */}
 
-- TODO: explain that it's the same (mobile and desktop) layout for the above example
+<Wrapper class="not-prose @container relative my-8 rounded-md border border-neutral-200 px-4 py-8 sm:px-8 space-y-4">
+  <span class="absolute -top-3 right-1/2 translate-x-1/2 rounded-md border border-neutral-200 bg-neutral-50 px-2 py-1 text-xs *:my-0">
+    Mobile view
+  </span>
+  
+  <div class="group flex flex-col gap-x-2 gap-y-0 py-1 *:my-0 cursor-pointer">
+    <span class="shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:text-red-800 group-hover:underline group-hover:underline-offset-2">
+      I could have sworn I saw a light
+    </span>
+    <span class="shrink-0 text-sm text-neutral-500 transition-colors duration-200 ease-in-out group-hover:text-neutral-700">
+      2 minutes ago
+    </span>
+  </div>
+
+  <div class="group flex flex-col gap-x-2 gap-y-0 py-1 *:my-0 cursor-pointer">
+    <span class="shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:text-red-800 group-hover:underline group-hover:underline-offset-2">
+      Take the money and run
+    </span>
+    <span class="shrink-0 text-sm text-neutral-500 transition-colors duration-200 ease-in-out group-hover:text-neutral-700">
+      Yesterday
+    </span>
+  </div>
+</Wrapper>
 
 ## Menu component
 
@@ -113,7 +151,7 @@ I've created a `<Menu>` component to show a navigation link along with an icon a
 
 <Wrapper class="">asd</Wrapper>
 
-I can easily integrate them in the page without looking like a [regular anchor tag](#custom-menu-component). You can distinguish them from the basic text from the icon, which indicates that it is a menu which will lead you to other pages.
+I can easily integrate them in the page without looking like a [regular anchor tag](#menu-component). You can distinguish them from the basic text from the icon, which indicates that it is a menu which will lead you to other pages.
 
 - [ ] Show experimentation with navigation: sidebar, sticky/static, dropdowns, etc
 - [ ] Explain intent and approach
