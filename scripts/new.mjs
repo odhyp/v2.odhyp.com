@@ -9,10 +9,7 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const collections = {
-  articles: "./src/content/articles",
-  notes: "./src/content/notes",
-  journals: "./src/content/journals",
-  logs: "./src/content/logs",
+  writings: "./src/content/writings",
   projects: "./src/content/projects",
 };
 
@@ -75,17 +72,13 @@ title: "${title}"
 description: "${description}"
 pubDate: ${now}
 updatedDate: ${now}
+tags: []
+toc: false
 `;
 
   // Collection-specific optional fields
-  if (["articles", "notes", "projects"].includes(collection)) {
-    frontmatter += `tags: []
-toc: false
-`;
-  }
-
-  if (["articles", "projects"].includes(collection)) {
-    frontmatter += `cover: "https://placehold.co/1200x675"
+  if (["writings"].includes(collection)) {
+    frontmatter += `type: "article"
 `;
   }
 
