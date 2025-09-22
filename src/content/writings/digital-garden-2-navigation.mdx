@@ -9,9 +9,111 @@ tags: ["Digital Garden"]
 toc: false
 ---
 
+import Wrapper from "../../components/page/Wrapper.astro";
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 I experimented with several navbar styles for this site, from the basic one like my [old site](https://v1.odhyp.com/) to sidebars, static or sticky bars, and dropdowns. I want something non-distracting for this digital garden labyrinth.
+
+import pic1 from "../../assets/images/v1-website.png";
+
+<Wrapper class="bleed space-y-0 text-center text-sm">
+  <Image
+    src={pic1}
+    alt="My old website landing page"
+    title="My old website landing page"
+    format="webp"
+    quality="mid"
+    class="border border-neutral-200 shadow-lg"
+  />
+  [My old site](https://v1.odhyp.com) navigation
+</Wrapper>
+
+This is the most common, bread-and-butter header/navbar. Since the site is only 600px wide, I want another approach for the navigation. Beside that, I'm also a bit bored with this basic navigation style.
+
+## Trying out the most "Essentialist" style
+
+import pic2 from "../../assets/images/digital-garden-2-maxime.png";
+
+<Wrapper class="bleed">
+  <Image
+    src={pic2}
+    alt="Maxime Vaillancourt home page"
+    title="Maxime Vaillancourt home page"
+    format="webp"
+    quality="mid"
+    class="border border-neutral-200 shadow-lg"
+  />
+</Wrapper>
+
+[Maxime's](https://maximevaillancourt.com/) website is peak essentialism. Focus only on what's _necessary_ and remove everything that doesn't contribute to the main purpose. Which in this case, blogging.
+
+Sadly, I can't implement his style (_I've tried..._) for this site since I have categorization. I have [writings](/writings) and [projects](/projects) page, which is completely different. I have a non-blog page like [now](/now), [about](/about), and [guestbook](/guestbook) which I can't display alongside blog pages. I have to put it in a different place, a menu or navigation.
+
+## Archive-like approach
+
+import pic3 from "../../assets/images/digital-garden-2-manuel-home-page.jpeg";
+import pic4 from "../../assets/images/digital-garden-2-manuel-navigation.jpeg";
+
+<Wrapper class="grid grid-cols-2 gap-x-2 sm:gap-x-4 md:gap-x-8">
+
+<Wrapper class="space-y-0 text-center text-sm">
+  <Image
+    src={pic3}
+    alt=""
+    title=""
+    format="webp"
+    quality="mid"
+    class="border border-neutral-200 shadow-lg"
+  />
+  Blog page
+</Wrapper>
+
+<Wrapper class="space-y-0 text-center text-sm">
+  <Image
+    src={pic4}
+    alt=""
+    title=""
+    format="webp"
+    quality="mid"
+    class="border border-neutral-200 shadow-lg"
+  />
+  Navigation, after page content
+</Wrapper>
+
+</Wrapper>
+
+[Manu's](https://manuelmoreale.com/) website is unique, it's _headerless_. Once you visit the home page, you will be greeted by his latest blog post content. After reading the post, voila! There's a navigation links underneath it, right under "**What should you do next?**". It's wrapped in a paragraph, descriptive style, which is a cool approach.
+
+## Card component
+
+Manu's navigation style reminds me when I'm working with Table Of Contents in Microsoft Word. You have a heading title with a page number in the right-most side, with dots in the middle that connect and guide the viewers eye.
+
+With that in mind, I created a `<Card>` component:
+
+<Wrapper class="@container rounded-md border border-neutral-200 px-4 py-2 md:px-8">
+  <div class="group flex flex-row items-baseline justify-between gap-x-2 gap-y-1 py-1">
+    <span class="shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:text-red-800 group-hover:underline group-hover:underline-offset-2">
+      Example Title
+    </span>
+    <div class="w-full border-b border-dashed text-neutral-300 transition-colors duration-200 ease-in-out group-hover:text-neutral-500"></div>
+    <span class="shrink-0 text-sm text-neutral-500 transition-colors duration-200 ease-in-out group-hover:text-neutral-700">
+      A week ago
+    </span>
+  </div>
+</Wrapper>
+
+In mobile, I use a column layout using `flex-col` for my current writings and projects card.
+
+- TODO: explain that it's the same (mobile and desktop) layout for the above example
+
+## Menu component
+
+I've created a `<Menu>` component to show a navigation link along with an icon and short description.
+
+<Wrapper class="">asd</Wrapper>
+
+I can easily integrate them in the page without looking like a [regular anchor tag](#custom-menu-component). You can distinguish them from the basic text from the icon, which indicates that it is a menu which will lead you to other pages.
 
 - [ ] Show experimentation with navigation: sidebar, sticky/static, dropdowns, etc
 - [ ] Explain intent and approach
