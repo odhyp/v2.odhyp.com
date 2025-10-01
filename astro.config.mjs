@@ -1,18 +1,21 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 
+// TailwindCSS
+import tailwindcss from "@tailwindcss/vite";
+
 // Astro Integration
 import icon from "astro-icon";
 import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 
-// TailwindCSS
-import tailwindcss from "@tailwindcss/vite";
+// Expressive Code
+import astroExpressiveCode from "astro-expressive-code";
+import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 
 // Rehype
 import rehypeExternalLinks from "rehype-external-links";
-import astroExpressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,7 +27,15 @@ export default defineConfig({
     astroExpressiveCode({
       themes: "material-theme-darker",
       styleOverrides: {
+        codeFontFamily: "Geist Mono, monospace",
         codeFontSize: "0.9rem",
+        uiFontFamily: "Geist, sans-serif",
+        frames: {},
+      },
+      plugins: [pluginLineNumbers()],
+      defaultProps: {
+        // Disable line numbers by default
+        showLineNumbers: false,
       },
     }),
     mdx(),
