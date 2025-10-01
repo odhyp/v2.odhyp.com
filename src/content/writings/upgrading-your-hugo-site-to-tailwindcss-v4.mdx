@@ -52,8 +52,9 @@ Error: Loading PostCSS Plugin failed: Cannot find module '@tailwindcss/oxide-lin
 
 Since `tailwind.config.js` is no longer used, migrate your custom styles to `styles.css` and add `@import "tailwindcss"`. Here's what it looks like now:
 
-```js title="styles.css" ins={1}
+```js title="styles.css" {1} showLineNumbers
 @import "tailwindcss"; // New import method
+
 @plugin "@tailwindcss/typography";
 
 @theme {
