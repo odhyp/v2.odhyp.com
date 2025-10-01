@@ -5,8 +5,8 @@
 
 @theme {
   /* Fonts */
-  --font-inter: "Inter", sans-serif;
-  --font-geist: "Geist Mono", monospace;
+  --font-geist: "Geist", sans-serif;
+  --font-geist-mono: "Geist Mono", monospace;
 
   /* Animation */
   --animate-fade-in-up: fade-in-up 0.25s ease-out;
