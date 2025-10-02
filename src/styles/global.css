@@ -142,13 +142,13 @@
   .bleed {
     @apply z-10 max-w-none md:-mx-8 lg:-mx-16 2xl:-mx-24;
   }
-}
 
-/* TODO: dev-only, remove this later */
-.dev-child {
-  @apply [&>*]:bg-red-200/50;
-}
+  /* TODO: dev-only, remove this later */
+  .dev-child {
+    @apply [&>*]:bg-red-200/50;
+  }
 
-.dev-parent {
-  @apply bg-base-200/50;
+  .dev-parent {
+    @apply bg-base-200/50;
+  }
 }
