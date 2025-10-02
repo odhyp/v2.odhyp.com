@@ -21,26 +21,93 @@
       transform: translateY(0);
     }
   }
+
+  /* Colors - Flexoki Color Scheme */
+  /* https://github.com/kepano/flexoki/blob/main/tailwind/replacement.css */
+  /* Disable TailwindCSS default colors */
+  --color-amber-*: initial;
+  --color-lime-*: initial;
+  --color-emerald-*: initial;
+  --color-teal-*: initial;
+  --color-sky-*: initial;
+  --color-indigo-*: initial;
+  --color-violet-*: initial;
+  --color-fuchsia-*: initial;
+  --color-pink-*: initial;
+  --color-rose-*: initial;
+  --color-slate-*: initial;
+  --color-zinc-*: initial;
+  --color-base-*: initial;
+  --color-stone-*: initial;
+
+  /* Specify new default colors. */
+  /* Dark */
+  --color-bg: #100f0f;
+  --color-bg-2: #1c1b1a;
+  --color-ui: #282726;
+  --color-ui-2: #343331;
+  --color-ui-3: #403e3c;
+  --color-tx: #cecdc3;
+  --color-tx-2: #878580;
+  --color-tx-3: #575653;
+
+  /* Light */
+  /* --color-bg: rgb(255, 252, 240); */
+  /* --color-bg-2: rgb(242, 240, 229); */
+  /* --color-ui: rgb(230, 228, 217); */
+  /* --color-ui-2: rgb(218, 216, 206); */
+  /* --color-ui-3: rgb(206, 205, 195); */
+  /* --color-tx: rgb(16, 15, 15); */
+  /* --color-tx-2: rgb(111, 110, 105); */
+  /* --color-tx-3: rgb(183, 181, 172); */
+
+  /* TODO: remove this */
+  --color-base-100: rgb(40, 39, 38);
+  --color-base-800: rgb(40, 39, 38);
+  --color-base-200: rgb(40, 39, 38);
+  --color-base-50: rgb(40, 39, 38);
 }
 
 @layer base {
   html {
-    scrollbar-gutter: stable;
-    scroll-behavior: smooth;
-    scroll-padding-top: 6rem;
+    @apply scroll-pt-24 scroll-smooth;
   }
 
   body {
-    @apply font-inter bg-neutral-50 text-neutral-800 selection:bg-red-200 selection:text-red-950;
+    @apply font-geist bg-bg selection:bg-ui-3;
   }
 
   article {
-    @apply prose prose-a:text-red-800 w-full max-w-none marker:text-red-800 [&>*:first-child]:mt-0!;
+    @apply prose text-tx prose-headings:text-tx marker:text-tx-3 prose-headings:font-geist-mono w-full max-w-none [&>*:first-child]:mt-0!;
+  }
+
+  h1 {
+    @apply text-4xl font-semibold;
+  }
+
+  h2 {
+    @apply text-2xl font-medium;
+  }
+
+  h3 {
+    @apply text-xl font-medium;
+  }
+
+  h4,
+  h5,
+  h6 {
+    @apply mb-2 text-lg font-medium;
+  }
+
+  a,
+  strong,
+  blockquote {
+    @apply text-tx;
   }
 
   /* Inline Code */
   code:not(pre > *) {
-    @apply font-geist rounded-sm bg-neutral-200 px-1.5 py-1 select-all;
+    @apply font-geist-mono text-tx bg-ui rounded-sm px-1 py-0.5 select-all;
   }
 
   code::before,
@@ -83,5 +150,5 @@
 }
 
 .dev-parent {
-  @apply bg-amber-200/50;
+  @apply bg-base-200/50;
 }
