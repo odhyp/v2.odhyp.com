@@ -50,6 +50,22 @@
   --color-tx: #cecdc3;
   --color-tx-2: #878580;
   --color-tx-3: #575653;
+  --color-red: rgb(209, 77, 65);
+  --color-orange: rgb(218, 112, 44);
+  --color-yellow: rgb(208, 162, 21);
+  --color-green: rgb(135, 154, 57);
+  --color-cyan: rgb(58, 169, 159);
+  --color-blue: rgb(67, 133, 190);
+  --color-purple: rgb(139, 126, 200);
+  --color-magenta: rgb(206, 93, 151);
+  --color-red-2: rgb(175, 48, 41);
+  --color-orange-2: rgb(188, 82, 21);
+  --color-yellow-2: rgb(173, 131, 1);
+  --color-green-2: rgb(102, 128, 11);
+  --color-cyan-2: rgb(36, 131, 123);
+  --color-blue-2: rgb(32, 94, 166);
+  --color-purple-2: rgb(94, 64, 157);
+  --color-magenta-2: rgb(160, 47, 111);
 
   /* Light */
   /* --color-bg: rgb(255, 252, 240); */
