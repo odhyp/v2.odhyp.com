@@ -130,6 +130,28 @@
     @apply text-tx;
   }
 
+  a {
+    @apply decoration-tx-2 hover:text-green hover:decoration-green-2 underline-offset-4;
+  }
+
+  blockquote {
+    @apply border-ui my-4! px-4 text-lg font-light md:my-8! md:px-8;
+  }
+
+  blockquote ::before,
+  blockquote ::after {
+    @apply hidden;
+  }
+
+  ul ::marker,
+  ol ::marker {
+    @apply text-tx-2;
+  }
+
+  hr {
+    @apply border-b-ui border-0 border-b;
+  }
+
   /* Inline Code */
   code:not(pre > *) {
     @apply font-geist-mono text-tx bg-ui rounded-sm px-1.5 py-0.5 select-all;
