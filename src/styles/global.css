@@ -94,7 +94,16 @@
   }
 
   article {
-    @apply prose text-tx prose-headings:text-tx marker:text-tx-3 prose-headings:font-geist-mono w-full max-w-none [&>*:first-child]:mt-0!;
+    @apply prose text-tx w-full max-w-none [&>*:first-child]:mt-0!;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-tx font-geist-mono;
   }
 
   h1 {
