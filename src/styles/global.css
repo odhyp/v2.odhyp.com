@@ -152,6 +152,19 @@
     @apply border-b-ui border-0 border-b;
   }
 
+  th {
+    @apply text-tx;
+  }
+
+  thead {
+    @apply border-b-tx-3 border-b-2;
+  }
+
+  tbody,
+  tr {
+    @apply border-b-tx-3;
+  }
+
   /* Inline Code */
   code:not(pre > *) {
     @apply font-geist-mono text-tx bg-ui rounded-sm px-1.5 py-0.5 select-all;
