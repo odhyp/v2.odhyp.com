@@ -86,7 +86,9 @@
 
 @layer base {
   html {
-    @apply scroll-pt-24 scroll-smooth;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    scrollbar-gutter: stable;
   }
 
   body {
