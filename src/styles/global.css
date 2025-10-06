@@ -157,12 +157,12 @@
   }
 
   thead {
-    @apply border-b-tx-3 border-b-2;
+    @apply border-b-ui-3 border-b-2;
   }
 
   tbody,
   tr {
-    @apply border-b-tx-3;
+    @apply border-b-ui-2;
   }
 
   /* Inline Code */
