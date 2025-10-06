@@ -90,7 +90,7 @@
   }
 
   body {
-    @apply font-geist bg-bg selection:bg-ui-3;
+    @apply font-geist bg-bg selection:bg-ui-2;
   }
 
   article {
