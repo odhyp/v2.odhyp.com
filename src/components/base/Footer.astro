@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
+import webring from "../../../public/images/xxiivv.svg";
+
 const year = new Date().getFullYear().toString();
 ---
 
@@ -34,13 +36,13 @@ const year = new Date().getFullYear().toString();
                     href="https://webring.xxiivv.com/#xxiivv"
                     target="_blank"
                     rel="noopener"
-                    class="px-0.5 py-1"
+                    class="p-1"
                 >
                     <Image
-                        src="https://webring.xxiivv.com/icon.black.svg"
+                        src={webring}
                         alt="XXIIVV Webring"
-                        width="26"
-                        height="26"
+                        width="20"
+                        height="20"
                         loading="lazy"
                     />
 
