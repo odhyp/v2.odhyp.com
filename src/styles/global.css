@@ -139,6 +139,7 @@
     @apply text-sm;
   }
 
+  span,
   strong,
   blockquote {
     @apply text-tx;
