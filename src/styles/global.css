@@ -130,13 +130,18 @@
     @apply decoration-tx text-tx hover:text-cyan hover:decoration-cyan underline-offset-4 transition-colors duration-300 ease-in-out;
   }
 
+  sup a,
+  .footnotes a {
+    @apply px-0.5;
+  }
+
+  .footnotes a {
+    @apply text-sm;
+  }
+
   strong,
   blockquote {
     @apply text-tx;
-  }
-
-  a {
-    @apply decoration-tx-2 hover:text-green hover:decoration-green-2 underline-offset-4;
   }
 
   blockquote {
