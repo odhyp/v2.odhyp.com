@@ -7,79 +7,73 @@ import webring from "../../../public/images/xxiivv.svg";
 const year = new Date().getFullYear().toString();
 ---
 
-<footer class="container-grid border-t-ui h-16 items-center border-t">
-    <section class="container-side"></section>
+<footer class="container-full border-t-ui @container border-t">
+    <section
+        class="flex h-full flex-col-reverse items-start justify-center gap-y-4 py-4 text-sm @lg:flex-row @lg:items-center @lg:justify-between @lg:gap-x-8"
+    >
+        <!-- COPYRIGHT START -->
+        <span>
+            <a
+                href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                target="_blank"
+                class="inline-block underline underline-offset-4"
+            >
+                CC BY-NC-SA 4.0
+            </a>
+            <span>{year} &copy; Odhy Pradhana</span>
+        </span>
+        <!-- COPYRIGHT END -->
 
-    <section class="container-main @container">
-        <div
-            class="flex flex-col-reverse items-start justify-center gap-y-4 text-sm @lg:flex-row @lg:items-center @lg:justify-between @lg:gap-x-8"
-        >
-            <!-- COPYRIGHT START -->
-            <span>
-                <a
-                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-                    target="_blank"
-                    class="inline-block underline underline-offset-4"
-                >
-                    CC BY-NC-SA 4.0
-                </a>
-                <span>{year} &copy; Odhy Pradhana</span>
-            </span>
-            <!-- COPYRIGHT END -->
+        <!-- FOOTER ICON START -->
+        <!-- TODO: update webring link -->
+        <div class="flex items-center gap-x-1.5">
+            <a
+                title="XXIIVV Webring"
+                aria-label="XXIIVV Webring"
+                href="https://webring.xxiivv.com/#xxiivv"
+                target="_blank"
+                rel="noopener"
+                class="hover:bg-bg-2 rounded-sm p-1.5"
+            >
+                <Image
+                    src={webring}
+                    alt="XXIIVV Webring"
+                    width="20"
+                    height="20"
+                    loading="lazy"
+                />
+            </a>
 
-            <!-- FOOTER ICON START -->
-            <!-- TODO: update webring link -->
-            <div class="flex items-center gap-x-1.5">
-                <a
-                    title="XXIIVV Webring"
-                    aria-label="XXIIVV Webring"
-                    href="https://webring.xxiivv.com/#xxiivv"
-                    target="_blank"
-                    rel="noopener"
-                    class="hover:bg-bg-2 rounded-sm p-1.5"
-                >
-                    <Image
-                        src={webring}
-                        alt="XXIIVV Webring"
-                        width="20"
-                        height="20"
-                        loading="lazy"
-                    />
-                </a>
+            <a
+                title="GitHub"
+                aria-label="GitHub"
+                href="https://github.com/odhyp/"
+                target="_blank"
+                class="hover:text-tx hover:bg-bg-2 rounded-sm p-1.5"
+            >
+                <Icon name="simple-icons:github" size="20" />
+            </a>
 
-                <a
-                    title="GitHub"
-                    aria-label="GitHub"
-                    href="https://github.com/odhyp/"
-                    target="_blank"
-                    class="hover:text-tx hover:bg-bg-2 rounded-sm p-1.5"
-                >
-                    <Icon name="simple-icons:github" size="20" />
-                </a>
+            <a
+                title="Support Me"
+                aria-label="Support Me"
+                href="https://buymeacoffee.com/odhyp"
+                target="_blank"
+                class="hover:text-tx hover:bg-bg-2 rounded-sm p-1.5"
+            >
+                <Icon name="simple-icons:buymeacoffee" size="20" />
+            </a>
 
-                <a
-                    title="Support Me"
-                    aria-label="Support Me"
-                    href="https://buymeacoffee.com/odhyp"
-                    target="_blank"
-                    class="hover:text-tx hover:bg-bg-2 rounded-sm p-1.5"
-                >
-                    <Icon name="simple-icons:buymeacoffee" size="20" />
-                </a>
+            <a
+                title="RSS Feed"
+                aria-label="RSS Feed"
+                href="/rss.xml"
+                class="hover:text-tx hover:bg-bg-2 rounded-sm p-1.5"
+            >
+                <Icon name="material-symbols:rss-feed-rounded" size="20" />
+            </a>
 
-                <a
-                    title="RSS Feed"
-                    aria-label="RSS Feed"
-                    href="/rss.xml"
-                    class="hover:text-tx hover:bg-bg-2 rounded-sm p-1.5"
-                >
-                    <Icon name="material-symbols:rss-feed-rounded" size="20" />
-                </a>
-
-                <!-- FOOTER ICON END -->
-            </div>
+            <!-- FOOTER ICON END -->
         </div>
     </section>
-
-    <section class="container-side"></section>
 </footer>
