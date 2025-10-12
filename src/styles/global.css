@@ -137,7 +137,7 @@
   }
 
   a {
-    @apply decoration-tx text-tx hover:text-cyan hover:decoration-cyan underline-offset-4 transition-colors duration-300 ease-in-out;
+    @apply decoration-tx text-tx hover:text-red hover:decoration-red underline-offset-4 transition-colors duration-300 ease-in-out;
   }
 
   sup a,
