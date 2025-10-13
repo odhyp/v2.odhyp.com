@@ -6,9 +6,11 @@ import webring from "../../../public/images/xxiivv-light.svg";
 const year = new Date().getFullYear().toString();
 ---
 
-<footer class="container-full border-t-ui @container border-t">
+<footer class="container-grid border-t-ui @container border-t">
+    <section class="container-side"></section>
+
     <section
-        class="flex h-full flex-col-reverse items-start justify-center gap-y-4 py-4 text-sm @lg:flex-row @lg:items-center @lg:justify-between @lg:gap-x-8"
+        class="container-main flex h-full flex-col-reverse items-start justify-center gap-y-4 py-4 text-sm @lg:flex-row @lg:items-center @lg:justify-between @lg:gap-x-8"
     >
         <!-- COPYRIGHT START -->
         <span>
@@ -75,4 +77,6 @@ const year = new Date().getFullYear().toString();
             <!-- FOOTER ICON END -->
         </div>
     </section>
+
+    <section class="container-side"></section>
 </footer>
