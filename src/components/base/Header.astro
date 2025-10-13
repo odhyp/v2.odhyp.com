@@ -56,10 +56,17 @@ import { Icon } from "astro-icon/components";
             </button>
         </div>
 
+        <!-- OVERLAY (starts below header) -->
+        <div
+            id="menu-overlay"
+            class="pointer-events-none fixed top-16 right-0 bottom-0 left-0 z-40 bg-black/30 opacity-0 backdrop-blur-sm transition-opacity duration-200 ease-in-out"
+        >
+        </div>
+
         <!-- MOBILE MENU -->
         <div
             id="mobile-menu"
-            class="bg-bg pointer-events-none absolute top-16 left-0 w-[calc(100%+2rem)] origin-top -translate-x-4 scale-y-0 opacity-0 transition-all duration-200 ease-in-out @md:hidden"
+            class="bg-bg pointer-events-none absolute top-16 left-0 z-50 w-[calc(100%+2rem)] -translate-x-4 translate-y-[-1rem] opacity-0 transition-all duration-200 ease-out @md:hidden"
         >
             <nav class="border-ui/10 flex flex-col border-t">
                 <a
@@ -118,66 +125,57 @@ import { Icon } from "astro-icon/components";
         const header = document.getElementById("header");
         const toggleBtn = document.getElementById("menu-toggle");
         const menu = document.getElementById("mobile-menu");
+        const overlay = document.getElementById("menu-overlay");
         const menuIcon = document.getElementById("menu-icon");
         const closeIcon = document.getElementById("close-icon");
 
-        // Add border after scroll
+        const openMenu = () => {
+            overlay.classList.remove("opacity-0", "pointer-events-none");
+            overlay.classList.add("opacity-100");
+
+            menu.classList.remove(
+                "opacity-0",
+                "pointer-events-none",
+                "translate-y-[-1rem]"
+            );
+            menu.classList.add("opacity-100", "translate-y-0");
+
+            menuIcon.classList.replace("scale-100", "scale-0");
+            closeIcon.classList.replace("scale-0", "scale-100");
+
+            document.body.style.overflow = "hidden";
+        };
+
+        const closeMenu = () => {
+            overlay.classList.add("opacity-0", "pointer-events-none");
+            overlay.classList.remove("opacity-100");
+
+            menu.classList.add(
+                "opacity-0",
+                "pointer-events-none",
+                "translate-y-[-1rem]"
+            );
+            menu.classList.remove("opacity-100", "translate-y-0");
+
+            menuIcon.classList.replace("scale-0", "scale-100");
+            closeIcon.classList.replace("scale-100", "scale-0");
+
+            document.body.style.overflow = "";
+        };
+
+        toggleBtn.addEventListener("click", () => {
+            const isOpen = !menu.classList.contains("pointer-events-none");
+            isOpen ? closeMenu() : openMenu();
+        });
+
+        overlay.addEventListener("click", closeMenu);
+
+        menu.querySelectorAll("a").forEach((link) =>
+            link.addEventListener("click", closeMenu)
+        );
+
         window.addEventListener("scroll", () => {
             header.classList.toggle("border-b-ui/100", window.scrollY > 80);
         });
-
-        toggleBtn.addEventListener("click", () => {
-            const isOpen = menu.classList.contains("scale-y-100");
-
-            if (isOpen) {
-                // Hide menu
-                menu.classList.remove("scale-y-100", "opacity-100");
-                menu.classList.add(
-                    "scale-y-0",
-                    "opacity-0",
-                    "pointer-events-none"
-                );
-
-                // Pop icons
-                menuIcon.classList.remove("scale-0");
-                menuIcon.classList.add("scale-100");
-
-                closeIcon.classList.remove("scale-100");
-                closeIcon.classList.add("scale-0");
-            } else {
-                // Show menu
-                menu.classList.add("scale-y-100", "opacity-100");
-                menu.classList.remove(
-                    "scale-y-0",
-                    "opacity-0",
-                    "pointer-events-none"
-                );
-
-                // Pop icons
-                menuIcon.classList.remove("scale-100");
-                menuIcon.classList.add("scale-0");
-
-                closeIcon.classList.remove("scale-0");
-                closeIcon.classList.add("scale-100");
-            }
-        });
-
-        // Close menu when clicking a link
-        menu.querySelectorAll("a").forEach((link) =>
-            link.addEventListener("click", () => {
-                menu.classList.remove("scale-y-100", "opacity-100");
-                menu.classList.add(
-                    "scale-y-0",
-                    "opacity-0",
-                    "pointer-events-none"
-                );
-
-                menuIcon.classList.remove("scale-0");
-                menuIcon.classList.add("scale-100");
-
-                closeIcon.classList.remove("scale-100");
-                closeIcon.classList.add("scale-0");
-            })
-        );
     });
 </script>
