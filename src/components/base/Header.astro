@@ -1,6 +1,7 @@
 ---
-import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+
+import logo from "../../../public/images/logo-light-transparent.png";
 ---
 
 <header
@@ -13,13 +14,12 @@ import { Icon } from "astro-icon/components";
         <div class="flex h-full items-center justify-between">
             <!-- LOGO -->
             <a href="/">
-                <Image
-                    src="/images/logo-light-transparent.png"
+                <img
+                    src={logo.src}
                     alt="Logo"
                     width="40"
                     height="40"
                     loading="eager"
-                    quality="max"
                 />
             </a>
 

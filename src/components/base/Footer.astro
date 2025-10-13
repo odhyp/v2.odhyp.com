@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
 import webring from "../../../public/images/xxiivv-light.svg";
@@ -35,8 +34,8 @@ const year = new Date().getFullYear().toString();
                 rel="noopener"
                 class="hover:bg-bg-2 rounded-sm p-1.5"
             >
-                <Image
-                    src={webring}
+                <img
+                    src={webring.src}
                     alt="XXIIVV Webring"
                     width="20"
                     height="20"
