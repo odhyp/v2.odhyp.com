@@ -1,0 +1,33 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    href: string;
+    icon: string;
+    text: string;
+}
+
+const { href, icon, text } = Astro.props;
+
+// Detect external links
+const isExternal = href.startsWith("http");
+const target = isExternal ? "_blank" : "_self";
+const rel = isExternal ? "noopener noreferrer" : undefined;
+---
+
+<a
+    href={href}
+    target={target}
+    rel={rel}
+    class="group relative inline-flex items-baseline gap-1 no-underline transition-colors duration-200 ease-in-out"
+>
+    <Icon
+        name={icon}
+        class="text-tx-2 group-hover:text-red size-4 transition-colors duration-200 ease-in-out"
+    />
+    {text}
+    <div
+        class="border-b-tx-3 group-hover:border-b-red absolute bottom-0.5 w-full border-b-2 transition-colors duration-200 ease-in-out"
+    >
+    </div>
+</a>
