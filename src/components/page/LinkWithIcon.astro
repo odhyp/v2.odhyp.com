@@ -3,11 +3,13 @@ import { Icon } from "astro-icon/components";
 
 interface Props {
     href: string;
-    icon: string;
     text: string;
+    icon?: string; // for astro-icon
+    imgSrc?: string; // for custom image/svg
+    imgAlt?: string;
 }
 
-const { href, icon, text } = Astro.props;
+const { href, text, icon, imgSrc, imgAlt } = Astro.props;
 
 // Detect external links
 const isExternal = href.startsWith("http");
@@ -21,10 +23,29 @@ const rel = isExternal ? "noopener noreferrer" : undefined;
     rel={rel}
     class="group relative inline-flex items-baseline gap-1 no-underline transition-colors duration-200 ease-in-out"
 >
-    <Icon
-        name={icon}
-        class="text-tx-2 group-hover:text-red size-4 transition-colors duration-200 ease-in-out"
-    />
+    {
+        icon && (
+            <Icon
+                name={icon}
+                class="text-tx-2 group-hover:text-red size-4 transition-colors duration-200 ease-in-out"
+            />
+        )
+    }
+
+    <!-- 360deg rotation... only for XXIIVV webring logo -->
+    {
+        imgSrc && (
+            <img
+                src={imgSrc}
+                alt={imgAlt || text}
+                width="16"
+                height="16"
+                class="my-0 object-contain transition-transform duration-500 ease-in-out group-hover:rotate-[360deg]"
+                loading="lazy"
+            />
+        )
+    }
+
     {text}
     <div
         class="border-b-tx-3 group-hover:border-b-red absolute bottom-0.5 w-full border-b-2 transition-colors duration-200 ease-in-out"
