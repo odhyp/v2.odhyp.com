@@ -12,7 +12,7 @@ const paths = segments.map((_, i) => "/" + segments.slice(0, i + 1).join("/"));
 <nav aria-label="Breadcrumbs" class="flex items-center gap-x-2">
     <a
         href="/"
-        class="px-0.5 py-1 hover:text-red-800 hover:underline hover:underline-offset-2"
+        class="hover:text-red px-0.5 py-1 hover:underline hover:underline-offset-2"
     >
         Home
     </a>
@@ -33,14 +33,14 @@ const paths = segments.map((_, i) => "/" + segments.slice(0, i + 1).join("/"));
                         <span
                             aria-current="page"
                             title={title}
-                            class="truncate px-0.5 py-1 text-red-800 underline underline-offset-2"
+                            class="text-red truncate px-0.5 py-1 underline underline-offset-2"
                         >
                             {title}
                         </span>
                     ) : (
                         <a
                             href={href}
-                            class="px-0.5 py-1 capitalize hover:text-red-800 hover:underline hover:underline-offset-2"
+                            class="hover:text-red px-0.5 py-1 capitalize hover:underline hover:underline-offset-2"
                         >
                             {seg}
                         </a>
