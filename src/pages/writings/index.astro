@@ -20,7 +20,7 @@ writings = writings.sort(
 
 const {
     title = "Writings",
-    description = "Thoughts and reflections gathered from what I see and learn.",
+    description = "Ideas, lessons, and reflections from my work and learning.",
 } = Astro.props;
 ---
 
@@ -30,15 +30,11 @@ const {
 
         <section class="container-main">
             <article>
-                <h1>
-                    {title}<span class="text-red-800">.</span>
-                </h1>
-                <span class="font-medium text-neutral-500 italic">
-                    {description}
-                </span>
+                <h1>Writings<span class="text-red">.</span></h1>
+                <p class="text-tx-2">{description}</p>
             </article>
 
-            <div class="@container mt-8 flex flex-col gap-y-4">
+            <div class="@container mt-8 flex flex-col gap-y-2">
                 {
                     writings.map((writing) => (
                         <CardWriting post={writing} collection="writings" />

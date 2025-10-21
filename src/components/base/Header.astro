@@ -1,23 +1,122 @@
 ---
-// component import
-import Breadcrumbs from "../ui/Breadcrumbs.astro";
+import { Icon } from "astro-icon/components";
 
-const { title } = Astro.props;
-const { pathname } = Astro.url;
-
-if (pathname === "/") {
-    return null;
-}
+import logo from "../../../public/images/logo-light-transparent.png";
 ---
 
 <header
     id="header"
-    class="container-grid sticky top-0 z-50 h-16 bg-neutral-50 font-medium transition-shadow duration-200 ease-in-out"
+    class="container-grid bg-bg transition-color border-b-ui/0 @container sticky top-0 z-50 h-16 border-b font-medium duration-200 ease-in-out"
 >
     <section class="container-side"></section>
 
-    <section class="container-main py-4">
-        <Breadcrumbs title={title} />
+    <section class="container-main relative">
+        <div class="flex h-full items-center justify-between">
+            <!-- LOGO -->
+            <a href="/">
+                <img
+                    src={logo.src}
+                    alt="Logo"
+                    width="40"
+                    height="40"
+                    loading="eager"
+                    fetchpriority="high"
+                    decoding="async"
+                />
+            </a>
+
+            <!-- DESKTOP MENU -->
+            <nav
+                class="hidden @md:flex @md:items-center @md:gap-x-8 @md:font-medium"
+            >
+                <a href="/writings">Writings</a>
+                <a href="/projects">Projects</a>
+                <a href="/now">Now</a>
+                <a href="/about">About</a>
+            </nav>
+
+            <!-- MOBILE MENU BUTTON -->
+            <button
+                id="menu-toggle"
+                aria-label="Toggle menu"
+                class="relative block h-10 w-10 p-2 @md:hidden"
+            >
+                <!-- Menu Icon -->
+                <Icon
+                    id="menu-icon"
+                    name="material-symbols:menu-rounded"
+                    size="28"
+                    class="text-tx absolute inset-0 m-auto scale-100 transition-transform duration-200 ease-in-out"
+                />
+                <!-- Close Icon -->
+                <Icon
+                    id="close-icon"
+                    name="material-symbols:close-rounded"
+                    size="28"
+                    class="text-tx absolute inset-0 m-auto scale-0 transition-transform duration-200 ease-in-out"
+                />
+            </button>
+        </div>
+
+        <!-- OVERLAY (starts below header) -->
+        <div
+            id="menu-overlay"
+            class="pointer-events-none fixed top-16 right-0 bottom-0 left-0 z-40 bg-black/30 opacity-0 backdrop-blur-sm transition-opacity duration-200 ease-in-out"
+        >
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div
+            id="mobile-menu"
+            class="bg-bg pointer-events-none absolute top-16 left-0 z-50 w-[calc(100%+2rem)] -translate-x-4 translate-y-[-1rem] opacity-0 transition-all duration-200 ease-out @md:hidden"
+        >
+            <nav class="border-ui/10 flex flex-col border-t">
+                <a
+                    class="border-b-ui focus:bg-ui/50 flex items-center gap-x-6 border-b px-6 py-4"
+                    href="/writings"
+                >
+                    <Icon
+                        name="material-symbols:book-2"
+                        size="20"
+                        class="text-tx-2"
+                    />
+                    <span>Writings</span>
+                </a>
+                <a
+                    class="border-b-ui focus:bg-ui/50 flex items-center gap-x-6 border-b px-6 py-4"
+                    href="/projects"
+                >
+                    <Icon
+                        name="material-symbols:terminal"
+                        size="20"
+                        class="text-tx-2"
+                    />
+                    <span>Projects</span>
+                </a>
+                <a
+                    class="border-b-ui focus:bg-ui/50 flex items-center gap-x-6 border-b px-6 py-4"
+                    href="/now"
+                >
+                    <Icon
+                        name="material-symbols:calendar-clock"
+                        size="20"
+                        class="text-tx-2"
+                    />
+                    <span>Now</span>
+                </a>
+                <a
+                    class="border-b-ui focus:bg-ui/50 flex items-center gap-x-6 border-b px-6 py-4"
+                    href="/about"
+                >
+                    <Icon
+                        name="material-symbols:person"
+                        size="20"
+                        class="text-tx-2"
+                    />
+                    <span>About</span>
+                </a>
+            </nav>
+        </div>
     </section>
 
     <section class="container-side"></section>
@@ -26,13 +125,59 @@ if (pathname === "/") {
 <script is:inline>
     document.addEventListener("astro:page-load", () => {
         const header = document.getElementById("header");
+        const toggleBtn = document.getElementById("menu-toggle");
+        const menu = document.getElementById("mobile-menu");
+        const overlay = document.getElementById("menu-overlay");
+        const menuIcon = document.getElementById("menu-icon");
+        const closeIcon = document.getElementById("close-icon");
+
+        const openMenu = () => {
+            overlay.classList.remove("opacity-0", "pointer-events-none");
+            overlay.classList.add("opacity-100");
+
+            menu.classList.remove(
+                "opacity-0",
+                "pointer-events-none",
+                "translate-y-[-1rem]"
+            );
+            menu.classList.add("opacity-100", "translate-y-0");
+
+            menuIcon.classList.replace("scale-100", "scale-0");
+            closeIcon.classList.replace("scale-0", "scale-100");
+
+            document.body.style.overflow = "hidden";
+        };
+
+        const closeMenu = () => {
+            overlay.classList.add("opacity-0", "pointer-events-none");
+            overlay.classList.remove("opacity-100");
+
+            menu.classList.add(
+                "opacity-0",
+                "pointer-events-none",
+                "translate-y-[-1rem]"
+            );
+            menu.classList.remove("opacity-100", "translate-y-0");
+
+            menuIcon.classList.replace("scale-0", "scale-100");
+            closeIcon.classList.replace("scale-100", "scale-0");
+
+            document.body.style.overflow = "";
+        };
+
+        toggleBtn.addEventListener("click", () => {
+            const isOpen = !menu.classList.contains("pointer-events-none");
+            isOpen ? closeMenu() : openMenu();
+        });
+
+        overlay.addEventListener("click", closeMenu);
+
+        menu.querySelectorAll("a").forEach((link) =>
+            link.addEventListener("click", closeMenu)
+        );
 
         window.addEventListener("scroll", () => {
-            if (window.scrollY > 80) {
-                header.classList.add("shadow-sm");
-            } else {
-                header.classList.remove("shadow-sm");
-            }
+            header.classList.toggle("border-b-ui/100", window.scrollY > 50);
         });
     });
 </script>

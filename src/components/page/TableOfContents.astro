@@ -7,26 +7,57 @@ interface Props {
 
 const { headings = [] } = Astro.props;
 
-const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
+const filteredHeadings = headings.filter((h) => h.depth <= 3);
+
+// Explicit types for grouped structure
+type TOCItem = MarkdownHeading & { children: MarkdownHeading[] };
+
+const groupedHeadings: TOCItem[] = [];
+let currentH2: TOCItem | null = null;
+
+for (const heading of filteredHeadings) {
+    if (heading.depth === 2) {
+        // create a TOCItem (MarkdownHeading + children array)
+        currentH2 = { ...(heading as MarkdownHeading), children: [] };
+        groupedHeadings.push(currentH2);
+    } else if (heading.depth === 3 && currentH2) {
+        currentH2.children.push(heading as MarkdownHeading);
+    }
+}
 ---
 
 <nav
     id="toc"
     title="Table Of Contents"
     aria-label="Table Of Contents"
-    class="sticky top-24 w-full max-w-56 text-sm text-neutral-500 2xl:max-w-64"
+    class="sticky top-24 w-full max-w-56 text-sm 2xl:max-w-64"
 >
-    <span class="font-medium">Table Of Contents</span>
+    <span class="text-tx-2 font-semibold">Table Of Contents</span>
     <ul class="mt-4 flex flex-col gap-y-2">
         {
-            filteredHeadings.map((heading) => (
+            groupedHeadings.map((h2) => (
                 <li>
                     <a
-                        href={`#${heading.slug}`}
-                        class="py-1 transition-colors duration-150 ease-in-out hover:text-neutral-700"
+                        href={`#${h2.slug}`}
+                        class="hover:text-tx text-tx-2 py-1 transition-colors duration-200 ease-in-out"
                     >
-                        {heading.text}
+                        {h2.text}
                     </a>
+
+                    {h2.children.length > 0 && (
+                        <ul class="border-ui mt-1 ml-2 flex flex-col gap-y-1 border-l pl-2">
+                            {h2.children.map((h3) => (
+                                <li>
+                                    <a
+                                        href={`#${h3.slug}`}
+                                        class="hover:text-tx text-tx-2 py-0.5 text-[0.9em] transition-colors duration-200 ease-in-out"
+                                    >
+                                        {h3.text}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </li>
             ))
         }
@@ -52,9 +83,9 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
                         const link = tocLinks[index];
                         if (entry.isIntersecting) {
                             tocLinks.forEach((l) =>
-                                l.classList.remove("text-red-800")
+                                l.classList.remove("text-tx!", "underline")
                             );
-                            link.classList.add("text-red-800");
+                            link.classList.add("text-tx!", "underline");
                         }
                     }
                 });
@@ -62,14 +93,9 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
             { rootMargin: "0px 0px -70% 0px", threshold: 0 }
         );
 
-        headingTargets.forEach((el) => {
-            if (el) observer.observe(el);
-        });
+        headingTargets.forEach((el) => el && observer.observe(el));
     }
 
-    // Run on first load
     document.addEventListener("astro:page-load", initTOCScrollspy);
-
-    // Run again after every view transition
     document.addEventListener("astro:after-swap", initTOCScrollspy);
 </script>

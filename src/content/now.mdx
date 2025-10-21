@@ -1,28 +1,25 @@
 ---
 title: "Now"
 description: "A sporadically updated log on what's keeping me busy"
-updatedDate: 2025-09-25T20:56:43+07:00
+updatedDate: 2025-10-17T21:53:55+07:00
 ---
 
-> Inspired by the [now page movement](https://nownownow.com/about) by [Derek Sivers](https://sive.rs/now2). My entry lives [here](https://nownownow.com/p/Gh39).
+import Wrapper from "../components/page/Wrapper.astro";
+import LinkWithIcon from "../components/page/LinkWithIcon.astro";
 
-## Work
-
-I'm working my 9-to-5 as an accountant in Yogyakarta, Indonesia. Most of my days involve spreadsheets and financial reports.
-
-## Interests, Ideas, and Plans
-
-- Learning [Astro](https://astro.build/), moving away from [Hugo](https://gohugo.io/)
-- Building lightweight internal dashboards with [Streamlit](https://streamlit.io/)
-- Creating charts for data visualization using [Chart.js](https://www.chartjs.org/) and [Datawrapper](https://www.datawrapper.de/)
+{/* prettier-ignore */}
+- Learning <LinkWithIcon href="https://astro.build/" icon="simple-icons:astro" text="Astro" />, moving away from <LinkWithIcon href="https://gohugo.io/" icon="simple-icons:hugo" text="Hugo" />
+- Building lightweight internal dashboards with <LinkWithIcon href="https://streamlit.io/" icon="simple-icons:streamlit" text="Streamlit" />
+- Creating charts for data visualization using <LinkWithIcon href="https://www.chartjs.org/" icon="simple-icons:chartdotjs" text="Chart.js" /> and [Datawrapper](https://www.datawrapper.de/)
 - Fallen into the rabbit hole of gardening videos. Maybe that's just me getting old
 - Implementing [astro-og-canvas](https://www.npmjs.com/package/astro-og-canvas) to automatically generate OpenGraph images for this site
-- Reviving my [Kaggle](https://www.kaggle.com/odhypradhana) account by creating datasets. I'm planning to do the data visualization part in this site as well
+- Trying to revive my [Kaggle](https://www.kaggle.com/odhypradhana) account by creating datasets. I'm planning to do the data visualization part in this site as well
 
 ## Reading
 
 I don't read as much as I'd like, but I keep a few articles bookmarked.
 
+- [If you're remote, ramble](https://stephango.com/ramblings) by Steph Ango
 - [Will AI replace developers?](https://kungfux.github.io/posts/will-ai-replace-developers/) by Alexander Fuks
 - [I'll read it](https://manuelmoreale.com/i-ll-read-it) by Manuel “Manu” Moreale
 - [How to get started with data visualization](https://www.datawrapper.de/blog/how-to-get-started-with-data-visualization) by Lisa Charlotte Muth
@@ -35,30 +32,8 @@ I don't read as much as I'd like, but I keep a few articles bookmarked.
 - [Tools for Thought as Cultural Practices, not Computational Objects](https://maggieappleton.com/tools-for-thought) by Maggie Appleton
 - [Faster Horses](https://mxb.dev/blog/faster-horses/) by Max Böck
 
-## Podcast
-
-<iframe
-  data-testid="embed-iframe"
-  style="border-radius:12px"
-  src="https://open.spotify.com/embed/show/41Av6Rq81LfOT3Volz7W9D?utm_source=generator"
-  width="100%"
-  height="152"
-  frameBorder="0"
-  allowfullscreen=""
-  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-  loading="lazy"
-  class="mb-4"
-></iframe>
-
-<iframe
-  data-testid="embed-iframe"
-  style="border-radius:12px"
-  src="https://open.spotify.com/embed/show/6Ol9sx1lONDxBSffLW9qcZ?utm_source=generator"
-  width="100%"
-  height="152"
-  frameBorder="0"
-  allowfullscreen=""
-  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-  loading="lazy"
-  class="mb-4"
-></iframe>
+<Wrapper class="border-ui-2 text-tx-2 prose-a:text-tx-2 prose-a:decoration-tx-2 mt-12 rounded-md border px-4">
+  Inspired by the [now page movement](https://nownownow.com/about) by [Derek
+  Sivers](https://sive.rs/now2). My entry lives
+  [here](https://nownownow.com/p/Gh39).
+</Wrapper>

@@ -1,23 +1,38 @@
 ---
 import { Icon } from "astro-icon/components";
-import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<"a"> {
+interface Props {
     href: string;
-    icon: string;
     text: string;
+    icon?: string;
 }
 
-const { href, icon, text, ...rest } = Astro.props;
+const { href, text, icon, ...rest } = Astro.props;
+
+// Detect external links
+const isExternal = href.startsWith("http");
+const target = isExternal ? "_blank" : "_self";
+const rel = isExternal ? "noopener noreferrer" : undefined;
 ---
 
 <a
     href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    class="not-prose group flex w-full items-center justify-center gap-x-4 rounded-md border border-neutral-300 px-8 py-2.5 shadow-md transition-all duration-200 ease-in-out hover:shadow-lg"
+    target={target}
+    rel={rel}
+    class="not-prose group border-ui hover:border-ui-2 flex w-full items-center justify-center gap-x-2 rounded-md border px-8 py-2 transition-all duration-200 ease-in-out hover:shadow-lg"
     {...rest}
 >
-    <Icon name={icon} size={20} class="shrink-0" />
-    <span class="font-medium">{text}</span>
+    {
+        icon && (
+            <Icon
+                name={icon}
+                size={18}
+                class="text-tx-2 group-hover:text-red shrink-0 transition-colors duration-200 ease-in-out"
+            />
+        )
+    }
+    <span
+        class="group-hover:text-red font-medium transition-colors duration-200 ease-in-out"
+        >{text}</span
+    >
 </a>

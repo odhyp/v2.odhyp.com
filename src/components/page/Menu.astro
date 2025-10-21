@@ -11,18 +11,21 @@ interface Props {
 const { href, icon, title, description, ...rest } = Astro.props;
 ---
 
-<a href={href} class="not-prose group block py-2" {...rest}>
-    <div class="flex items-center gap-x-2">
-        <Icon
-            name={icon}
-            size="20"
-            class="text-neutral-500 transition-colors duration-200 ease-in-out group-hover:text-neutral-600"
-        />
+<a
+    href={href}
+    class="not-prose group border-ui/0 hover:border-ui flex gap-x-2.5 rounded-sm border p-4 transition-all duration-300 ease-in-out hover:shadow-lg"
+    {...rest}
+>
+    <Icon
+        name={icon}
+        size={20}
+        class="text-tx-2 group-hover:text-tx shrink-0 translate-y-0.5 transition-colors duration-300 ease-in-out"
+    />
+    <div class="flex flex-col gap-y-1.5">
         <span
-            class="font-semibold transition-all duration-200 ease-in-out group-hover:text-red-800 group-hover:underline group-hover:underline-offset-2"
+            class="decoration-tx-3 group-hover:text-red group-hover:decoration-red font-medium underline underline-offset-4 transition-all duration-300 ease-in-out"
+            >{title}</span
         >
-            {title}
-        </span>
+        {description && <p class="text-tx-2 text-sm">{description}</p>}
     </div>
-    {description && <p class="ml-7 text-neutral-600">{description}</p>}
 </a>

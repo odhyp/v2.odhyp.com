@@ -1,0 +1,55 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    type: "note" | "tip" | "important" | "warning" | "caution";
+    title: string;
+}
+
+const { type, title } = Astro.props;
+
+const variants: Record<
+    Props["type"],
+    { style: string; color: string; icon: string }
+> = {
+    note: {
+        style: "border-blue bg-blue-2/5",
+        color: "text-blue",
+        icon: "material-symbols:info-rounded",
+    },
+    tip: {
+        style: "border-green bg-green-2/5",
+        color: "text-green",
+        icon: "material-symbols:lightbulb-2-rounded",
+    },
+    important: {
+        style: "border-purple bg-purple-2/5",
+        color: "text-purple",
+        icon: "material-symbols:brightness-alert-rounded",
+    },
+    warning: {
+        style: "border-yellow bg-yellow-2/5",
+        color: "text-yellow",
+        icon: "material-symbols:warning-rounded",
+    },
+    caution: {
+        style: "border-red bg-red-2/5",
+        color: "text-red",
+        icon: "material-symbols:report-rounded",
+    },
+};
+---
+
+<div
+    class={`border-l-4 rounded-r-md p-4 my-8 grid grid-cols-[20px_1fr] gap-4 ${variants[type].style}`}
+>
+    <Icon
+        name={variants[type].icon}
+        size="20"
+        class={`row-span-2 size-5 shrink-0 translate-y-0.5 ${variants[type].color}`}
+    />
+    <div class="text-lg font-semibold">{title}</div>
+    <div class="not-prose space-y-4">
+        <slot />
+    </div>
+</div>

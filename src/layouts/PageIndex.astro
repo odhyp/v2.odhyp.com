@@ -12,12 +12,8 @@ const { title, description } = frontmatter;
 
         <section class="container-main">
             <article>
-                <h1>
-                    {title}<span class="text-red-800">.</span>
-                </h1>
-                <span class="font-medium text-neutral-500 italic">
-                    {description}
-                </span>
+                <h1>{title}<span class="text-red">.</span></h1>
+                <p class="text-tx-2">{description}</p>
                 <slot />
             </article>
         </section>

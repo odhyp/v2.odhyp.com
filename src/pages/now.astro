@@ -16,15 +16,15 @@ const { title, description, updatedDate } = frontmatter;
         <section class="container-side"></section>
 
         <section class="container-main">
-            <article>
-                <h1>
-                    {title}<span class="text-red-800">.</span>
-                </h1>
-                <p class="mb-8 text-sm text-neutral-600">
-                    <span data-time={updatedDate} class="font-medium"
-                        >Updated:</span
-                    >
-                    <span>{formatDate(updatedDate, "relative")}</span>
+            <article class="slide-enter-content">
+                <h1>What I'm doing now<span class="text-red">.</span></h1>
+                <p class="mt-0 mb-8 text-sm">
+                    <span data-time={updatedDate} class="text-tx-2 font-medium">
+                        Updated:
+                    </span>
+                    <span class="text-tx-2">
+                        {formatDate(updatedDate, "long")}
+                    </span>
                 </p>
 
                 <Content />

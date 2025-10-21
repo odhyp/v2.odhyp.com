@@ -1,18 +1,21 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 
+// TailwindCSS
+import tailwindcss from "@tailwindcss/vite";
+
 // Astro Integration
 import icon from "astro-icon";
 import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 
-// TailwindCSS
-import tailwindcss from "@tailwindcss/vite";
+// Expressive Code
+import astroExpressiveCode from "astro-expressive-code";
+import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 
 // Rehype
 import rehypeExternalLinks from "rehype-external-links";
-import astroExpressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,7 +27,24 @@ export default defineConfig({
     astroExpressiveCode({
       themes: "material-theme-darker",
       styleOverrides: {
-        codeFontSize: "0.9rem",
+        codeFontFamily: "Geist Mono, monospace",
+        uiFontFamily: "Geist, sans-serif",
+        borderColor: "#343331", // ui-2
+        frames: {
+          editorBackground: "#100f0f", // bg
+          editorActiveTabBackground: "#282726", // ui
+          editorActiveTabIndicatorBottomColor: "#cecdc3", // tx
+          editorTabBarBackground: "#1c1b1a", // bg-2
+          editorTabBarBorderColor: "#343331", // ui-2
+          editorTabBarBorderBottomColor: "#343331", // ui-2
+          terminalBackground: "#100f0f", // bg
+          terminalTitlebarBackground: "#282726", // ui
+        },
+      },
+      plugins: [pluginLineNumbers()],
+      defaultProps: {
+        // Disable line numbers by default
+        showLineNumbers: false,
       },
     }),
     mdx(),

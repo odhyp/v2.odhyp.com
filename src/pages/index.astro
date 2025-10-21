@@ -9,13 +9,13 @@ const { title, description } = frontmatter;
 ---
 
 <BaseLayout title={title} description={description}>
-    <section class="container-grid pt-16">
+    <section class="container-grid">
         <section class="container-side"></section>
 
         <section class="container-main">
-            <article>
+            <article class="slide-enter-content">
                 <h1>
-                    {title}<span class="text-red-800">.</span>
+                    {title}<span class="text-red">.</span>
                 </h1>
                 <Content />
             </article>

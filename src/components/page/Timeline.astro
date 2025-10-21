@@ -1,0 +1,54 @@
+---
+import LinkWithIcon from "./LinkWithIcon.astro";
+
+interface Item {
+    start: string;
+    end: string;
+    title: string;
+    companyName: string;
+    companyURL: string;
+    companyLogoURL: string;
+    description: string;
+}
+
+interface Props {
+    items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<ol class="not-prose my-8">
+    {
+        items.map((item) => (
+            <li class="border-l-ui-2 relative ml-2 border-l pb-8 pl-6 last:pb-0">
+                <div class="bg-red absolute top-0 -left-1 h-2 w-2 rounded-full" />
+
+                <div class="flex -translate-y-2.5 flex-col">
+                    <span class="inline-flex gap-x-1">
+                        <span class="font-semibold">{item.title}</span>
+                        <span class="mr-1">at</span>
+                        <LinkWithIcon
+                            href={item.companyURL}
+                            imgSrc={item.companyLogoURL}
+                            imgAlt={`${item.companyName} Logo`}
+                            text={item.companyName}
+                        />
+                    </span>
+
+                    <span class="*:text-tx-2 mb-4 flex items-center gap-x-2">
+                        <span>{item.start}</span>
+                        <span>&ndash;</span>
+                        {item.end === "Present" ? (
+                            <span class="font-medium">{item.end}</span>
+                        ) : (
+                            <span>{item.end}</span>
+                        )}
+                    </span>
+
+                    <p class="text-tx-2">{item.description}</p>
+                </div>
+            </li>
+        ))
+    }
+</ol>

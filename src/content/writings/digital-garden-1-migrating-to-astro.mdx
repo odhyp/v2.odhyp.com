@@ -20,16 +20,16 @@ Astro also allows integration with frameworks like React, Vue, and Svelte. I don
 
 After experimenting with Astro on a few projects, I asked myself: why not rebuild my personal website with it? So here we are.
 
-I want the site to be as minimal as possible, leaning towards an essentialist style. Something with fewer distraction, a digital-garden-like labyrinth of navigation, and a wall of text. I'll keep the same color palette from my previous website using TailwindCSS, mostly shades of neutral and some hint of red for the anchor tags, hover effects, and other small details.
+I want the site to be as minimal as possible, leaning towards an essentialist style. Something with fewer distraction, a digital-garden-like labyrinth of navigation, and a wall of text. I'll keep the same color palette from my previous website using TailwindCSS, mostly shades of base and some hint of red for the anchor tags, hover effects, and other small details.
 
 import pic1 from "../../assets/images/v1-website.png";
 
-<Wrapper class="bleed text-center text-sm space-y-0">
+<Wrapper class="bleed text-center text-sm space-y-0 text-tx-2">
   <Image
     src={pic1}
     alt="My old website landing page"
     format="webp"
-    class="border border-neutral-200 shadow-lg"
+    class="border border-ui shadow-lg"
   />
 
 My old site, still alive at [v1.odhyp.com](https://v1.odhyp.com/)
@@ -39,25 +39,3 @@ My old site, still alive at [v1.odhyp.com](https://v1.odhyp.com/)
 I'm discarding the old home page style for something simpler and more text-driven. Partly inspired by [Joel Hooks's website](https://joelhooks.com/). I've grown tired of the tagline approach and want the content itself to be more descriptive
 
 I also prefer website with narrower layout, like this [Portfolio Starter Kit](https://portfolio-blog-starter.vercel.app/) from Vercel. I feel like 600px is the sweet spot for this site.
-
-These are all the sources of inspiration for building my digital garden:
-
-<Wrapper class="[&>*]:grid [&>*]:grid-cols-2 [&>*]:gap-x-8 md:[&>*]:grid-cols-3 md:[&>*]:gap-x-4">
-
-- [mellow.dev](https://mellow.dev/)
-- [Sunil's Garden](https://garden.sunils.in/)
-- [Maxime Vaillancourt](https://maximevaillancourt.com/)
-- [Josh Avanier](https://avanier.dev/)
-- [Alexander Obenauer](https://alexanderobenauer.com/)
-- [drkhsh.at](https://drkhsh.at/)
-- [Salman Alfarisi](https://salmoon.vercel.app/)
-- [jakintosh](https://jakintosh.com/index.html)
-- [Tosatur](https://tosatur.com/)
-- [Harley](https://lichendust.com/)
-- [Chad Mazzola](https://hellohappy.org/)
-- [Colin Drake](https://colindrake.me/)
-- [Daniel Saunders](https://daniel-saunders.com/)
-- [Ivan](https://ivndbt.com/)
-- [Chiri](https://astro-chiri.netlify.app/)
-
-</Wrapper>

@@ -1,45 +1,196 @@
 @import "tailwindcss";
+
 @plugin "@tailwindcss/typography";
 @plugin 'tailwind-scrollbar';
 
 @theme {
   /* Fonts */
-  --font-inter: "Inter", sans-serif;
-  --font-geist: "Geist Mono", monospace;
+  --font-geist: "Geist", sans-serif;
+  --font-geist-mono: "Geist Mono", monospace;
 
   /* Animation */
-  --animate-fade-in-up: fade-in-up 0.25s ease-out;
+  --animate-slide-enter: slide-enter 0.8s both 1;
+  /* use `slide-enter-content` without `animate-` for the full animation */
 
-  @keyframes fade-in-up {
-    0% {
+  /* Keyframes */
+  @keyframes slide-enter {
+    from {
+      transform: translateY(10px);
       opacity: 0;
-      transform: translateY(20px);
     }
-    100% {
-      opacity: 1;
+    to {
       transform: translateY(0);
+      opacity: 1;
     }
   }
+
+  /* Colors - Flexoki Color Scheme */
+  /* https://github.com/kepano/flexoki/blob/main/tailwind/replacement.css */
+  /* Disable TailwindCSS default colors */
+  --color-amber-*: initial;
+  --color-lime-*: initial;
+  --color-emerald-*: initial;
+  --color-teal-*: initial;
+  --color-sky-*: initial;
+  --color-indigo-*: initial;
+  --color-violet-*: initial;
+  --color-fuchsia-*: initial;
+  --color-pink-*: initial;
+  --color-rose-*: initial;
+  --color-slate-*: initial;
+  --color-zinc-*: initial;
+  --color-base-*: initial;
+  --color-stone-*: initial;
+
+  /* Specify new default colors. */
+  /* Light */
+  --color-bg: rgb(255, 252, 240);
+  --color-bg-2: rgb(242, 240, 229);
+  --color-ui: rgb(230, 228, 217);
+  --color-ui-2: rgb(218, 216, 206);
+  --color-ui-3: rgb(206, 205, 195);
+  --color-tx: rgb(16, 15, 15);
+  --color-tx-2: rgb(111, 110, 105);
+  --color-tx-3: rgb(183, 181, 172);
+  --color-red: rgb(175, 48, 41);
+  --color-orange: rgb(188, 82, 21);
+  --color-yellow: rgb(173, 131, 1);
+  --color-green: rgb(102, 128, 11);
+  --color-cyan: rgb(36, 131, 123);
+  --color-blue: rgb(32, 94, 166);
+  --color-purple: rgb(94, 64, 157);
+  --color-magenta: rgb(160, 47, 111);
+  --color-red-2: rgb(209, 77, 65);
+  --color-orange-2: rgb(218, 112, 44);
+  --color-yellow-2: rgb(208, 162, 21);
+  --color-green-2: rgb(135, 154, 57);
+  --color-cyan-2: rgb(58, 169, 159);
+  --color-blue-2: rgb(67, 133, 190);
+  --color-purple-2: rgb(139, 126, 200);
+  --color-magenta-2: rgb(206, 93, 151);
+
+  /* Dark */
+  /* --color-bg: rgb(16, 15, 15); */
+  /* --color-bg-2: rgb(28, 27, 26); */
+  /* --color-ui: rgb(40, 39, 38); */
+  /* --color-ui-2: rgb(52, 51, 49); */
+  /* --color-ui-3: rgb(64, 62, 60); */
+  /* --color-tx: rgb(206, 205, 195); */
+  /* --color-tx-2: rgb(135, 133, 128); */
+  /* --color-tx-3: rgb(87, 86, 83); */
+  /* --color-red: rgb(209, 77, 65); */
+  /* --color-orange: rgb(218, 112, 44); */
+  /* --color-yellow: rgb(208, 162, 21); */
+  /* --color-green: rgb(135, 154, 57); */
+  /* --color-cyan: rgb(58, 169, 159); */
+  /* --color-blue: rgb(67, 133, 190); */
+  /* --color-purple: rgb(139, 126, 200); */
+  /* --color-magenta: rgb(206, 93, 151); */
+  /* --color-red-2: rgb(175, 48, 41); */
+  /* --color-orange-2: rgb(188, 82, 21); */
+  /* --color-yellow-2: rgb(173, 131, 1); */
+  /* --color-green-2: rgb(102, 128, 11); */
+  /* --color-cyan-2: rgb(36, 131, 123); */
+  /* --color-blue-2: rgb(32, 94, 166); */
+  /* --color-purple-2: rgb(94, 64, 157); */
+  /* --color-magenta-2: rgb(160, 47, 111); */
 }
 
 @layer base {
   html {
-    scrollbar-gutter: stable;
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
+    scrollbar-gutter: stable;
   }
 
   body {
-    @apply font-inter bg-neutral-50 text-neutral-800 selection:bg-red-200 selection:text-red-950;
+    @apply font-geist bg-bg selection:bg-ui-2;
   }
 
   article {
-    @apply prose prose-a:text-red-800 w-full max-w-none marker:text-red-800 [&>*:first-child]:mt-0!;
+    @apply prose text-tx w-full max-w-none [&>*:first-child]:mt-0!;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-tx font-geist-mono;
+  }
+
+  h1 {
+    @apply text-4xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+
+  h3 {
+    @apply text-xl font-medium;
+  }
+
+  h4,
+  h5,
+  h6 {
+    @apply mb-2 text-lg font-medium;
+  }
+
+  a {
+    @apply decoration-tx-3 text-tx hover:text-red hover:decoration-red underline-offset-4 transition-colors duration-300 ease-in-out;
+  }
+
+  sup a,
+  .footnotes a {
+    @apply px-0.5;
+  }
+
+  .footnotes a {
+    @apply text-sm;
+  }
+
+  span,
+  strong,
+  blockquote {
+    @apply text-tx;
+  }
+
+  blockquote {
+    @apply border-ui my-4! px-4 text-lg font-light md:my-8! md:px-8;
+  }
+
+  blockquote ::before,
+  blockquote ::after {
+    @apply hidden;
+  }
+
+  ul ::marker,
+  ol ::marker {
+    @apply text-tx-2;
+  }
+
+  hr {
+    @apply border-b-ui border-0 border-b;
+  }
+
+  th {
+    @apply text-tx;
+  }
+
+  thead {
+    @apply border-b-ui-3 border-b-2;
+  }
+
+  tbody,
+  tr {
+    @apply border-b-ui-2;
   }
 
   /* Inline Code */
   code:not(pre > *) {
-    @apply font-geist rounded-sm bg-neutral-200 px-1.5 py-1 select-all;
+    @apply font-geist-mono text-tx bg-ui rounded-sm px-1.5 py-0.5 text-sm font-medium select-all;
   }
 
   code::before,
@@ -58,12 +209,12 @@
   }
 
   .container-grid {
-    @apply grid grid-cols-1 px-4 xl:grid-cols-[1fr_600px_1fr] xl:gap-x-16;
+    @apply grid grid-cols-1 px-4 xl:grid-cols-[1fr_680px_1fr] xl:gap-x-16;
   }
 
   /* Inner Container */
   .container-main {
-    @apply mx-auto w-full max-w-[600px];
+    @apply mx-auto w-full max-w-[680px];
   }
 
   .container-side {
@@ -76,11 +227,79 @@
   }
 }
 
-/* TODO: dev-only, remove this later */
-.dev-child {
-  @apply [&>*]:bg-red-200/50;
-}
+/* Animation */
+/* https://antfu.me/posts/sliding-enter-animation */
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.no-sliding) [slide-enter],
+  html:not(.no-sliding) .slide-enter,
+  html:not(.no-sliding) .slide-enter-content > *:not(:has(.table-of-contents)) {
+    --enter-stage: 0;
+    --enter-step: 80ms;
+    --enter-initial: 0ms;
+    animation: slide-enter 0.8s both 1;
+    animation-delay: calc(
+      var(--enter-initial) + var(--enter-stage) * var(--enter-step)
+    );
+  }
 
-.dev-parent {
-  @apply bg-amber-200/50;
+  .slide-enter-content > *:nth-child(1) {
+    --enter-stage: 1 !important;
+  }
+  .slide-enter-content > *:nth-child(2) {
+    --enter-stage: 2 !important;
+  }
+  .slide-enter-content > *:nth-child(3) {
+    --enter-stage: 3 !important;
+  }
+  .slide-enter-content > *:nth-child(4) {
+    --enter-stage: 4 !important;
+  }
+  .slide-enter-content > *:nth-child(5) {
+    --enter-stage: 5 !important;
+  }
+  .slide-enter-content > *:nth-child(6) {
+    --enter-stage: 6 !important;
+  }
+  .slide-enter-content > *:nth-child(7) {
+    --enter-stage: 7 !important;
+  }
+  .slide-enter-content > *:nth-child(8) {
+    --enter-stage: 8 !important;
+  }
+  .slide-enter-content > *:nth-child(9) {
+    --enter-stage: 9 !important;
+  }
+  .slide-enter-content > *:nth-child(10) {
+    --enter-stage: 10 !important;
+  }
+  .slide-enter-content > *:nth-child(11) {
+    --enter-stage: 11 !important;
+  }
+  .slide-enter-content > *:nth-child(12) {
+    --enter-stage: 12 !important;
+  }
+  .slide-enter-content > *:nth-child(13) {
+    --enter-stage: 13 !important;
+  }
+  .slide-enter-content > *:nth-child(14) {
+    --enter-stage: 14 !important;
+  }
+  .slide-enter-content > *:nth-child(15) {
+    --enter-stage: 15 !important;
+  }
+  .slide-enter-content > *:nth-child(16) {
+    --enter-stage: 16 !important;
+  }
+  .slide-enter-content > *:nth-child(17) {
+    --enter-stage: 17 !important;
+  }
+  .slide-enter-content > *:nth-child(18) {
+    --enter-stage: 18 !important;
+  }
+  .slide-enter-content > *:nth-child(19) {
+    --enter-stage: 19 !important;
+  }
+  .slide-enter-content > *:nth-child(20) {
+    --enter-stage: 20 !important;
+  }
 }

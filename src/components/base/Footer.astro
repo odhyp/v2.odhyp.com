@@ -1,84 +1,40 @@
 ---
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
+// Content import
+import Content, { frontmatter } from "../../content/footer_nav.mdx";
 
 const year = new Date().getFullYear().toString();
+const { title } = frontmatter;
 ---
 
-<footer class="container-grid font-medium">
+<!-- FOOTER NAVIGATION SECTION -->
+<section class="container-grid border-t-ui border-t pt-16 pb-4">
     <section class="container-side"></section>
 
-    <section class="container-main @container py-8">
-        <div
-            class="flex flex-col-reverse items-start justify-center gap-y-4 text-sm @lg:flex-row @lg:items-center @lg:justify-between @lg:gap-x-8"
-        >
-            <!-- COPYRIGHT START -->
-            <span>
-                <a
-                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-                    target="_blank"
-                    class="inline-block text-red-800 underline underline-offset-2"
-                >
-                    CC BY-NC-SA 4.0
-                </a>
-                <span>{year} &copy; Odhy Pradhana</span>
-            </span>
-            <!-- COPYRIGHT END -->
+    <section class="container-main">
+        <article class="slide-enter-content">
+            <h2>{title}</h2>
+            <Content />
+        </article>
+    </section>
 
-            <!-- FOOTER ICON START -->
-            <!-- TODO: update webring link -->
-            <div class="flex items-center gap-x-2">
-                <a
-                    title="XXIIVV Webring"
-                    aria-label="XXIIVV Webring"
-                    href="https://webring.xxiivv.com/#xxiivv"
-                    target="_blank"
-                    rel="noopener"
-                    class="px-0.5 py-1"
-                >
-                    <Image
-                        src="https://webring.xxiivv.com/icon.black.svg"
-                        alt="XXIIVV Webring"
-                        width="26"
-                        height="26"
-                        loading="lazy"
-                    />
+    <section class="container-side"></section>
+</section>
 
-                    <a
-                        title="GitHub"
-                        aria-label="GitHub"
-                        href="https://github.com/odhyp/"
-                        target="_blank"
-                        class="p-1"
-                    >
-                        <Icon name="simple-icons:github" size="20" />
-                    </a>
+<!-- COPYRIGHT SECTION -->
+<footer class="container-grid animate-slide-enter @container">
+    <section class="container-side"></section>
 
-                    <a
-                        title="Support Me"
-                        aria-label="Support Me"
-                        href="https://buymeacoffee.com/odhyp"
-                        target="_blank"
-                        class="p-1"
-                    >
-                        <Icon name="simple-icons:buymeacoffee" size="20" />
-                    </a>
-
-                    <a
-                        title="RSS Feed"
-                        aria-label="RSS Feed"
-                        href="/rss.xml"
-                        class="p-1"
-                    >
-                        <Icon
-                            name="material-symbols:rss-feed-rounded"
-                            size="20"
-                        />
-                    </a>
-                </a>
-                <!-- FOOTER ICON END -->
-            </div>
-        </div>
+    <section class="container-main flex items-start gap-y-4 pt-4 pb-12 text-sm">
+        <span>
+            <a
+                href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                target="_blank"
+                class="text-tx-2 hover:text-red decoration-tx-3 inline-block underline underline-offset-4"
+            >
+                CC BY-NC-SA 4.0
+            </a>
+            <span class="text-tx-2">{year} &copy; Odhy Pradhana</span>
+        </span>
     </section>
 
     <section class="container-side"></section>

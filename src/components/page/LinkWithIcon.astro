@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    href: string;
+    text: string;
+    icon?: string; // for astro-icon
+    imgSrc?: string; // for custom image/svg
+    imgAlt?: string;
+}
+
+const { href, text, icon, imgSrc, imgAlt } = Astro.props;
+
+// Detect external links
+const isExternal = href.startsWith("http");
+const target = isExternal ? "_blank" : "_self";
+const rel = isExternal ? "noopener noreferrer" : undefined;
+---
+
+<a
+    href={href}
+    target={target}
+    rel={rel}
+    class="group relative inline-flex items-baseline gap-x-1.5 no-underline transition-colors duration-200 ease-in-out"
+>
+    {
+        icon && (
+            <Icon
+                name={icon}
+                class="text-tx-2 group-hover:text-red size-4 transition-colors duration-200 ease-in-out"
+            />
+        )
+    }
+
+    {
+        imgSrc && (
+            <img
+                src={imgSrc}
+                alt={imgAlt || text}
+                class="my-0 h-4 w-auto object-contain"
+                loading="lazy"
+            />
+        )
+    }
+
+    {text}
+    <div
+        class="border-b-tx-3 group-hover:border-b-red absolute bottom-0.5 w-full border-b-2 transition-colors duration-200 ease-in-out"
+    >
+    </div>
+</a>

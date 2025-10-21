@@ -9,6 +9,8 @@ tags: ["Hugo", "Tailwind CSS"]
 toc: true
 ---
 
+import Alert from "../../components/page/Alert.astro";
+
 I recently upgraded my site to use TailwindCSS v4. In this post, I'll guide you through the upgrade process, just as I did for my own website.
 
 ## Upgrading to v4
@@ -21,7 +23,7 @@ There are a few breaking changes, as stated in their [documentation]. Some of th
 - Everything moves into your `styles.css` file; we no longer use the `tailwind.config.js`.
 - The PostCSS plugin now lives in the new `@tailwindcss/postcss` package.
 
-## Step 1: Installing new dependencies
+### Step 1: Installing new dependencies
 
 To upgrade your project from v3 to v4:
 
@@ -41,19 +43,24 @@ From here, you can safely remove `postcss`, `postcss-cli`, and `autoprefixer` fr
 npm uninstall postcss postcss-cli autoprefixer
 ```
 
-**Warning!**: When deploying the site on Vercel, make sure to install the dependencies as regular dependencies instead of DevDependencies to avoid deployment error:
+<Alert type="warning" title="Warning!" >
 
-```bash title="Log"
+When deploying the site on Vercel, make sure to install the dependencies as regular dependencies instead of DevDependencies to avoid deployment error.
+
+</Alert>
+
+```bash title="Log: Deployment Error"
 Error: error building site: POSTCSS: failed to transform "/css/styles.css" (text/css):
 Error: Loading PostCSS Plugin failed: Cannot find module '@tailwindcss/oxide-linux-x64-gnu'
 ```
 
-## Step 2: Removing old files
+### Step 2: Removing old files
 
 Since `tailwind.config.js` is no longer used, migrate your custom styles to `styles.css` and add `@import "tailwindcss"`. Here's what it looks like now:
 
-```js title="styles.css" ins={1}
+```js title="styles.css" {1} showLineNumbers
 @import "tailwindcss"; // New import method
+
 @plugin "@tailwindcss/typography";
 
 @theme {
@@ -63,7 +70,7 @@ Since `tailwind.config.js` is no longer used, migrate your custom styles to `sty
 }
 ```
 
-## Step 3: Small adjustments (optional)
+### Step 3: Small adjustments (optional)
 
 I renamed my `postcss.config.js` to `postcss.config.mjs` (this may not be necessary) to match the TailwindCSS docs, so we need to update the `css.html` with the new file name:
 
@@ -72,11 +79,11 @@ I renamed my `postcss.config.js` to `postcss.config.mjs` (this may not be necess
 "./assets/css/postcss.config.mjs") -}}
 ```
 
-## Step 4: Running the site
+### Step 4: Running the site 🎉
 
 You can now run the site locally using `hugo server` and check for the applied TailwindCSS styles.
 
----
+## Next steps
 
 For those who are starting a new Hugo project with TailwindCSS v4, you can use the [Hugo TailwindCSS Starter Template] to quickly get up and running. This template is a clean starting point with TailwindCSS v4 already configured, so you can focus on building your content.
 

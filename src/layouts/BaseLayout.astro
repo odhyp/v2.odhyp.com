@@ -5,19 +5,19 @@ import Header from "../components/base/Header.astro";
 import Footer from "../components/base/Footer.astro";
 import GoogleAnalytics from "../components/scripts/GoogleAnalytics.astro";
 
-// font import - Inter
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/600.css";
-import "@fontsource/inter/700.css";
-
-import "@fontsource/inter/400-italic.css";
-import "@fontsource/inter/500-italic.css";
-import "@fontsource/inter/600-italic.css";
-import "@fontsource/inter/700-italic.css";
+// font import - Geist
+import "@fontsource/geist/300.css";
+import "@fontsource/geist/400.css";
+import "@fontsource/geist/500.css";
+import "@fontsource/geist/600.css";
+import "@fontsource/geist/700.css";
 
 // font import - Geist Mono
-import "@fontsource/geist-mono";
+import "@fontsource/geist-mono/300.css";
+import "@fontsource/geist-mono/400.css";
+import "@fontsource/geist-mono/500.css";
+import "@fontsource/geist-mono/600.css";
+import "@fontsource/geist-mono/700.css";
 
 const { title, description, image } = Astro.props;
 ---
@@ -33,7 +33,7 @@ const { title, description, image } = Astro.props;
 
         <Header title={title} />
 
-        <main class="animate-fade-in-up my-16 grow">
+        <main class="animate-slide-enter my-16 grow">
             <slot />
         </main>
 
