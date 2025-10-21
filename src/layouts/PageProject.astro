@@ -6,9 +6,6 @@ import BaseLayout from "./BaseLayout.astro";
 import Giscus from "../components/page/Giscus.astro";
 import TableOfContents from "../components/page/TableOfContents.astro";
 
-// utils
-import { formatDate } from "../utils/formatDate";
-
 const { frontmatter, headings } = Astro.props;
 
 const { title, description, pubDate, updatedDate, cover, tags, toc } =
@@ -46,7 +43,10 @@ const { title, description, pubDate, updatedDate, cover, tags, toc } =
         <!-- Comment Start -->
         <section class="container-side"></section>
 
-        <section class="container-main">
+        <section class="container-main mt-12">
+            <article>
+                <h2>Comments</h2>
+            </article>
             <Giscus />
         </section>
 
