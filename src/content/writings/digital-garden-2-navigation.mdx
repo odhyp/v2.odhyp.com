@@ -17,14 +17,14 @@ I experimented with several navigation styles for this site, from the basic styl
 
 import pic1 from "../../assets/images/v1-website.png";
 
-<Wrapper class="bleed space-y-0 text-center text-sm">
+<Wrapper class="bleed text-tx-2 space-y-0 text-center text-sm">
   <Image
     src={pic1}
     alt="My old website landing page"
     title="My old website landing page"
     format="webp"
     quality="mid"
-    class="border border-neutral-200 shadow-lg"
+    class="border-ui border shadow-lg"
   />
   [My old site](https://v1.odhyp.com) navigation
 </Wrapper>
@@ -42,7 +42,7 @@ import pic2 from "../../assets/images/digital-garden-2-maxime.png";
     title="Maxime Vaillancourt homepage"
     format="webp"
     quality="mid"
-    class="border border-neutral-200 shadow-lg"
+    class="border-ui border shadow-lg"
   />
 </Wrapper>
 
@@ -55,7 +55,7 @@ Sadly, I can't implement his style (_I tried..._) because my site uses categorie
 import pic3 from "../../assets/images/digital-garden-2-manuel-home-page.jpeg";
 import pic4 from "../../assets/images/digital-garden-2-manuel-navigation.jpeg";
 
-<Wrapper class="grid grid-cols-2 gap-x-2 sm:gap-x-4 md:gap-x-8">
+<Wrapper class="grid grid-cols-2 gap-x-2 sm:gap-x-4 md:gap-x-8 text-tx-2">
 
 <Wrapper class="space-y-0 text-center text-sm">
   <Image
@@ -64,7 +64,7 @@ import pic4 from "../../assets/images/digital-garden-2-manuel-navigation.jpeg";
     title="Blog page"
     format="webp"
     quality="mid"
-    class="border border-neutral-200 shadow-lg"
+    class="border-ui border shadow-lg"
   />
   Blog page
 </Wrapper>
@@ -76,7 +76,7 @@ import pic4 from "../../assets/images/digital-garden-2-manuel-navigation.jpeg";
     title="Navigation after page content"
     format="webp"
     quality="mid"
-    class="border border-neutral-200 shadow-lg"
+    class="border-ui border shadow-lg"
   />
   Navigation after page content
 </Wrapper>
@@ -95,27 +95,27 @@ With that in mind, I created a `<Card>` component to show writings and projects 
 
 {/* Desktop View */}
 
-<Wrapper class="not-prose @container relative my-8 flex flex-col gap-y-2 border border-neutral-200 px-4 py-8 sm:px-8">
-  <span class="absolute -top-3 right-1/2 translate-x-1/2 border border-neutral-200 bg-neutral-50 px-2 py-1 text-xs *:my-0">
+<Wrapper class="not-prose @container relative my-8 flex flex-col gap-y-2 border border-ui px-4 py-8 sm:px-8">
+  <span class="absolute -top-3 right-1/2 translate-x-1/2 border border-ui bg-ui px-2 py-1 text-xs *:my-0">
     Desktop view
   </span>
 
 <div class="group flex cursor-pointer flex-row items-baseline justify-between gap-x-2 gap-y-1 py-1">
-  <span class="shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:text-red-800 group-hover:underline group-hover:underline-offset-2">
+  <span class="group-hover:text-red shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:underline group-hover:underline-offset-2">
     Sample post title
   </span>
-  <div class="w-full border-b border-dashed text-neutral-300 transition-colors duration-200 ease-in-out group-hover:text-neutral-500"></div>
-  <span class="shrink-0 text-sm text-neutral-500 transition-colors duration-200 ease-in-out group-hover:text-neutral-700">
+  <div class="text-base-300 group-hover:text-tx-2 w-full border-b border-dashed transition-colors duration-200 ease-in-out"></div>
+  <span class="text-tx-2 group-hover:text-base-700 shrink-0 text-sm transition-colors duration-200 ease-in-out">
     A week ago
   </span>
 </div>
 
   <div class="group flex flex-row items-baseline justify-between gap-x-2 gap-y-1 py-1 cursor-pointer">
-    <span class="shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:text-red-800 group-hover:underline group-hover:underline-offset-2">
+    <span class="shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:text-red group-hover:underline group-hover:underline-offset-2">
       Another sample post title
     </span>
-    <div class="w-full border-b border-dashed text-neutral-300 transition-colors duration-200 ease-in-out group-hover:text-neutral-500"></div>
-    <span class="shrink-0 text-sm text-neutral-500 transition-colors duration-200 ease-in-out group-hover:text-neutral-700">
+    <div class="w-full border-b border-dashed text-base-300 transition-colors duration-200 ease-in-out group-hover:text-tx-2"></div>
+    <span class="shrink-0 text-sm text-tx-2 transition-colors duration-200 ease-in-out group-hover:text-base-700">
       2 weeks ago
     </span>
   </div>
@@ -123,25 +123,25 @@ With that in mind, I created a `<Card>` component to show writings and projects 
 
 {/* Mobile View */}
 
-<Wrapper class="not-prose @container relative my-8 border border-neutral-200 px-4 py-8 sm:px-8 space-y-4">
-  <span class="absolute -top-3 right-1/2 translate-x-1/2 border border-neutral-200 bg-neutral-50 px-2 py-1 text-xs *:my-0">
+<Wrapper class="not-prose @container relative my-8 border border-ui px-4 py-8 sm:px-8 space-y-4">
+  <span class="absolute -top-3 right-1/2 translate-x-1/2 border border-ui bg-ui px-2 py-1 text-xs *:my-0">
     Mobile view
   </span>
   
   <div class="group flex flex-col gap-x-2 gap-y-0 py-1 *:my-0 cursor-pointer">
-    <span class="shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:text-red-800 group-hover:underline group-hover:underline-offset-2">
+    <span class="shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:text-red group-hover:underline group-hover:underline-offset-2">
       Sample post title
     </span>
-    <span class="shrink-0 text-sm text-neutral-500 transition-colors duration-200 ease-in-out group-hover:text-neutral-700">
+    <span class="shrink-0 text-sm text-tx-2 transition-colors duration-200 ease-in-out group-hover:text-base-700">
       2 minutes ago
     </span>
   </div>
 
   <div class="group flex flex-col gap-x-2 gap-y-0 py-1 *:my-0 cursor-pointer">
-    <span class="shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:text-red-800 group-hover:underline group-hover:underline-offset-2">
+    <span class="shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:text-red group-hover:underline group-hover:underline-offset-2">
       Another sample post title
     </span>
-    <span class="shrink-0 text-sm text-neutral-500 transition-colors duration-200 ease-in-out group-hover:text-neutral-700">
+    <span class="shrink-0 text-sm text-tx-2 transition-colors duration-200 ease-in-out group-hover:text-base-700">
       Yesterday
     </span>
   </div>
@@ -151,19 +151,19 @@ With that in mind, I created a `<Card>` component to show writings and projects 
 
 I've created a `<Menu>` component to show a navigation link along with an icon and short description.
 
-<Wrapper class="grid grid-cols-1 gap-2 sm:grid-cols-2 border border-neutral-200 px-8 py-4">
+<Wrapper class="grid grid-cols-1 gap-2 sm:grid-cols-2 border border-ui px-8 py-4">
   <span class="not-prose group block py-2 cursor-pointer">
     <div class="flex items-center gap-x-2">
       <Icon
         name="material-symbols:calendar-clock"
         size="20"
-        class="text-neutral-500 transition-colors duration-200 ease-in-out group-hover:text-neutral-600"
+        class="text-tx-2 transition-colors duration-200 ease-in-out group-hover:text-base-600"
       />
-      <span class="font-semibold transition-all duration-200 ease-in-out group-hover:text-red-800 group-hover:underline group-hover:underline-offset-2">
+      <span class="font-semibold transition-all duration-200 ease-in-out group-hover:text-red group-hover:underline group-hover:underline-offset-2">
         Menu Title
       </span>
     </div>
-    <p class="ml-7 text-neutral-600">A short description</p>
+    <p class="ml-7 text-base-600">A short description</p>
   </span>
 
   <span class="not-prose group block py-2 cursor-pointer">
@@ -171,13 +171,13 @@ I've created a `<Menu>` component to show a navigation link along with an icon a
       <Icon
         name="material-symbols:person"
         size="20"
-        class="text-neutral-500 transition-colors duration-200 ease-in-out group-hover:text-neutral-600"
+        class="text-tx-2 transition-colors duration-200 ease-in-out group-hover:text-base-600"
       />
-      <span class="font-semibold transition-all duration-200 ease-in-out group-hover:text-red-800 group-hover:underline group-hover:underline-offset-2">
+      <span class="font-semibold transition-all duration-200 ease-in-out group-hover:text-red group-hover:underline group-hover:underline-offset-2">
         Menu Title
       </span>
     </div>
-    <p class="ml-7 text-neutral-600">Another short description</p>
+    <p class="ml-7 text-base-600">Another short description</p>
   </span>
 </Wrapper>
 
@@ -185,21 +185,21 @@ I can easily integrate them into the page so they don't look like [regular ancho
 
 ## Breadcrumbs
 
-<Wrapper class="border border-neutral-200 p-4 sm:px-8">
+<Wrapper class="border border-ui p-4 sm:px-8">
 <div class="flex items-center gap-x-2">
-    <span href="/" class="px-0.5 py-1 hover:text-red-800 hover:underline hover:underline-offset-2 cursor-pointer">
+    <span href="/" class="px-0.5 py-1 hover:text-red hover:underline hover:underline-offset-2 cursor-pointer">
       Home
     </span>
 
     <Icon name="material-symbols:chevron-right-rounded" size="20" class="shrink-0" />
 
-    <span class="cursor-pointer px-0.5 py-1 capitalize hover:text-red-800 hover:underline hover:underline-offset-2">
+    <span class="cursor-pointer px-0.5 py-1 capitalize hover:text-red hover:underline hover:underline-offset-2">
       Menu
     </span>
 
     <Icon name="material-symbols:chevron-right-rounded" size="20" class="shrink-0" />
 
-    <span aria-current="page" title="sample" class="truncate px-0.5 py-1 text-red-800 underline underline-offset-2">
+    <span aria-current="page" title="sample" class="truncate px-0.5 py-1 text-red underline underline-offset-2">
       Example Page
     </span>
 
