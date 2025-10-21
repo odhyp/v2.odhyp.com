@@ -1,7 +1,4 @@
 ---
-// utils import
-import { formatDate } from "../../utils/formatDate";
-
 type BasePost = {
     id: string;
     data: {
@@ -24,19 +21,17 @@ const { title, description, updatedDate, version } = post.data;
 <a href={`/${collection}/${post.id}`} class="group flex flex-col gap-y-1 py-1">
     <span class="flex flex-wrap items-center gap-4">
         <span
-            class="shrink-0 font-medium transition-colors duration-200 ease-in-out group-hover:text-red-800 group-hover:underline group-hover:underline-offset-2"
-            >{title}</span
+            class="decoration-tx-3 group-hover:decoration-red group-hover:text-red shrink-0 font-medium underline underline-offset-4 transition-colors duration-300 ease-in-out"
         >
+            {title}
+        </span>
         {
             version && (
-                <span class="rounded-full border border-neutral-300 bg-neutral-100 px-2 py-0.5 text-xs font-semibold">
+                <span class="border-ui bg-bg-2 rounded-full border px-2 py-0.5 text-xs font-semibold">
                     v{version}
                 </span>
             )
         }
     </span>
-    <span
-        class="shrink-0 text-neutral-500 transition-colors duration-200 ease-in-out group-hover:text-neutral-700"
-        >{description}</span
-    >
+    <span class="text-tx-2 shrink-0">{description}</span>
 </a>
