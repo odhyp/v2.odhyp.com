@@ -24,14 +24,6 @@ const { title = "Photos", description = "" } = Astro.props;
                             alt={photo.data.description}
                             class="object-contain"
                         />
-                        <div class="absolute -bottom-16 flex h-8 w-full items-center justify-end bg-neutral-900/75 px-4 opacity-0 transition-all duration-300 ease-in-out group-hover:-translate-y-16 group-hover:opacity-100">
-                            <span class="text-sm text-neutral-200">
-                                {photo.data.title}
-                            </span>
-                        </div>
-                        {/* <span class="px-2 text-center text-sm text-neutral-500">
-                            {photo.data.title}
-                        </span> */}
                     </div>
                 ))
             }
