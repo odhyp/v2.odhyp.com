@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import milestonesRaw from "../data/life.json";
+
+const birthDate = new Date("1999-04-19");
+const totalWeeks = 60 * 52;
+const currentWeek = Math.floor(
+    (Date.now() - birthDate.getTime()) / (1000 * 60 * 60 * 24 * 7)
+);
+
+const milestones = milestonesRaw.map((m) => {
+    const week = Math.floor(
+        (new Date(m.date).getTime() - birthDate.getTime()) /
+            (1000 * 60 * 60 * 24 * 7)
+    );
+    return { ...m, week };
+});
+
+// Explicit color map
+const colorMap = {
+    red: "bg-red/75",
+    orange: "bg-orange/75",
+    yellow: "bg-yellow/75",
+    green: "bg-green/75",
+    cyan: "bg-cyan/75",
+    blue: "bg-blue/75",
+    purple: "bg-purple/75",
+    magenta: "bg-magenta/75",
+};
+
+function getDotColor(i) {
+    const milestone = milestones.find((m) => m.week === i);
+    if (i === currentWeek) return "bg-blue/75";
+    if (milestone) return colorMap[milestone.color] || "bg-red/75";
+    if (i < currentWeek) return "bg-green/25";
+    return "bg-ui/60";
+}
+
+const { title = "Life", description = "something" } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+    <section class="container-full">
+        <section class="mx-auto w-full max-w-4xl">
+            <div class="flex flex-wrap gap-4">
+                {
+                    Array.from({ length: totalWeeks }).map((_, i) => {
+                        const milestone = milestones.find((m) => m.week === i);
+                        const color = getDotColor(i);
+                        const tooltip = milestone
+                            ? `${milestone.label}`
+                            : i === currentWeek
+                              ? "You are here"
+                              : "";
+
+                        return (
+                            <div
+                                class={`size-4 rounded-full ${color} group relative`}
+                            >
+                                {tooltip && (
+                                    <span class="bg-ui text-tx absolute -top-8 left-1/2 -translate-x-1/2 scale-0 rounded px-2 py-1 text-xs font-medium whitespace-nowrap opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100">
+                                        {tooltip}
+                                    </span>
+                                )}
+                            </div>
+                        );
+                    })
+                }
+            </div>
+        </section>
+    </section>
+</BaseLayout>

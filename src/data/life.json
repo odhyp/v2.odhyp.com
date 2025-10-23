@@ -1,0 +1,47 @@
+[
+  {
+    "date": "1999-04-19",
+    "label": "Born in Malang"
+  },
+  {
+    "date": "2011-06-20",
+    "label": "Graduated from Elementary school"
+  },
+  {
+    "date": "2014-06-14",
+    "label": "Graduated from Junior Highschool"
+  },
+  {
+    "date": "2017-05-02",
+    "label": "Graduated from Senior Highschool"
+  },
+  {
+    "date": "2017-08-01",
+    "label": "Moved to Tangerang Selatan"
+  },
+  {
+    "date": "2020-10-07",
+    "label": "Earned my Diploma in Accounting"
+  },
+  {
+    "date": "2021-02-24",
+    "label": "Moved to Yogyakarta"
+  },
+  {
+    "date": "2021-03-01",
+    "label": "Started my first job"
+  },
+  {
+    "date": "2023-08-01",
+    "label": "Settled in Yogyakarta"
+  },
+  {
+    "date": "2024-09-29",
+    "label": "Transferred to new office"
+  },
+  {
+    "date": "2024-10-05",
+    "label": "Happily married!",
+    "color": "cyan"
+  }
+]
