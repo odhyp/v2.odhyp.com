@@ -21,13 +21,13 @@ const rel = isExternal ? "noopener noreferrer" : undefined;
     href={href}
     target={target}
     rel={rel}
-    class="group relative inline-flex items-baseline gap-x-1.5 no-underline transition-colors duration-200 ease-in-out"
+    class="group relative inline-flex items-baseline gap-x-1.5 pl-0.5 transition-colors duration-300 ease-in-out"
 >
     {
         icon && (
             <Icon
                 name={icon}
-                class="text-tx-2 group-hover:text-red size-4 transition-colors duration-200 ease-in-out"
+                class="text-tx-2 group-hover:text-tx size-4 translate-y-0.5 transition-all duration-300 ease-in-out group-hover:scale-105"
             />
         )
     }
@@ -44,8 +44,4 @@ const rel = isExternal ? "noopener noreferrer" : undefined;
     }
 
     {text}
-    <div
-        class="border-b-tx-3 group-hover:border-b-red absolute bottom-0.5 w-full border-b-2 transition-colors duration-200 ease-in-out"
-    >
-    </div>
 </a>
