@@ -40,10 +40,10 @@ const { title = "Life", description = "Your life in weeks" } = Astro.props;
 
 <BaseLayout title={title} description={description}>
     <section class="container-full">
-        <section class="@container mx-auto w-full max-w-full">
+        <section class="@container mx-auto w-full max-w-6xl">
             <div
                 id="life-grid"
-                class="mx-auto flex max-w-3xs flex-wrap gap-4 @sm:max-w-2xs @md:max-w-xs @lg:max-w-sm @xl:max-w-md @2xl:max-w-lg @3xl:max-w-xl @4xl:max-w-2xl @5xl:max-w-3xl @6xl:max-w-4xl @7xl:max-w-5xl"
+                class="mx-auto flex max-w-2xs flex-wrap gap-4 @sm:max-w-xs @md:max-w-sm @lg:max-w-md @xl:max-w-lg @2xl:max-w-xl @3xl:max-w-2xl @4xl:max-w-3xl @5xl:max-w-4xl @6xl:max-w-5xl @7xl:max-w-6xl"
             >
                 {
                     Array.from({ length: totalWeeks }).map((_, i) => {
