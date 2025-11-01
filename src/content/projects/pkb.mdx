@@ -1,0 +1,34 @@
+---
+draft: false
+title: "Kalkulator PKB (Vehicle Tax Calculator)"
+description: "A simple web app to estimate Indonesian vehicle tax (PKB & PKBOP) based on your vehicle data"
+pubDate: 2025-07-20
+updatedDate: 2025-09-23
+tags: ["Python", "Flask", "TailwindCSS", "Vercel"]
+toc: false
+version: "1.3"
+---
+
+import Wrapper from "../../components/page/Wrapper.astro";
+import CTA from "../../components/page/CTA.astro";
+import Alert from "../../components/page/Alert.astro";
+
+Internal tool designed to assist Samsat staff in the Special Region of Yogyakarta (DIY) calculate Pajak Kendaraan Bermotor (PKB) and Opsen PKB (PKBOP) values before processing vehicle registration documents.
+
+{/* prettier-ignore */}
+<Wrapper class="flex justify-center *:w-fit">
+  <CTA href="https://pkb.odhyp.com" text="View Website" icon="material-symbols:arrow-outward" />
+</Wrapper>
+
+<Alert type="note" title="Note">
+  This tool is intended for internal Samsat DIY use only. It reflects the latest
+  PKB and PKBOP rules as applied in Special Region of Yogyakarta Province and
+  should be used as a reference prior to entering data into the official Samsat
+  system.
+</Alert>
+
+## Features
+
+- Responsive form optimized for both desktop and mobile use
+- Input vehicle details: NJKB, vehicle type, license plate type, and ownership
+- Automatic calculation of PKB and PKBOP
