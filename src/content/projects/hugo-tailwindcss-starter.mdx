@@ -1,0 +1,31 @@
+---
+draft: false
+title: "Hugo TailwindCSS Starter"
+description: "Starter project for Hugo and TailwindCSS v4.1, ready to deploy in Vercel, GitHub Pages, Cloudflare Pages, and Netlify"
+pubDate: 2024-09-16
+updatedDate: 2025-10-26
+tags:
+  [
+    "Hugo",
+    "TailwindCSS",
+    "Vercel",
+    "GitHub Pages",
+    "Cloudflare Pages",
+    "Netlify",
+  ]
+toc: false
+version: "1.2.2"
+---
+
+import Wrapper from "../../components/page/Wrapper.astro";
+import CTA from "../../components/page/CTA.astro";
+
+A starter project that integrates Hugo with TailwindCSS v4.1 and is ready for deployment on Vercel, GitHub Pages or Netlify.
+
+{/* prettier-ignore */}
+<Wrapper class="@container w-full">
+<Wrapper class="grid grid-cols-1 gap-4 @md:grid-cols-2">
+  <CTA href="https://github.com/odhyp/hugo-tailwindcss-starter" text="Source Code" icon="simple-icons:github" />
+  <CTA href="https://odhyp.github.io/hugo-tailwindcss-starter/" text="View Live" icon="material-symbols:arrow-outward" />
+</Wrapper>
+</Wrapper>
