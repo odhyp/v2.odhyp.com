@@ -31,6 +31,20 @@ const projects = defineCollection({
   }),
 });
 
+// Notes
+const notes = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/notes" }),
+  schema: z.object({
+    draft: z.boolean(),
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date(),
+    tags: z.array(z.string()).optional(),
+    toc: z.boolean().optional(),
+  }),
+});
+
 // Photos
 const photos = defineCollection({
   loader: glob({ pattern: "**/*.yaml", base: "./src/content/photos" }),
@@ -45,5 +59,6 @@ const photos = defineCollection({
 export const collections = {
   writings,
   projects,
+  notes,
   photos,
 };
