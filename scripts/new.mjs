@@ -11,6 +11,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const collections = {
   writings: "./src/content/writings",
   projects: "./src/content/projects",
+  notes: "./src/content/notes",
 };
 
 // Get Jakarta time ISO string with offset
