@@ -209,12 +209,12 @@
   }
 
   .container-grid {
-    @apply grid grid-cols-1 px-4 xl:grid-cols-[1fr_680px_1fr] xl:gap-x-16;
+    @apply grid grid-cols-1 px-4 xl:grid-cols-[1fr_600px_1fr] xl:gap-x-16;
   }
 
   /* Inner Container */
   .container-main {
-    @apply mx-auto w-full max-w-[680px];
+    @apply mx-auto w-full max-w-[600px];
   }
 
   .container-side {
