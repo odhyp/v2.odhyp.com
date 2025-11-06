@@ -1,6 +1,11 @@
 ---
+// Layout import
 import PageWriting from "../../layouts/PageWriting.astro";
 
+// Utils import
+import { readingTime } from "../../utils/readingTime";
+
+// Content collection
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import type { MarkdownHeading } from "astro";
 
@@ -27,8 +32,13 @@ type Props = {
 
 const { writing, headings } = Astro.props;
 const { Content } = await render(writing);
+const timeToRead = readingTime(writing.body);
 ---
 
-<PageWriting frontmatter={writing.data} headings={headings}>
+<PageWriting
+    frontmatter={writing.data}
+    headings={headings}
+    timeToRead={timeToRead}
+>
     <Content />
 </PageWriting>

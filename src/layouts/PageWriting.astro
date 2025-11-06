@@ -9,7 +9,7 @@ import { formatDate } from "../utils/formatDate";
 import Giscus from "../components/page/Giscus.astro";
 import TableOfContents from "../components/page/TableOfContents.astro";
 
-const { frontmatter, headings } = Astro.props;
+const { frontmatter, headings, timeToRead } = Astro.props;
 
 const { type, title, description, pubDate, updatedDate, cover, tags, toc } =
     frontmatter;
@@ -21,8 +21,16 @@ const { type, title, description, pubDate, updatedDate, cover, tags, toc } =
         <section class="container-side"></section>
 
         <section class="container-main">
-            <article>
-                <h1 class="leading-normal">{title}</h1>
+            <article class="mb-8 md:mb-12">
+                <h1 class="mb-2 leading-normal">{title}</h1>
+
+                <div class="*:text-tx-2 space-x-2 text-sm">
+                    <span>
+                        {formatDate(pubDate, "long")}
+                    </span>
+                    <span class="font-bold">&middot;</span>
+                    <span>{timeToRead} minute read</span>
+                </div>
             </article>
         </section>
 
