@@ -1,4 +1,5 @@
-export function readingTime(s: string): number {
+export function readingTime(s?: string): number {
+  if (!s) return 0;
   const wpm = 200;
   const n = s
     .replace(/[^\w\s]/gi, "")
