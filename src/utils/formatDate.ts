@@ -1,19 +1,25 @@
 export function formatDate(
   date: string | Date,
-  format: "iso" | "long" | "relative" = "iso",
+  format: "iso" | "short" | "long" | "relative" = "iso",
 ): string {
   const d = new Date(date);
   if (isNaN(d.getTime())) return "Invalid date";
 
   const year = d.getUTCFullYear();
-  const month = d.toLocaleString("en-US", { month: "short" });
+
   const day = d.getUTCDate().toString().padStart(2, "0");
 
   if (format === "iso") {
     return `${year}-${String(d.getUTCMonth() + 1).padStart(2, "0")}-${day}`;
   }
 
+  if (format === "short") {
+    const month = d.toLocaleString("en-US", { month: "short" });
+    return `${month} ${day}, ${year}`;
+  }
+
   if (format === "long") {
+    const month = d.toLocaleString("en-US", { month: "long" });
     return `${month} ${day}, ${year}`;
   }
 
