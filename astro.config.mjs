@@ -13,6 +13,7 @@ import sitemap from "@astrojs/sitemap";
 // Expressive Code
 import astroExpressiveCode from "astro-expressive-code";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
+import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 
 // Rehype
 import rehypeExternalLinks from "rehype-external-links";
@@ -41,10 +42,13 @@ export default defineConfig({
           terminalTitlebarBackground: "#282726", // ui
         },
       },
-      plugins: [pluginLineNumbers()],
+      plugins: [pluginLineNumbers(), pluginCollapsibleSections()],
       defaultProps: {
         // Disable line numbers by default
         showLineNumbers: false,
+
+        // Change the default style of ExpressiveCode collapsible section plugin
+        collapseStyle: "collapsible-auto",
       },
     }),
     mdx(),
