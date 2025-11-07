@@ -1,26 +1,35 @@
 ---
 draft: false
-type: "log"
-title: "Digital Garden #1 - Migrating to Astro"
-description: "Reshaping my personal website to digital garden using Astro"
+type: "article"
+title: "Migrating to Astro"
+description: "Reshaping my personal website, from Hugo to Astro"
 pubDate: 2025-09-01T19:33:31+07:00
-updatedDate: 2025-09-01T19:33:31+07:00
-tags: ["Digital Garden", "Astro"]
+updatedDate: 2025-11-07T14:39:58+07:00
+tags: ["Astro"]
 toc: false
 ---
 
 import Wrapper from "../../components/page/Wrapper.astro";
+import Separator from "../../components/page/Separator.astro";
 import { Image } from "astro:assets";
 
-After working with Hugo for my personal website since April 2024, I've decided to let it go. Over the past few days, I started learning Astro and ended up migrating everything. Both are static site generators, so why switch? The truth is I have always despised JavaScript, but in web development you almost can't avoid it.
+After working with Hugo for my personal website since April 2024, I've decided to let it go. Over the past few days, I started learning Astro and ended up migrating everything. Both Hugo and Astro are static site generators, so why switch? The truth is I have always despised JavaScript, but in web development you almost can't avoid it.
 
-I was looking for a new framework to build my business website. My first pick was Next.js, mostly because there are plenty of tutorials available and a friend recommended it. Before I got very far, I came across Astro in [an article by CloudCannon about static site generators](https://cloudcannon.com/blog/the-top-five-static-site-generators-for-2025-and-when-to-use-them/). The feature that caught my attention was partial hydration, also known as the island architecture. It avoids shipping a large JavaScript bundle while still letting you use JavaScript components, so your site can remain static and lightweight.
+## Why?
+
+I was searching for a framework to build my business website. My first pick was Next.js, mostly because there are plenty of tutorials available and a friend recommended it.
+
+Before I got very far, I came across Astro in [an article on CloudCannon by David Large about static site generators](https://cloudcannon.com/blog/the-top-five-static-site-generators-for-2025-and-when-to-use-them/). The feature that caught my attention was partial hydration, also known as the island architecture. It avoids shipping a large JavaScript bundle while still letting you use JavaScript components, so your site can remain static and lightweight.
 
 Astro also allows integration with frameworks like React, Vue, and Svelte. I don't plan to use them all, but having JavaScript available when building dynamic content is important.
 
 After experimenting with Astro on a few projects, I asked myself: why not rebuild my personal website with it? So here we are.
 
-I want the site to be as minimal as possible, leaning towards an essentialist style. Something with fewer distraction, a digital-garden-like labyrinth of navigation, and a wall of text. I'll keep the same color palette from my previous website using TailwindCSS, mostly shades of base and some hint of red for the anchor tags, hover effects, and other small details.
+## New style and direction
+
+I want the site to be as minimal as possible, leaning towards an essentialist style: fewer distractions, simple navigation, and a wall of text.
+
+I'm discarding the old home page style for something simpler and more text-driven. I've grown tired of the tagline approach and want the content itself to be more descriptive.
 
 import pic1 from "../../assets/images/v1-website.png";
 
@@ -36,6 +45,127 @@ My old site, still alive at [v1.odhyp.com](https://v1.odhyp.com/)
 
 </Wrapper>
 
-I'm discarding the old home page style for something simpler and more text-driven. Partly inspired by [Joel Hooks's website](https://joelhooks.com/). I've grown tired of the tagline approach and want the content itself to be more descriptive
+I also prefer websites with narrower layout, like this [Portfolio Starter Kit](https://portfolio-blog-starter.vercel.app/) from Vercel. I feel like 600px is the sweet spot for this site.
 
-I also prefer website with narrower layout, like this [Portfolio Starter Kit](https://portfolio-blog-starter.vercel.app/) from Vercel. I feel like 600px is the sweet spot for this site.
+## Migrating content
+
+Migrating the content was straightforward. All of my post in Hugo were Markdown files stored in the `content/writings/` directory. In this site, they now live under `src/content/writings/`.
+
+I placed the `[...id].astro` file directly inside `src/pages/` instead of `src/pages/writings/`. This setup lets each post be accessed as `odhyp.com/page-title` instead of `odhyp.com/writings/page-title`, since I want my writings to be the main focus of the site.
+
+To organize the Markdown files, I used Astro's [Content Collection](https://docs.astro.build/en/guides/content-collections/). It provides schema validation, automatic typing, and an easy way to query content.
+
+I create a `config.ts` file under `src/content/` to define the `writings` collection:
+
+```ts title="config.ts"
+import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
+
+const writings = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/writings" }),
+  schema: z.object({
+    draft: z.boolean(),
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date(),
+    tags: z.array(z.string()).optional(),
+    toc: z.boolean().optional(),
+    type: z.enum(["article", "log"]),
+  }),
+});
+
+export const collections = {
+  writings,
+};
+```
+
+Astro automatically picks up Markdown and MDX files from `src/content/writings/`. The schema ensures each post includes the required fields like `title` and `pubDate`, while optional ones like `description` can be skipped.
+
+In my page component, I can now import and filter the collection:
+
+```astro title="[...id].astro" {5-6}
+---
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  // Filter to skip draft page
+  const writings = await getCollection("writings", ({ data }) => !data.draft);
+
+  return writings.map((writing) => ({
+    params: { id: writing.id },
+    props: { writing },
+  }));
+}
+
+type Props = {
+  writing: CollectionEntry<"writings">;
+};
+
+const { writing } = Astro.props;
+const { Content } = await render(writing);
+---
+
+...
+```
+
+This replaces Hugo's `.Site.RegularPages` filtering logic.
+
+## Rebuilding layouts
+
+So... this part took the longest 💀. In Hugo, I relied heavily on partials (`header.html`, `footer.html`, etc.) and templating logic. In Astro, these become `.astro` components inside `src/components/`.
+
+I started by creating a `BaseLayout.astro` file to handle the HTML skeleton. Astro uses `<slot />` to render child content, instead of `{{ .Content }}` like in Hugo.
+
+```astro title="BaseLayout.astro" collapse={7-19} {"This render child content":34-35}
+---
+// Component import
+import Head from "../components/base/Head.astro";
+import Header from "../components/base/Header.astro";
+import Footer from "../components/base/Footer.astro";
+
+// Font import - Geist
+import "@fontsource/geist/300.css";
+import "@fontsource/geist/400.css";
+import "@fontsource/geist/500.css";
+import "@fontsource/geist/600.css";
+import "@fontsource/geist/700.css";
+
+// Font import - Geist Mono
+import "@fontsource/geist-mono/300.css";
+import "@fontsource/geist-mono/400.css";
+import "@fontsource/geist-mono/500.css";
+import "@fontsource/geist-mono/600.css";
+import "@fontsource/geist-mono/700.css";
+
+const { title, description, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <Head title={title} description={description} image={image} />
+  </head>
+
+  <body class="flex min-h-dvh flex-col sm:min-h-screen">
+    <Header title={title} />
+
+    <main class="animate-slide-enter my-16 grow">
+      {/*  */}
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+```
+
+Once that was done, I rebuilt smaller parts like the head, header, footer, and a whole **shit ton** of other components.
+
+## Deploying
+
+I use Astro as a static site generator, so deployment works the same way as Hugo. This site is hosted on [Cloudflare Pages](https://pages.cloudflare.com/), I just connected the GitHub repo to it and set the build command to `npm run build` and voilà! 🎉
+
+<Separator />
+
+The migration took longer than I expected, but the site's finally where I want it to be. Astro makes the web feel fun again, and I got to learn something new along the way.
