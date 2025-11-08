@@ -225,6 +225,11 @@
   .bleed {
     @apply z-10 max-w-none md:-mx-8 lg:-mx-16 2xl:-mx-24;
   }
+
+  /* Header animation */
+  #header.scrolled {
+    @apply border-b-ui/100 h-16;
+  }
 }
 
 /* Animation */

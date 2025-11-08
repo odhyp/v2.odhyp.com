@@ -6,7 +6,7 @@ import logo from "../../../public/images/logo-light-transparent.png";
 
 <header
     id="header"
-    class="container-grid bg-bg transition-color border-b-ui/0 @container sticky top-0 z-50 h-16 border-b font-medium duration-300 ease-in-out md:mt-4 lg:mt-8"
+    class="container-grid bg-bg border-b-ui/0 @container sticky top-0 z-50 h-16 border-b font-medium transition-all duration-300 ease-in-out md:h-24"
 >
     <section class="container-side"></section>
 
@@ -165,7 +165,8 @@ import logo from "../../../public/images/logo-light-transparent.png";
         );
 
         window.addEventListener("scroll", () => {
-            header.classList.toggle("border-b-ui/100", window.scrollY > 50);
+            const scrolled = window.scrollY > 50;
+            header.classList.toggle("scrolled", scrolled);
         });
     });
 </script>
