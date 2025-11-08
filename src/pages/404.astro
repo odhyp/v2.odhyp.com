@@ -1,9 +1,12 @@
 ---
-// layout import
+// Layout import
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-// component import
-import Menu from "../components/page/Menu.astro";
+// Component import
+import LinkWithIcon from "../components/page/LinkWithIcon.astro";
+import CTA from "../components/page/CTA.astro";
+import { Image } from "astro:assets";
+import pic from "../assets/images/beach-watunene.jpg";
 
 const { title = "404", description = "This page is missing." } = Astro.props;
 ---
@@ -13,19 +16,22 @@ const { title = "404", description = "This page is missing." } = Astro.props;
         <section class="container-side"></section>
 
         <section class="container-main">
-            <article>
+            <article class="pb-16">
                 <h1>Whoops<span class="text-red">.</span></h1>
                 <p class="text-tx-2">
                     Everything in its right place, except this page!
                 </p>
 
-                <div class="mt-8 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                    <Menu
-                        href="/"
-                        icon="material-symbols:home-rounded"
-                        title="Home"
-                        description="Go back and be safe..."
+                <div class="flex flex-col items-center justify-center">
+                    <Image
+                        src={pic}
+                        alt="Watunene Beach, Yogyakarta"
+                        quality="mid"
+                        format="webp"
+                        loading="eager"
+                        class="mt-0 mb-4 h-64 rounded-lg object-cover object-bottom shadow-md"
                     />
+                    <CTA href="/" text="Go Home" icon="material-symbols:home" />
                 </div>
             </article>
         </section>
