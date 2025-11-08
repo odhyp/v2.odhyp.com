@@ -1,9 +1,26 @@
 ---
-// layout import
+// Layout import
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-// content import
+// Component import
+import CardWriting from "../components/ui/CardWriting.astro";
+
+// Content import
 import Content, { frontmatter } from "../content/home.mdx";
+
+// Writings collection
+import { getCollection } from "astro:content";
+
+let writings = await getCollection("writings", ({ data }) => {
+    if (import.meta.env.DEV) {
+        return true;
+    }
+    return data.draft !== true;
+});
+
+writings = writings.sort(
+    (a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf()
+);
 
 const { title, description } = frontmatter;
 ---
@@ -13,12 +30,20 @@ const { title, description } = frontmatter;
         <section class="container-side"></section>
 
         <section class="container-main">
-            <article class="slide-enter-content">
+            <article class="">
                 <h1>
                     Welcome<span class="text-red">.</span>
                 </h1>
                 <Content />
             </article>
+
+            <div class="@container mt-8 flex flex-col gap-y-2">
+                {
+                    writings.map((writing) => (
+                        <CardWriting post={writing} collection="writings" />
+                    ))
+                }
+            </div>
         </section>
 
         <section class="container-side"></section>
