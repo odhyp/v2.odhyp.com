@@ -6,7 +6,7 @@ export async function GET(context) {
   return rss({
     title: "Odhy Pradhana",
     description:
-      "Thoughts and lessons on programming, web development, and the things I learn along the way.",
+      "I write about programming and automation, building useful apps, working with data, and exploring technology.",
     site: context.site,
     items: writings.map((post) => ({
       title: post.data.title,
