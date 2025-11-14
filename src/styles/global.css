@@ -190,7 +190,7 @@
 
   /* Inline Code */
   code:not(pre > *) {
-    @apply font-geist-mono text-tx bg-ui rounded-sm px-1.5 py-0.5 font-medium select-all;
+    @apply font-geist-mono text-tx bg-ui rounded-sm px-1.5 py-0.5 text-sm font-medium select-all;
   }
 
   code::before,
