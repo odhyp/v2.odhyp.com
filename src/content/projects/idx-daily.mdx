@@ -20,7 +20,7 @@ import Separator from "../../components/page/Separator.astro";
 <Wrapper class="@container w-full">
 <Wrapper class="grid grid-cols-1 gap-4 @md:grid-cols-2">
   <CTA href="https://github.com/odhyp/idx-daily" text="Source Code" icon="simple-icons:github" />
-  <CTA href="https://github.com/odhyp/idx-daily/releases/download/v0.0.2/idxdaily.exe" text="Download (.exe)" icon="material-symbols:terminal" />
+  <CTA href="https://github.com/odhyp/idx-daily/releases/download/v0.0.2/idxdaily.rar" text="Download RAR" icon="material-symbols:folder-open" />
 </Wrapper>
 </Wrapper>
 
@@ -34,9 +34,8 @@ import Separator from "../../components/page/Separator.astro";
 
 ## How to Use
 
-1. Download the executable (`.exe`)
-2. Create a `config.toml` file (or [download the example](https://github.com/odhyp/idx-daily/blob/main/config.toml))
-3. Configure it:
+1. Download `idxdaily.rar` and extract it
+2. Configure the `config.toml`
 
 ```toml title="config.toml"
 [base]
@@ -47,12 +46,12 @@ chrome_dir = "C:/Program Files/Google/Chrome/Application/chrome.exe"
 output_dir = "C:/Users/your_name/Downloads/output/"
 ```
 
-4. Double-click the `.exe` to launch the app
-5. Use the "**Launch Chrome**" option to start a browser session
-6. Choose a start and end date when prompted
-7. Review the confirmation table for date range and total workdays
-8. Confirm to start the download
-9. The resulting Excel files will be saved to your configured `output_dir`
+3. Double-click the `.exe` to launch the app
+4. Use the "**Launch Chrome**" option to start a browser session
+5. Choose a start and end date when prompted
+6. Review the confirmation table for date range and total workdays
+7. Confirm to start the download
+8. The resulting Excel files will be saved to your configured `output_dir`
 
 <Alert type="note" title="Note:">
 
