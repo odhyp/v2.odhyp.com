@@ -13,17 +13,17 @@ Astro doesn't offer a built-in integration specifically for automatically openin
 
 [Astro's docs](https://docs.astro.build/en/guides/markdown-content/#adding-remark-and-rehype-plugins) recommend using [rehype-external-links](https://github.com/rehypejs/rehype-external-links) as your go-to plugin for external link behavior in Markdown content.
 
-## Install `rehype-external-links`
+## Install plugin
 
-In Node.js (version 16+), install with `npm`:
+To install `rehype-external-links`, run the following command in a Node.js (version 16+) environment:
 
 ```bash
 npm install rehype-external-links
 ```
 
-## Apply plugin to `astro.config.mjs`
+## Apply plugin
 
-Import `rehype-external-links` and you can set your own `target` or `rel`.
+In your `astro.config.mjs`, import `rehype-external-links`. You can set your own `target` or `rel`.
 
 ```js title="astro.config.mjs" ins={1,5-15}
 import rehypeExternalLinks from "rehype-external-links";
