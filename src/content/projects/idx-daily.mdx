@@ -1,0 +1,69 @@
+---
+draft: false
+title: "IDX Daily"
+description: "A CLI tool that downloads daily stock summary data from the Indonesia Stock Exchange and saves it locally 📈"
+pubDate: 2024-12-15T11:49:43+07:00
+updatedDate: 2025-11-14T13:02:49+07:00
+tags: ["Python"]
+toc: false
+version: "0.0.2"
+---
+
+import Alert from "../../components/page/Alert.astro";
+import CTA from "../../components/page/CTA.astro";
+import Wrapper from "../../components/page/Wrapper.astro";
+import Separator from "../../components/page/Separator.astro";
+
+**IDX Daily** is a command line tool for downloading daily stock summary data (Ringkasan Saham) from the Indonesia Stock Exchange and storing it locally.
+
+{/* prettier-ignore */}
+<Wrapper class="@container w-full">
+<Wrapper class="grid grid-cols-1 gap-4 @md:grid-cols-2">
+  <CTA href="https://github.com/odhyp/idx-daily" text="Source Code" icon="simple-icons:github" />
+  <CTA href="https://github.com/odhyp/idx-daily/releases/download/v0.0.2/idxdaily.exe" text="Download (.exe)" icon="material-symbols:terminal" />
+</Wrapper>
+</Wrapper>
+
+## Features
+
+- Straightforward CLI prompts for start date, end date, and confirmation
+- Validates date inputs and rejects future dates
+- Skips weekends automatically
+- Supports connecting to your Chrome browser to assist the download
+- Saves files using the date-based filename format `YYYY-MM-DD.xlsx`
+
+## How to Use
+
+1. Download the executable (`.exe`)
+2. Create a `config.toml` file (or [download the example](https://github.com/odhyp/idx-daily/blob/main/config.toml))
+3. Configure it:
+
+```toml title="config.toml"
+[base]
+# Path to Chrome.exe
+chrome_dir = "C:/Program Files/Google/Chrome/Application/chrome.exe"
+
+# Output folder for downloaded files
+output_dir = "C:/Users/your_name/Downloads/output/"
+```
+
+4. Double-click the `.exe` to launch the app
+5. Use the "**Launch Chrome**" option to start a browser session
+6. Choose a start and end date when prompted
+7. Review the confirmation table for date range and total workdays
+8. Confirm to start the download
+9. The resulting Excel files will be saved to your configured `output_dir`
+
+<Alert type="note" title="Note:">
+
+Make sure `app.py` and `config.toml` are in the same folder so the app can read your configuration.
+
+</Alert>
+
+## License
+
+Distributed under the MIT License. See [LICENSE](https://github.com/odhyp/idx-daily/blob/main/LICENSE) for details.
+
+<Separator />
+
+Thanks for reading and trying out **IDX Daily**! If you have questions, feedback, or ideas to improve the tool, feel free to share your thoughts in the comments below. I'd love to hear from you! 😃
