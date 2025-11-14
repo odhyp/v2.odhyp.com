@@ -14,7 +14,7 @@ const { title, description, pubDate, updatedDate, cover, tags, toc } =
 
 <BaseLayout title={title} description={description} image={cover}>
     <section class="container-grid">
-        <!-- Page Meta Start -->
+        {/* Page Meta Start */}
         <section class="container-side"></section>
 
         <section class="container-main">
@@ -24,9 +24,9 @@ const { title, description, pubDate, updatedDate, cover, tags, toc } =
         </section>
 
         <section class="container-side"></section>
-        <!-- Page Meta End -->
+        {/* Page Meta End */}
 
-        <!-- Main Content Start -->
+        {/* Main Content Start */}
         <section class="container-side pl-4">
             {toc && <TableOfContents headings={headings} />}
         </section>
@@ -38,9 +38,9 @@ const { title, description, pubDate, updatedDate, cover, tags, toc } =
         </section>
 
         <section class="container-side"></section>
-        <!-- Main Content End -->
+        {/* Main Content End */}
 
-        <!-- Comment Start -->
+        {/* Comment Start */}
         <section class="container-side"></section>
 
         <section class="container-main mt-12">
@@ -51,6 +51,6 @@ const { title, description, pubDate, updatedDate, cover, tags, toc } =
         </section>
 
         <section class="container-side"></section>
-        <!-- Comment End -->
+        {/* Comment End */}
     </section>
 </BaseLayout>
