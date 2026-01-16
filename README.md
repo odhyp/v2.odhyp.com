@@ -1,6 +1,6 @@
 **[v2.odhyp.com](https://v2.odhyp.com)**
 
-my personal website
+my old personal website
 
 <br>
 
@@ -9,3 +9,7 @@ my personal website
 <br>
 
 <samp>You're welcome to use this as inspiration. Credit is appreciated, but please don't copy it directly.</samp>
+
+<br>
+
+[Visit the current site →](https://odhyp.com)
