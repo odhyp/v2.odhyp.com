@@ -20,7 +20,7 @@ import rehypeExternalLinks from "rehype-external-links";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://odhyp.com",
+  site: "https://v2.odhyp.com",
   devToolbar: {
     enabled: false,
   },
