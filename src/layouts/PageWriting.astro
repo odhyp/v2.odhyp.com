@@ -6,7 +6,7 @@ import BaseLayout from "./BaseLayout.astro";
 import { formatDate } from "../utils/formatDate";
 
 // component import
-import Giscus from "../components/page/Giscus.astro";
+import GiscusClosed from "../components/page/GiscusClosed.astro";
 import TableOfContents from "../components/page/TableOfContents.astro";
 
 const { frontmatter, headings, timeToRead } = Astro.props;
@@ -58,7 +58,7 @@ const { type, title, description, pubDate, updatedDate, cover, tags, toc } =
             <article>
                 <h2>Comments</h2>
             </article>
-            <Giscus />
+            <GiscusClosed />
         </section>
 
         <section class="container-side"></section>
